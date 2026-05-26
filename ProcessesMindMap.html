@@ -321,7 +321,7 @@
             <div id="empty-state">
                 <div style="color: #94a3b8; margin-bottom: 15px; font-size: 3rem;">⏳</div>
                 <h2 style="font-weight: 300; margin: 10px 0;">טוען נתונים...</h2>
-                <p style="font-size: 1.1rem; opacity: 0.7;">אנא המתן בזמן שהנתונים נטענים מקובץ DATA.csv המקומי</p>
+                <p style="font-size: 1.1rem; opacity: 0.7;">אנא המתן בזמן שהנתונים נטענים מקובץ data.csv המקומי</p>
             </div>
         </div>
 
@@ -377,8 +377,7 @@
         let fontScale = 1;
         const BASE_FONT_SIZES = { root: 18, stage: 15, subStage: 14, subSubStage: 13 };
 
-        // שם הקובץ החיצוני באותה התיקייה
-        const DATA_FILE_URL = 'DATA.csv';
+        const DATA_FILE_URL = 'data.csv';
 
         function changeFontSize(step) {
             const root = document.documentElement;
@@ -494,11 +493,10 @@
             if (node.children) node.children.forEach(c => updateNodeColors(c, isLight));
         }
 
-        // טעינת קובץ ה-CSV המקומי
         function loadLocalData() {
             fetch(DATA_FILE_URL)
                 .then(response => {
-                    if (!response.ok) throw new Error('לא ניתן למצוא או לקרוא את הקובץ DATA.csv בתיקייה זו.');
+                    if (!response.ok) throw new Error('לא ניתן למצוא או לקרוא את הקובץ data.csv בתיקייה זו.');
                     return response.text();
                 })
                 .then(csvText => {
