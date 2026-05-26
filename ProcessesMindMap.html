@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מחזור חיי רכב - תצוגה מתקדמת</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%230f172a'/%3E%3C!-- recycling arrows --%3E%3Cg stroke='%2360a5fa' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M32 10 A22 22 0 0 1 54 32'/%3E%3Cpolygon points='54,26 54,38 46,32' fill='%2360a5fa' stroke='none'/%3E%3Cpath d='M54 32 A22 22 0 0 1 21 51'/%3E%3Cpolygon points='26,56 16,54 21,45' fill='%2360a5fa' stroke='none'/%3E%3Cpath d='M21 51 A22 22 0 0 1 10 32 A22 22 0 0 1 32 10'/%3E%3Cpolygon points='27,5 37,7 32,16' fill='%2360a5fa' stroke='none'/%3E%3C/g%3E%3C!-- car silhouette --%3E%3Cg fill='%2338bdf8'%3E%3Crect x='16' y='35' width='32' height='9' rx='2'/%3E%3Cpath d='M20 35 L24 27 Q26 25 30 25 L34 25 Q38 25 40 27 L44 35 Z'/%3E%3Ccircle cx='22' cy='44' r='4' fill='%230f172a' stroke='%2338bdf8' stroke-width='2'/%3E%3Ccircle cx='22' cy='44' r='1.5' fill='%2338bdf8'/%3E%3Ccircle cx='42' cy='44' r='4' fill='%230f172a' stroke='%2338bdf8' stroke-width='2'/%3E%3Ccircle cx='42' cy='44' r='1.5' fill='%2338bdf8'/%3E%3C/g%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <style>
+        :root {
+            --primary: #60a5fa;
+            --primary-dark: #93bbfd;
+            --secondary: #38bdf8;
+            --bg-color: #0f172a;
+            --panel-bg: #1e293b;
+            --text-main: #e2e8f0;
+            --text-sub: #94a3b8;
+            --border-light: #334155;
+            --header-bg: rgba(30, 41, 59, 0.95);
+            --node-bg: #1e293b;
+            --node-shadow: rgba(0,0,0,0.3);
+            --line-color: #475569;
+            --base-font-size: 16px;
+        }
+
+        body.light-mode {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0ea5e9;
+            --bg-color: #f8fafc;
+            --panel-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --border-light: #e2e8f0;
+            --header-bg: rgba(255, 255, 255, 0.9);
+            --node-bg: #fff;
+            --node-shadow: rgba(0,0,0,0.08);
+            --line-color: #cbd5e1;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-color);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* כותרת עליונה - Header */
+        .header {
+            padding: 15px 40px;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.6rem;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        /* מבנה מרכזי */
+        .main-wrapper {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 75px);
+            padding: 20px;
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        /* אזור התרשים - בצד ימין ב-RTL */
+        #chart-area {
+            flex: 3;
+            background-color: var(--panel-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--border-light);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        /* פאנל מידע צדדי - בצד שמאל ב-RTL */
+        #info-panel {
+            flex: 1;
+            min-width: 320px;
+            max-width: 400px;
+            background-color: var(--panel-bg);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-light);
+            position: relative;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        /* כפתורי הדר - זום + דארק מוד */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .zoom-controls {
+            display: flex;
+            gap: 5px;
+            background: var(--panel-bg);
+            padding: 4px;
+            border-radius: 50px;
+            border: 1px solid var(--border-light);
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .ctrl-btn {
+            background: var(--bg-color);
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+
+        .ctrl-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .dark-mode-btn {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-light);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .dark-mode-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* עיצוב הטקסט בפאנל */
+        .panel-title {
+            margin: 0 0 20px 0;
+            font-size: calc(var(--base-font-size) + 6px);
+            color: var(--primary-dark);
+            font-weight: 800;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .info-section {
+            margin-bottom: 25px;
+        }
+
+        .info-label {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: calc(var(--base-font-size) - 2px);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* התוכן הדינאמי */
+        .dynamic-text {
+            font-size: var(--base-font-size);
+            line-height: 1.7;
+            color: var(--text-sub);
+            transition: font-size 0.3s ease;
+        }
+
+        /* תגיות גורמים מעורבים */
+        .actors-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .actor-tag {
+            background: var(--border-light);
+            color: var(--secondary);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: calc(var(--base-font-size) - 3px);
+            font-weight: 600;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode .actor-tag {
+            background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+            color: #0369a1;
+            border-color: #bae6fd;
+        }
+
+        /* עיצוב מצב טעינה/ריק */
+        #empty-state {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--text-sub);
+            width: 80%;
+        }
+
+        /* סרגל גלילה */
+        #info-panel::-webkit-scrollbar { width: 6px; }
+        #info-panel::-webkit-scrollbar-track { background: transparent; }
+        #info-panel::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        #info-panel::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* כפתורי מדדים */
+        .metrics-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .metric-tag {
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: calc(var(--base-font-size) - 3px);
+            font-weight: 700;
+            transition: font-size 0.3s ease;
+        }
+
+        .metric-red { background: #f87171; }
+        .metric-orange { background: #fbbf24; color: #78350f; }
+        .metric-green { background: #6ee7b7; color: #064e3b; }
+
+        .arava-header-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .priority-tag {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 24px;
+            padding: 0 7px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .priority-red { background: #f87171; }
+        .priority-orange { background: #fbbf24; color: #78350f; }
+        .priority-yellow { background: #fde68a; color: #713f12; }
+        .priority-none { background: var(--border-light); color: var(--text-sub); }
+
+        .arava-label {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .arava-label:hover {
+            text-decoration: underline;
+        }
+
+        .summary-paragraph {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>מחזור חיי רכב בישראל</h1>
+        <div class="header-controls">
+            <div class="zoom-controls">
+                <button class="ctrl-btn" onclick="changeFontSize(1)" title="הגדל טקסט">+</button>
+                <button class="ctrl-btn" onclick="changeFontSize(-1)" title="הקטן טקסט">-</button>
+            </div>
+            <button class="dark-mode-btn" onclick="toggleDarkMode()" id="dark-mode-btn" title="מצב בהיר/כהה">&#9788;</button>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <div id="chart-area">
+            <div id="empty-state">
+                <div style="color: #94a3b8; margin-bottom: 15px; font-size: 3rem;">⏳</div>
+                <h2 style="font-weight: 300; margin: 10px 0;">טוען נתונים...</h2>
+                <p style="font-size: 1.1rem; opacity: 0.7;">אנא המתן בזמן שהנתונים נטענים מקובץ DATA.csv המקומי</p>
+            </div>
+        </div>
+
+        <div id="info-panel">
+            <div id="info-default">
+                <h2 class="panel-title">ערבה</h2>
+                <div class="dynamic-text">
+                    <p class="summary-paragraph">
+                        <strong>ערבה</strong> היא תשתית לאומית שנועדה לנהל את מחזור החיים המלא של כל רכב בישראל, מרגע היצור בחו"ל ועד הגריטה בישראל.
+                    </p>
+                    <p class="summary-paragraph">
+                        <strong>מטרות אסטרטגיות:</strong> מטרת פרויקט ערבה, בראש ובראשונה, היא שיפור בטיחות כלי הרכב במדינת ישראל, באמצעות חיזוק השליטה של משרד התחבורה על התהליכים והמידעים הקיימים במחזור החיים של הרכבים בישראל.
+                    </p>
+                    <p class="summary-paragraph">
+                        <strong>מטרה נוספת, שיפור אמינות:</strong> רישום רציף של כל אירוע ממקור מאומת, בשילוב בקרות אוטומטיות, יצמצם דרמטית מניפולציות בנסועה, העלמת תאונות וזיוף אישורים.
+                    </p>
+                    <p class="summary-paragraph">
+                        <strong>מטרת משנה של הפרויקט:</strong> היא שיפור השירות לאזרח, באמצעות יצירת אגם רכב לאומי. מאגר אחד שמרכז את מחזור החיים המלא של כל רכב, ללא תלות בחברות פרטיות. לצד זה, שקיפות מלאה לאזרח: כל אזרח יוכל לבדוק בחינם את ההיסטוריה המלאה של כל רכב — נסועה, בעלויות, תאונות, טיפולים, ביטוחים וסטטוס משפטי.
+                    </p>
+                    <p class="summary-paragraph" style="color: var(--primary); font-weight: 500; margin-top: 25px; text-align: center;">
+                        👆 לחץ על כל נקודה בתרשים כדי לצלול פנימה ולראות את הפירוט המלא והגורמים המעורבים בשלב הספציפי.
+                    </p>
+                </div>
+            </div>
+
+            <div id="info-content-view" style="display: none;">
+                <h2 id="info-title" class="panel-title">שם השלב</h2>
+                
+                <div class="info-section">
+                    <div class="info-label">גורמים מעורבים</div>
+                    <div id="info-actors" class="actors-list"></div>
+                </div>
+
+                <div class="info-section">
+                    <div class="info-label">פירוט התהליך</div>
+                    <div id="info-desc" class="dynamic-text"></div>
+                </div>
+
+                <div id="arava-section" class="info-section" style="display: none;">
+                    <div class="arava-header-row">
+                        <div class="info-label arava-label" id="arava-link-wrapper" style="margin-bottom: 0;">ערבה</div>
+                        <span id="arava-priority" class="priority-tag" style="display: none;"></span>
+                    </div>
+                    <div id="arava-metrics" class="metrics-row" style="margin-top: 8px;"></div>
+                    <div id="arava-desc" class="dynamic-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let myChart = null;
+        let fontScale = 1;
+        const BASE_FONT_SIZES = { root: 18, stage: 15, subStage: 14, subSubStage: 13 };
+
+        // שם הקובץ החיצוני באותה התיקייה
+        const DATA_FILE_URL = 'DATA.csv';
+
+        function changeFontSize(step) {
+            const root = document.documentElement;
+            let currentSize = parseInt(getComputedStyle(root).getPropertyValue('--base-font-size'));
+            let newSize = currentSize + (step * 2);
+            if (newSize >= 14 && newSize <= 28) {
+                root.style.setProperty('--base-font-size', newSize + 'px');
+                fontScale = newSize / 16;
+                updateChartFontSizes();
+            }
+        }
+
+        function updateChartFontSizes() {
+            if (!myChart) return;
+            const option = myChart.getOption();
+            if (!option || !option.series || !option.series[0]) return;
+
+            function updateNodeFonts(node) {
+                if (!node) return;
+                if (node.label) {
+                    if (node.label.fontWeight === '800') {
+                        node.label.fontSize = Math.round(BASE_FONT_SIZES.root * fontScale);
+                    } else if (node.label.fontWeight === '700') {
+                        node.label.fontSize = Math.round(BASE_FONT_SIZES.stage * fontScale);
+                    } else if (node.label.fontWeight === '500') {
+                        node.label.fontSize = Math.round(BASE_FONT_SIZES.subStage * fontScale);
+                    } else {
+                        node.label.fontSize = Math.round(BASE_FONT_SIZES.subSubStage * fontScale);
+                    }
+                }
+                if (node.children) {
+                    node.children.forEach(updateNodeFonts);
+                }
+            }
+
+            const seriesData = option.series[0].data;
+            if (seriesData && seriesData[0]) {
+                updateNodeFonts(seriesData[0]);
+                myChart.setOption({ series: [{ data: seriesData }] });
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            document.getElementById('dark-mode-btn').innerHTML = isLight ? '&#9790;' : '&#9788;';
+            updateChartTheme();
+        }
+
+        function updateChartTheme() {
+            if (!myChart) return;
+            const isLight = document.body.classList.contains('light-mode');
+            const nodeBg = isLight ? '#fff' : '#1e293b';
+            const nodeShadow = isLight ? 'rgba(0,0,0,0.08)' : 'rgba(0,0,0,0.3)';
+            const lineColor = isLight ? '#cbd5e1' : '#475569';
+            const tooltipBg = isLight ? 'rgba(255,255,255,0.95)' : 'rgba(30,41,59,0.95)';
+            const tooltipText = isLight ? '#0f172a' : '#e2e8f0';
+            const tooltipBorder = isLight ? '#e2e8f0' : '#475569';
+
+            myChart.setOption({
+                tooltip: {
+                    backgroundColor: tooltipBg,
+                    textStyle: { color: tooltipText },
+                    borderColor: tooltipBorder
+                },
+                series: [{
+                    label: {
+                        backgroundColor: nodeBg,
+                        shadowColor: nodeShadow
+                    },
+                    lineStyle: { color: lineColor }
+                }]
+            });
+
+            const option = myChart.getOption();
+            const seriesData = option.series[0].data;
+            if (seriesData && seriesData[0]) {
+                updateNodeColors(seriesData[0], isLight);
+                myChart.setOption({ series: [{ data: seriesData }] });
+            }
+        }
+
+        const COLOR_MAP = {
+            label: {
+                '#e2e8f0': '#0f172a',
+                '#93bbfd': '#1d4ed8',
+                '#7dd3fc': '#0369a1',
+                '#94a3b8': '#475569'
+            },
+            itemStyle: {
+                '#e2e8f0': '#0f172a'
+            }
+        };
+
+        function updateNodeColors(node, isLight) {
+            if (!node) return;
+            if (node.label && node.label.color) {
+                for (const [dark, light] of Object.entries(COLOR_MAP.label)) {
+                    if (node.label.color === dark || node.label.color === light) {
+                        node.label.color = isLight ? light : dark;
+                        break;
+                    }
+                }
+            }
+            if (node.itemStyle) {
+                for (const [dark, light] of Object.entries(COLOR_MAP.itemStyle)) {
+                    if (node.itemStyle.color === dark || node.itemStyle.color === light) {
+                        node.itemStyle.color = isLight ? light : dark;
+                        break;
+                    }
+                }
+            }
+            if (node.children) node.children.forEach(c => updateNodeColors(c, isLight));
+        }
+
+        // טעינת קובץ ה-CSV המקומי
+        function loadLocalData() {
+            fetch(DATA_FILE_URL)
+                .then(response => {
+                    if (!response.ok) throw new Error('לא ניתן למצוא או לקרוא את הקובץ DATA.csv בתיקייה זו.');
+                    return response.text();
+                })
+                .then(csvText => {
+                    Papa.parse(csvText, {
+                        header: true,
+                        skipEmptyLines: true,
+                        complete: function(results) {
+                            const treeData = buildTreeData(results.data);
+                            document.getElementById('empty-state').style.display = 'none';
+                            initChart(treeData);
+                        }
+                    });
+                })
+                .catch(error => {
+                    const emptyState = document.getElementById('empty-state');
+                    emptyState.innerHTML = `
+                        <div style="color: #ef4444; margin-bottom: 15px; font-size: 3rem;">⚠</div>
+                        <h2 style="font-weight: 500; margin: 10px 0; color: #ef4444;">שגיאה בטעינת הנתונים המקומיים</h2>
+                        <p style="font-size: 1.1rem; opacity: 0.9;">${error.message}</p>
+                        <p style="font-size: 0.95rem; color: var(--text-sub); margin-top: 15px; line-height: 1.5;">
+                            <strong>הסבר טכני:</strong> דפדפנים מודרניים חוסמים קריאת קבצים מקומיים (CORS) כאשר פותחים קובץ HTML ישירות בלחיצה כפולה מהדיסק (כתובת מסוג file://).<br>
+                            כדי שהמערכת תעבוד, יש להריץ את התיקייה תחת שרת מקומי (כמו Live Server ב-VS Code, או פקודת python -m http.server).
+                        </p>
+                    `;
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadLocalData);
+
+        function buildTreeData(data) {
+            let root = {
+                name: "מחזור חיי רכב",
+                children: [],
+                symbolSize: 22,
+                itemStyle: { color: '#e2e8f0' },
+                label: { fontSize: 18, fontWeight: '800', color: '#e2e8f0' }
+            };
+
+            let currentStage = null;
+            let currentSubStage = null;
+
+            data.forEach(row => {
+                const type = row.Type ? row.Type.trim() : '';
+                if (!type) return;
+
+                const node = {
+                    name: row.Title || 'ללא שם',
+                    content: row.Content || '',
+                    actors: row.Actors || '',
+                    tadof: row['תעדוף'] || '',
+                    erech: row['ערך'] || '',
+                    murkavut: row['מורכבות'] || '',
+                    keev: row['כאב'] || '',
+                    ifyun: row['אפיון'] || '',
+                    arava: row['ערבה'] || '',
+                    children: []
+                };
+
+                const pri = parseInt(node.tadof) || 0;
+                const priTextColor = pri >= 1 && pri <= 2 ? '#fca5a5' : pri >= 3 && pri <= 4 ? '#fcd34d' : pri >= 5 && pri <= 6 ? '#fde68a' : null;
+
+                if (type === 'Stage') {
+                    node.symbolSize = 16;
+                    node.itemStyle = { color: '#2563eb' };
+                    node.label = { fontWeight: '700', fontSize: 15, color: priTextColor || '#93bbfd' };
+                    root.children.push(node);
+                    currentStage = node;
+                    currentSubStage = null;
+                }
+                else if (type === 'SubStage') {
+                    node.symbolSize = 12;
+                    node.itemStyle = { color: '#0ea5e9' };
+                    node.label = { fontWeight: '500', fontSize: 14, color: priTextColor || '#7dd3fc' };
+                    if (currentStage) {
+                        currentStage.children.push(node);
+                        currentSubStage = node;
+                    } else {
+                        root.children.push(node);
+                    }
+                }
+                else if (type === 'SubSubStage') {
+                    node.symbolSize = 8;
+                    node.itemStyle = { color: '#94a3b8' };
+                    node.label = { fontSize: 13, color: priTextColor || '#94a3b8' };
+                    if (currentSubStage) {
+                        currentSubStage.children.push(node);
+                    } else if (currentStage) {
+                        currentStage.children.push(node);
+                    }
+                }
+            });
+
+            return root;
+        }
+
+        function initChart(data) {
+            const chartDom = document.getElementById('chart-area');
+            if (myChart != null) myChart.dispose();
+            myChart = echarts.init(chartDom);
+
+            const option = {
+                tooltip: {
+                    trigger: 'item',
+                    triggerOn: 'mousemove',
+                    formatter: '{b}',
+                    backgroundColor: 'rgba(30, 41, 59, 0.95)',
+                    textStyle: { color: '#e2e8f0', fontFamily: 'Heebo' },
+                    borderColor: '#475569',
+                    borderWidth: 1,
+                    padding: [8, 12]
+                },
+                series: [{
+                    type: 'tree',
+                    data: [data],
+                    orient: 'RL',
+                    top: '8%',
+                    left: '20%',
+                    bottom: '8%',
+                    right: '15%',
+                    roam: true,
+                    label: {
+                        position: 'left',
+                        verticalAlign: 'middle',
+                        align: 'right',
+                        fontFamily: 'Heebo',
+                        padding: [5, 10],
+                        backgroundColor: '#1e293b',
+                        borderRadius: 6,
+                        shadowColor: 'rgba(0,0,0,0.3)',
+                        shadowBlur: 5,
+                        shadowOffsetY: 2
+                    },
+                    leaves: {
+                        label: {
+                            position: 'right',
+                            verticalAlign: 'middle',
+                            align: 'left'
+                        }
+                    },
+                    lineStyle: {
+                        color: '#475569',
+                        width: 2,
+                        curveness: 0.6
+                    },
+                    expandAndCollapse: true,
+                    animationDuration: 550,
+                    initialTreeDepth: 2
+                }]
+            };
+
+            myChart.setOption(option);
+
+            myChart.on('click', function (params) {
+                const d = params.data;
+                if (d.content || d.actors) {
+                    showPanel(d);
+                } else if (d.name === "מחזור חיי רכב") {
+                    hidePanel();
+                }
+            });
+
+            window.addEventListener('resize', () => myChart.resize());
+        }
+
+        function getMetricColor(value, reverse) {
+            const v = parseInt(value);
+            if (reverse) {
+                if (v === 1) return 'metric-green';
+                if (v === 2) return 'metric-orange';
+                if (v === 3) return 'metric-red';
+            } else {
+                if (v === 1) return 'metric-red';
+                if (v === 2) return 'metric-orange';
+                if (v === 3) return 'metric-green';
+            }
+            return '';
+        }
+
+        function getMetricLabel(field, value) {
+            const v = parseInt(value);
+            const sizes = { 1: 'קטן', 2: 'בינוני', 3: 'גדול' };
+            const sizesF = { 1: 'קטנה', 2: 'בינונית', 3: 'גדולה' };
+            if (field === 'מורכבות') return field + ': ' + (sizesF[v] || value);
+            return field + ': ' + (sizes[v] || value);
+        }
+
+        function showPanel(d) {
+            document.getElementById('info-default').style.display = 'none';
+            document.getElementById('info-content-view').style.display = 'block';
+
+            document.getElementById('info-title').innerText = d.name;
+            document.getElementById('info-desc').innerText = d.content || 'לא קיים פירוט נוסף לשלב זה בקובץ הנתונים.';
+
+            const actorsDiv = document.getElementById('info-actors');
+            if (d.actors) {
+                const actorsArray = d.actors.split(';');
+                actorsDiv.innerHTML = actorsArray.map(a => `<span class="actor-tag">${a.trim()}</span>`).join('');
+            } else {
+                actorsDiv.innerHTML = '<span style="color: var(--text-sub); font-size: 0.9rem;">לא צוינו גורמים מעורבים</span>';
+            }
+
+            const aravaSection = document.getElementById('arava-section');
+            if (d.arava) {
+                aravaSection.style.display = 'block';
+
+                const aravaLabel = document.getElementById('arava-link-wrapper');
+                if (d.ifyun) {
+                    aravaLabel.innerHTML = '<a href="' + d.ifyun + '" target="_blank" style="color: inherit; text-decoration: none;">ערבה &#8599;</a>';
+                    aravaLabel.style.cursor = 'pointer';
+                } else {
+                    aravaLabel.textContent = 'ערבה';
+                    aravaLabel.style.cursor = 'default';
+                }
+
+                const priorityTag = document.getElementById('arava-priority');
+                const pri = parseInt(d.tadof) || 0;
+                if (pri > 0) {
+                    priorityTag.style.display = 'inline-flex';
+                    priorityTag.textContent = pri;
+                    if (pri <= 2) priorityTag.className = 'priority-tag priority-red';
+                    else if (pri <= 4) priorityTag.className = 'priority-tag priority-orange';
+                    else if (pri <= 6) priorityTag.className = 'priority-tag priority-yellow';
+                    else priorityTag.className = 'priority-tag priority-none';
+                } else {
+                    priorityTag.style.display = 'none';
+                }
+
+                const metricsDiv = document.getElementById('arava-metrics');
+                let metricsHtml = '';
+                if (d.erech) {
+                    metricsHtml += '<span class="metric-tag ' + getMetricColor(d.erech, false) + '">' + getMetricLabel('ערך', d.erech) + '</span>';
+                }
+                if (d.murkavut) {
+                    metricsHtml += '<span class="metric-tag ' + getMetricColor(d.murkavut, true) + '">' + getMetricLabel('מורכבות', d.murkavut) + '</span>';
+                }
+                if (d.keev) {
+                    metricsHtml += '<span class="metric-tag ' + getMetricColor(d.keev, true) + '">' + getMetricLabel('כאב', d.keev) + '</span>';
+                }
+                metricsDiv.innerHTML = metricsHtml;
+
+                document.getElementById('arava-desc').innerText = d.arava;
+            } else {
+                aravaSection.style.display = 'none';
+            }
+        }
+
+        function hidePanel() {
+            document.getElementById('info-default').style.display = 'block';
+            document.getElementById('info-content-view').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
