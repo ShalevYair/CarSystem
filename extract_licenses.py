@@ -5,6 +5,8 @@
 
 קבצים נלווים (באותה תיקייה של הסקריפט):
   classifications.csv — טבלת תרגום סיווגים (מקור,יעד). ניתן להרחיב.
+  product_aliases.csv — טבלת איחוד שמות תוצר (וריאנט,שם קנוני). אופציונלי, ניתן להרחיב
+                        בלי שינוי קוד. מאחד כתיבים שונים של אותו מותג לשם קנוני אחד.
 
 פלט:
   <פלט.xlsx>  — גיליונות: ישיר-חברות, ישיר-תוצרים, עקיף-חברות, עקיף-תוצרים, זעיר-חברות
@@ -49,6 +51,30 @@ def load_translation(script_dir: Path) -> dict:
             key = " ".join(row["מקור"].split())
             table[key] = row["יעד"].strip()
     return table
+
+
+def load_product_aliases(script_dir: Path) -> dict:
+    """טוען טבלת איחוד שמות תוצר (וריאנט -> שם קנוני) מקובץ חיצוני.
+    הקובץ אופציונלי: אם אינו קיים, לא מבוצע איחוד ומוחזרת טבלה ריקה.
+    מפתח ההשוואה מנורמל (trim + רווחים מקופלים + אותיות גדולות) כדי לתפוס
+    גם הבדלי רישיות באנגלית; השם הקנוני נשמר כפי שנכתב בקובץ."""
+    path = script_dir / "product_aliases.csv"
+    aliases = {}
+    if not path.exists():
+        return aliases
+    with open(path, encoding="utf-8-sig") as f:
+        for row in csv.DictReader(f):
+            variant = " ".join((row.get("וריאנט") or "").split())
+            canonical = (row.get("שם קנוני") or "").strip()
+            if variant and canonical:
+                aliases[variant.upper()] = canonical
+    return aliases
+
+
+def canonicalize_product(name: str, aliases: dict) -> str:
+    """מחזיר את השם הקנוני של התוצר אם קיים באיחוד, אחרת את השם כפי שהוא."""
+    key = " ".join((name or "").split()).upper()
+    return aliases.get(key, name)
 
 
 def parse_date(raw, source):
@@ -222,7 +248,8 @@ def dedup_cells(row):
     return texts, elems
 
 
-def extract_file(path: Path, table: dict):
+def extract_file(path: Path, table: dict, aliases: dict = None):
+    aliases = aliases or {}
     doc = Document(path)
     paras = [p.text for p in doc.paragraphs]
     full_text = "\n".join(paras)
@@ -344,6 +371,7 @@ def extract_file(path: Path, table: dict):
             prev_product_el = product_el
 
             name, src_items = split_product_cell(raw_product, table)
+            name = canonicalize_product(name, aliases)
             tgt_items, found, changed = translate(src_items, table, path.name)
             if not found:
                 prod_ok = False
@@ -471,6 +499,8 @@ def main():
         print(f"חסר classifications.csv ליד הסקריפט ({script_dir})")
         sys.exit(1)
 
+    aliases = load_product_aliases(script_dir)  # איחוד שמות תוצר — קובץ חיצוני אופציונלי
+
     files = [f for f in sorted(src.glob("*.docx")) if not f.name.startswith("~$")]
     if not files:
         print(f"לא נמצאו קבצי docx בתיקייה {src}")
@@ -483,7 +513,7 @@ def main():
     failed = 0
     for f in files:
         try:
-            ltype, company, prods = extract_file(f, table)
+            ltype, company, prods = extract_file(f, table, aliases)
             if ltype not in buckets:
                 log.warning("%s: סוג רישיון לא זוהה — שויך לישיר לבדיקה", f.name)
                 ltype = "יבואן ישיר"
