@@ -370,8 +370,8 @@ def extract_file(path: Path, table: dict, aliases: dict = None):
 
             prev_product_el = product_el
 
-            name, src_items = split_product_cell(raw_product, table)
-            name = canonicalize_product(name, aliases)
+            src_name, src_items = split_product_cell(raw_product, table)
+            canon_name = canonicalize_product(src_name, aliases)
             tgt_items, found, changed = translate(src_items, table, path.name)
             if not found:
                 prod_ok = False
@@ -391,7 +391,8 @@ def extract_file(path: Path, table: dict, aliases: dict = None):
 
             products.append({
                 "ח.פ": hp,
-                "תוצר": name,
+                "תוצר מקור": src_name,
+                "תוצר יעד": canon_name,
                 "יצרן": get("manufacturer"),
                 "רשימת סיווגים - מקור": ", ".join(src_items),
                 "רשימת סיווגים - יעד": ", ".join(tgt_items),
@@ -437,10 +438,10 @@ INDIRECT_COMP_COLS = ["ח.פ", "סוג ישות", "שם חברה", "סוג רי�
                       "שם קובץ מקור", "סטטוס OCR"]
 ZAIR_COMP_COLS = ["ח.פ", "סוג ישות", "שם חברה", "סוג רישיון", "תאריך תוקף הרישיון",
                   "שם קובץ מקור", "האם הרישיון מבוטל ?", "הערה בנושא ביטול הרישיון", "סטטוס OCR"]
-DIRECT_PROD_COLS = ["ח.פ", "תוצר", "יצרן", "רשימת סיווגים - מקור",
+DIRECT_PROD_COLS = ["ח.פ", "תוצר מקור", "תוצר יעד", "יצרן", "רשימת סיווגים - מקור",
                     "רשימת סיווגים - יעד", "תאריך תוקף", "תנאים והגבלות",
                     "האם בוצעה המרה של סיווגים", "סטטוס OCR"]
-INDIRECT_PROD_COLS = ["ח.פ", "תוצר", "יצרן", "רשימת סיווגים - מקור",
+INDIRECT_PROD_COLS = ["ח.פ", "תוצר מקור", "תוצר יעד", "יצרן", "רשימת סיווגים - מקור",
                       "רשימת סיווגים - יעד", "סוכן ראשי", "סוכן משני",
                       "תאריך תוקף סוכן ראשי", "תאריך תוקף סוכן משני", "תנאים והגבלות",
                       "האם בוצעה המרה של סיווגים", "סטטוס OCR"]
@@ -448,18 +449,20 @@ INDIRECT_PROD_COLS = ["ח.פ", "תוצר", "יצרן", "רשימת סיווגי�
 
 def build_distinct_products(buckets: dict) -> pd.DataFrame:
     """מרכז רשימת תוצרים ייחודית (DISTINCT) מכל סוגי הרישיונות שיש בהם תוצרים.
-    מפתח הייחודיות הוא שם התוצר המנורמל (trim + רווחים מקופלים), אך שומרים את
-    הכתיב המקורי הראשון שנראה. לכל תוצר: היצרנים שנצפו, מספר מופעים כולל,
-    וסוגי הרישיון שבהם הופיע — כדי לסייע בזיהוי כפילויות עברית/אנגלית וקיצורים."""
-    agg = {}  # norm_name -> dict
+    מפתח הייחודיות הוא שם התוצר המקורי המנורמל (trim + רווחים מקופלים), אך שומרים
+    את הכתיב המקורי הראשון שנראה. לכל תוצר: השם הקנוני (יעד) לאחר טבלת האיחוד,
+    היצרנים שנצפו, מספר מופעים כולל, וסוגי הרישיון שבהם הופיע. הצגת מקור מול יעד
+    מסייעת לזהות כפילויות שטרם אוחדו (מקור ≠ יעד עדיין נבדל)."""
+    agg = {}  # norm_source_name -> dict
     for ltype, (_, prods) in buckets.items():
         for p in prods:
-            name = (p.get("תוצר") or "").strip()
+            name = (p.get("תוצר מקור") or "").strip()
             if not name:
                 continue
             key = " ".join(name.split())
             rec = agg.setdefault(key, {
-                "תוצר": name, "יצרנים": {}, "מופעים": 0, "סוגי רישיון": set()})
+                "תוצר מקור": name, "תוצר יעד": (p.get("תוצר יעד") or name).strip(),
+                "יצרנים": {}, "מופעים": 0, "סוגי רישיון": set()})
             rec["מופעים"] += 1
             rec["סוגי רישיון"].add(ltype.replace("יבואן ", ""))
             man = (p.get("יצרן") or "").strip()
@@ -471,14 +474,17 @@ def build_distinct_products(buckets: dict) -> pd.DataFrame:
         # יצרנים ממוינים לפי שכיחות (הנפוץ ראשון) — עוזר בזיהוי מיפוי כפילויות
         mans = sorted(rec["יצרנים"].items(), key=lambda kv: (-kv[1], kv[0]))
         rows.append({
-            "תוצר": rec["תוצר"],
+            "תוצר מקור": rec["תוצר מקור"],
+            "תוצר יעד": rec["תוצר יעד"],
             "יצרן": " | ".join(m for m, _ in mans),
             "מספר מופעים": rec["מופעים"],
             "סוגי רישיון": ", ".join(sorted(rec["סוגי רישיון"])),
         })
-    df = pd.DataFrame(rows, columns=["תוצר", "יצרן", "מספר מופעים", "סוגי רישיון"])
+    df = pd.DataFrame(rows, columns=["תוצר מקור", "תוצר יעד", "יצרן",
+                                     "מספר מופעים", "סוגי רישיון"])
     if not df.empty:
-        df = df.sort_values("תוצר", kind="stable").reset_index(drop=True)
+        # מיון לפי היעד ואז המקור — כך כל הווריאנטים של אותו שם קנוני יושבים יחד
+        df = df.sort_values(["תוצר יעד", "תוצר מקור"], kind="stable").reset_index(drop=True)
     return df
 
 
