@@ -1,668 +1,729 @@
-<title>מטריצת כלי AI — משרד התחבורה</title>
+<title>מטריצת כלי AI × סוגי משתמשים — משרד התחבורה</title>
 <style>
   :root{
-    direction: rtl;
-    --bg: #f3f5f7;
+    --bg: #f2f4f6;
     --surface: #ffffff;
-    --surface-2: #eef1f4;
-    --ink: #1a2230;
-    --ink-muted: #5c6675;
-    --border: #dde2e8;
-    --accent: #0e6e63;
-    --accent-ink: #084a42;
-    --gcp: #1a5fc4;
-    --gcp-bg: #eaf1fd;
-    --aws: #b4610a;
-    --aws-bg: #fdf1e2;
-    --ext: #6d3fd6;
-    --ext-bg: #f2ecfd;
-    --warn: #a13d1f;
-    --warn-bg: #fbeae3;
-    --new: #0e6e63;
-    --new-bg: #e4f3f0;
+    --surface-2: #e9edf1;
+    --ink: #16202b;
+    --ink-muted: #5a6674;
+    --border: #d9dfe5;
+    --border-strong: #c2cbd4;
+
+    /* עמודות משתמשים — הצבע הראשי של הטבלה */
+    --gen: #0d7268;   --gen-bg: #e3f2ef;   --gen-tint: #f4faf9;
+    --sup: #9a4f12;   --sup-bg: #fbeedf;   --sup-tint: #fdf8f2;
+    --it:  #1a56a8;   --it-bg:  #e6eef9;   --it-tint:  #f5f8fd;
+    --dev: #6a3597;   --dev-bg: #f0e8fa;   --dev-tint: #faf7fd;
+
+    /* ספק ענן — תג זעיר בלבד */
+    --gcp: #2a6bc4;
+    --aws: #9c5a10;
+    --ext: #6a4fb8;
+
+    --blocked: #b3301c;
+    --blocked-bg: #fbe9e6;
+    --new: #0d7268;
+    --new-bg: #e3f2ef;
+    --warn: #9a4f12;
+    --warn-bg: #fbeedf;
     color-scheme: light;
   }
   :root[data-theme="dark"]{
-    --bg: #12161c;
-    --surface: #191f27;
-    --surface-2: #1f2630;
-    --ink: #e7ebf0;
-    --ink-muted: #9aa6b4;
-    --border: #2b323d;
-    --accent: #4fc9ba;
-    --accent-ink: #7fdccf;
-    --gcp: #7db0ff;
-    --gcp-bg: #182a45;
-    --aws: #ffb15c;
-    --aws-bg: #3a2712;
-    --ext: #b79bff;
-    --ext-bg: #2a2148;
-    --warn: #ff8f6b;
-    --warn-bg: #3a2015;
-    --new: #62d6c6;
-    --new-bg: #123832;
+    --bg: #10151b;
+    --surface: #171d25;
+    --surface-2: #1e252f;
+    --ink: #e6ebf1;
+    --ink-muted: #98a4b2;
+    --border: #29313c;
+    --border-strong: #3a4450;
+
+    --gen: #5cccbb;  --gen-bg: #113a34;  --gen-tint: #141d21;
+    --sup: #eba463;  --sup-bg: #3d2814;  --sup-tint: #1e1a17;
+    --it:  #82b2f5;  --it-bg:  #172c4a;  --it-tint:  #151b24;
+    --dev: #bb96ec;  --dev-bg: #2b1f42;  --dev-tint: #1a1723;
+
+    --gcp: #82b2f5;
+    --aws: #eba463;
+    --ext: #bb96ec;
+
+    --blocked: #f28a76;
+    --blocked-bg: #3d1c17;
+    --new: #5cccbb;
+    --new-bg: #113a34;
+    --warn: #eba463;
+    --warn-bg: #3d2814;
     color-scheme: dark;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg: #12161c;
-      --surface: #191f27;
-      --surface-2: #1f2630;
-      --ink: #e7ebf0;
-      --ink-muted: #9aa6b4;
-      --border: #2b323d;
-      --accent: #4fc9ba;
-      --accent-ink: #7fdccf;
-      --gcp: #7db0ff;
-      --gcp-bg: #182a45;
-      --aws: #ffb15c;
-      --aws-bg: #3a2712;
-      --ext: #b79bff;
-      --ext-bg: #2a2148;
-      --warn: #ff8f6b;
-      --warn-bg: #3a2015;
-      --new: #62d6c6;
-      --new-bg: #123832;
+      --bg: #10151b;
+      --surface: #171d25;
+      --surface-2: #1e252f;
+      --ink: #e6ebf1;
+      --ink-muted: #98a4b2;
+      --border: #29313c;
+      --border-strong: #3a4450;
+
+      --gen: #5cccbb;  --gen-bg: #113a34;  --gen-tint: #141d21;
+      --sup: #eba463;  --sup-bg: #3d2814;  --sup-tint: #1e1a17;
+      --it:  #82b2f5;  --it-bg:  #172c4a;  --it-tint:  #151b24;
+      --dev: #bb96ec;  --dev-bg: #2b1f42;  --dev-tint: #1a1723;
+
+      --gcp: #82b2f5;
+      --aws: #eba463;
+      --ext: #bb96ec;
+
+      --blocked: #f28a76;
+      --blocked-bg: #3d1c17;
+      --new: #5cccbb;
+      --new-bg: #113a34;
+      --warn: #eba463;
+      --warn-bg: #3d2814;
       color-scheme: dark;
     }
   }
 
   *{ box-sizing: border-box; }
+  html{ direction: rtl; }
   body{
     margin: 0;
     background: var(--bg);
     color: var(--ink);
-    font-family: "Segoe UI", "Arial Hebrew", Arial, "Noto Sans Hebrew", sans-serif;
-    line-height: 1.55;
+    font-family: "Segoe UI", "Noto Sans Hebrew", "Arial Hebrew", Arial, sans-serif;
+    line-height: 1.5;
   }
-  .wrap{
-    max-width: 1180px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
-  }
+  .wrap{ max-width: 1280px; margin: 0 auto; padding: 40px 22px 72px; }
 
+  /* ---------- כותרת ---------- */
   header.page{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 28px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 10px;
+    padding-bottom: 22px; margin-bottom: 22px;
+    border-bottom: 2px solid var(--border-strong);
   }
   .eyebrow{
-    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
-    font-size: 12px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--accent-ink);
-    font-weight: 600;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--gen); font-weight: 700;
   }
-  h1{
-    margin: 0;
-    font-size: clamp(24px, 3.4vw, 34px);
-    font-weight: 700;
-    text-wrap: balance;
-  }
-  .subtitle{
-    color: var(--ink-muted);
-    font-size: 15px;
-    max-width: 68ch;
-  }
+  h1{ margin: 0; font-size: clamp(23px, 3.2vw, 32px); font-weight: 700; text-wrap: balance; }
+  .subtitle{ color: var(--ink-muted); font-size: 14.5px; max-width: 74ch; margin: 0; }
 
+  /* ---------- מקרא ---------- */
   .legend{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 22px;
-    margin-top: 6px;
-    font-size: 13px;
-    color: var(--ink-muted);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
   }
-  .legend .item{ display:flex; align-items:center; gap:7px; }
-  .dot{ width:10px; height:10px; border-radius: 50%; flex: none; }
-  .dot.gcp{ background: var(--gcp); }
-  .dot.aws{ background: var(--aws); }
-  .dot.ext{ background: var(--ext); }
+  .lg{
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--c);
+    border-radius: 9px;
+    background: var(--surface);
+    padding: 11px 13px;
+  }
+  .lg b{ color: var(--c); font-size: 14px; display: block; margin-bottom: 2px; }
+  .lg span{ font-size: 12.5px; color: var(--ink-muted); }
+  .lg.gen{ --c: var(--gen); } .lg.sup{ --c: var(--sup); }
+  .lg.it{ --c: var(--it); }   .lg.dev{ --c: var(--dev); }
 
+  .keys{
+    display: flex; flex-wrap: wrap; gap: 8px 20px;
+    font-size: 12.5px; color: var(--ink-muted);
+    margin-bottom: 16px; align-items: center;
+  }
+  .keys .k{ display: inline-flex; align-items: center; gap: 6px; }
+
+  /* ---------- טבלה ---------- */
   .table-scroll{
     overflow-x: auto;
-    border: 1px solid var(--border);
-    border-radius: 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
     background: var(--surface);
   }
-  table{
-    border-collapse: collapse;
-    width: 100%;
-    min-width: 920px;
-    font-size: 14.5px;
-  }
+  table{ border-collapse: collapse; width: 100%; min-width: 1080px; }
+
   thead th{
-    position: sticky;
-    top: 0;
+    position: sticky; top: 0; z-index: 3;
     background: var(--surface-2);
     text-align: right;
-    padding: 14px 16px;
-    font-size: 12.5px;
-    letter-spacing: .04em;
-    color: var(--ink-muted);
-    font-weight: 700;
-    border-bottom: 1px solid var(--border);
+    padding: 12px 14px 11px;
+    font-size: 13.5px; font-weight: 700;
+    border-bottom: 2px solid var(--border-strong);
     white-space: nowrap;
   }
-  thead th.col-gcp{ color: var(--gcp); }
-  thead th.col-aws{ color: var(--aws); }
-  thead th.col-ext{ color: var(--ext); }
+  thead th small{
+    display: block; font-weight: 600; font-size: 11px;
+    color: var(--ink-muted); letter-spacing: .02em; margin-top: 1px;
+  }
+  thead th.h-gen{ color: var(--gen); box-shadow: inset 0 4px 0 var(--gen); }
+  thead th.h-sup{ color: var(--sup); box-shadow: inset 0 4px 0 var(--sup); }
+  thead th.h-it{  color: var(--it);  box-shadow: inset 0 4px 0 var(--it); }
+  thead th.h-dev{ color: var(--dev); box-shadow: inset 0 4px 0 var(--dev); }
+
+  tr.band td{
+    background: var(--surface-2);
+    padding: 9px 14px;
+    font-weight: 700; font-size: 13px;
+    letter-spacing: .03em;
+    border-block: 1px solid var(--border-strong);
+    color: var(--ink);
+  }
+  tr.band .n{
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    color: var(--ink-muted); margin-left: 8px;
+  }
 
   tbody td{
-    padding: 14px 16px;
+    padding: 10px 12px;
     border-bottom: 1px solid var(--border);
     vertical-align: top;
   }
-  tbody tr:last-child td{ border-bottom: none; }
-
-  td.cat{
-    font-weight: 700;
-    color: var(--ink);
-    background: var(--surface-2);
-    white-space: nowrap;
-    font-size: 13.5px;
-  }
-  td.cat .num{
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    color: var(--accent-ink);
-    margin-left: 6px;
-  }
   td.sub{
-    color: var(--ink);
-    font-weight: 600;
-    white-space: nowrap;
+    font-weight: 600; font-size: 13px;
+    width: 165px; min-width: 165px;
     background: var(--surface-2);
+    border-left: 1px solid var(--border-strong);
+  }
+  td.c-gen{ background: var(--gen-tint); }
+  td.c-sup{ background: var(--sup-tint); }
+  td.c-it{  background: var(--it-tint); }
+  td.c-dev{ background: var(--dev-tint); }
+  td.c-gen, td.c-sup, td.c-it, td.c-dev{ width: 22%; }
+  td.c-sup, td.c-it, td.c-dev{ border-right: 1px solid var(--border); }
+
+  .none{ color: var(--ink-muted); opacity: .55; font-size: 15px; }
+
+  /* ---------- גלולות כלים ---------- */
+  .pills{ display: flex; flex-direction: column; gap: 5px; align-items: flex-start; }
+  .pill{
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 9px; border-radius: 7px;
+    font-size: 12.5px; font-weight: 600;
+    text-decoration: none;
+    border: 1px solid currentColor;
+    max-width: 100%;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .pill:hover{ transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,.13); }
+  .pill:focus-visible{ outline: 2px solid currentColor; outline-offset: 2px; }
+  .c-gen .pill{ color: var(--gen); background: var(--gen-bg); }
+  .c-sup .pill{ color: var(--sup); background: var(--sup-bg); }
+  .c-it  .pill{ color: var(--it);  background: var(--it-bg); }
+  .c-dev .pill{ color: var(--dev); background: var(--dev-bg); }
+
+  .pill.cond{ border-style: dashed; }
+  .pill.cond::before{ content: "△"; font-size: 9px; opacity: .8; }
+  .pill.blocked{
+    color: var(--blocked) !important;
+    background: var(--blocked-bg) !important;
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    opacity: .95;
+  }
+  .pill.blocked::before{ content: "✕"; font-size: 10px; text-decoration: none; display:inline-block; }
+
+  /* תג ספק ענן — זעיר, לא מתחרה בצבע העמודה */
+  .cl{
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 8.5px; font-weight: 700; letter-spacing: .06em;
+    padding: 1px 4px; border-radius: 3px;
+    background: rgba(128,138,150,.16);
+    opacity: .95; flex: none;
+    text-decoration: none; display: inline-block;
+  }
+  .cl.gcp{ color: var(--gcp); } .cl.aws{ color: var(--aws); } .cl.ext{ color: var(--ext); }
+
+  .note{
+    font-size: 11px; color: var(--ink-muted);
+    margin-top: 1px; display: block; font-weight: 500;
+  }
+
+  /* ---------- קטע הערות ---------- */
+  section{ margin-top: 34px; }
+  section h2{ font-size: 18px; margin: 0 0 4px; }
+  section .lead{ color: var(--ink-muted); font-size: 13.5px; margin: 0 0 16px; max-width: 76ch; }
+  .cards{ display: grid; grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); gap: 11px; }
+  .card{
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .card .head{ display: flex; align-items: center; gap: 7px; margin-bottom: 5px; flex-wrap: wrap; }
+  .card .head b{ font-size: 14px; }
+  .card p{ margin: 0; font-size: 13px; color: var(--ink-muted); }
+  .card a{ color: var(--gen); text-decoration: none; font-weight: 600; }
+  .card a:hover{ text-decoration: underline; }
+  .card .date{ font-family: ui-monospace, Consolas, monospace; font-size: 10.5px; }
+
+  .callout{
+    background: var(--it-bg);
+    border: 1px solid var(--it);
+    border-right-width: 4px;
+    border-radius: 10px;
+    padding: 14px 16px;
     font-size: 13.5px;
   }
-  td.empty{ color: var(--ink-muted); text-align: center; }
-
-  .pills{ display: flex; flex-wrap: wrap; gap: 6px; }
-  .pill{
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 5px 10px;
-    border-radius: 999px;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    transition: filter .15s ease;
+  .callout b{ color: var(--it); }
+  .callout p{ margin: 0 0 8px; }
+  .callout p:last-child{ margin-bottom: 0; }
+  .callout code{
+    font-family: ui-monospace, Consolas, monospace; font-size: 12px;
+    background: rgba(128,138,150,.18); padding: 1px 5px; border-radius: 4px;
   }
-  .pill:hover{ filter: brightness(0.94); }
-  :root[data-theme="dark"] .pill:hover{ filter: brightness(1.15); }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]) .pill:hover{ filter: brightness(1.15); }
-  }
-  .pill svg{ width: 11px; height: 11px; opacity: .6; flex: none; }
-  .pill.gcp{ background: var(--gcp-bg); color: var(--gcp); }
-  .pill.aws{ background: var(--aws-bg); color: var(--aws); }
-  .pill.ext{ background: var(--ext-bg); color: var(--ext); }
 
   .tag{
-    display: inline-block;
-    font-size: 10.5px;
-    font-weight: 700;
-    padding: 1px 7px;
-    border-radius: 999px;
-    margin-inline-start: 4px;
-    letter-spacing: .02em;
-    vertical-align: middle;
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 1px 6px; border-radius: 20px; letter-spacing: .02em;
   }
   .tag.new{ background: var(--new-bg); color: var(--new); }
   .tag.warn{ background: var(--warn-bg); color: var(--warn); }
 
-  section.notes{ margin-top: 40px; }
-  section.notes h2{
-    font-size: 19px;
-    margin: 0 0 4px;
-  }
-  section.notes .lead{
-    color: var(--ink-muted);
-    font-size: 14px;
-    margin-bottom: 18px;
-    max-width: 70ch;
-  }
-  .cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 12px;
-  }
-  .card{
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px 18px;
-  }
-  .card .head{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 6px;
-  }
-  .card .head b{ font-size: 14.5px; }
-  .card p{ margin: 0; font-size: 13.5px; color: var(--ink-muted); }
-  .card a{ color: var(--accent-ink); text-decoration: none; font-weight: 600; }
-  .card a:hover{ text-decoration: underline; }
-  .card .date{
-    font-family: ui-monospace, "SF Mono", Consolas, monospace;
-    font-size: 11px;
-    color: var(--ink-muted);
-  }
-
   footer.page{
-    margin-top: 40px;
-    padding-top: 18px;
+    margin-top: 34px; padding-top: 16px;
     border-top: 1px solid var(--border);
-    font-size: 12.5px;
-    color: var(--ink-muted);
+    font-size: 12px; color: var(--ink-muted);
   }
+  footer.page code{ font-family: ui-monospace, Consolas, monospace; }
 
-  @media (max-width: 640px){
-    .wrap{ padding: 24px 14px 60px; }
+  @media (prefers-reduced-motion: reduce){
+    .pill{ transition: none; }
+    .pill:hover{ transform: none; }
   }
+  @media (max-width: 640px){ .wrap{ padding: 24px 12px 56px; } }
 </style>
 
 <div class="wrap">
 
   <header class="page">
-    <span class="eyebrow">משרד התחבורה · מטריצת רישוי כלי AI</span>
-    <h1>כלי AI מול סוגי משתמשים</h1>
+    <span class="eyebrow">משרד התחבורה · מדיניות רישוי כלי AI</span>
+    <h1>מה נותנים למי</h1>
     <p class="subtitle">
-      חמש קטגוריות כלים, לפי ספק: GCP קודם, AWS שני, פתרונות חוץ-ענניים רק כשאין תחליף.
-      כל שם כלי מקושר לעמוד הרשמי שלו. הרשימה נבדקה ועודכנה מול האינטרנט ב-30.7.2026 —
-      פירוט בסעיף "מה עודכן" בתחתית העמוד.
+      מטריצת כלי AI מול ארבעה סוגי משתמשים. כל תא מציג את הכלים שהמשתמש מקבל בפועל —
+      כלי שאינו מופיע בעמודה, לא ניתן. שמות המוצרים אומתו מול האינטרנט ב-30.7.2026.
     </p>
-    <div class="legend">
-      <span class="item"><span class="dot gcp"></span>GCP</span>
-      <span class="item"><span class="dot aws"></span>AWS</span>
-      <span class="item"><span class="dot ext"></span>חוץ-ענני</span>
-      <span class="item"><span class="tag new">חדש</span>נוסף בבדיקה הזו</span>
-      <span class="item"><span class="tag warn">בהחלפה</span>מוצר בתהליך הפסקה</span>
-    </div>
   </header>
+
+  <div class="legend">
+    <div class="lg gen">
+      <b>עובד כללי</b>
+      <span>הסל הסטנדרטי. כל עובדי המשרד, ללא בקשה.</span>
+    </div>
+    <div class="lg sup">
+      <b>משתמש-על <span style="font-weight:600">(+)</span></b>
+      <span>עובד בכל אגף שמקבל כלים חריגים לתקן, פרטנית ובהצדקה. לא דרג ולא רמת הרשאה — סל אחר.</span>
+    </div>
+    <div class="lg it">
+      <b>עובד טד"ם <span style="font-weight:600">(+)</span></b>
+      <span>תשתיות, נתונים, ארכיטקטורה, אבטחת מידע.</span>
+    </div>
+    <div class="lg dev">
+      <b>מפתח <span style="font-weight:600">(+)</span></b>
+      <span>פיתוח תוכנה, פנימי.</span>
+    </div>
+  </div>
+
+  <div class="keys">
+    <span class="k"><b>(+)</b> העמודה מציגה תוספת מעל הסל של עובד כללי</span>
+    <span class="k"><span class="pill cond" style="color:var(--ink-muted);background:transparent">בתנאי</span> דורש אישור פרטני, או קיים רק היכן שכבר יש עומס עבודה ב-AWS</span>
+    <span class="k"><span class="pill blocked" style="background:var(--blocked-bg)">חסום</span> לא ניתן לאיש</span>
+    <span class="k"><span class="cl gcp">GCP</span><span class="cl aws">AWS</span><span class="cl ext">חוץ</span> ספק</span>
+  </div>
 
   <div class="table-scroll">
     <table>
       <thead>
         <tr>
-          <th style="width:170px">קטגוריה</th>
-          <th style="width:150px">תת-קטגוריה</th>
-          <th class="col-gcp">GCP</th>
-          <th class="col-aws">AWS</th>
-          <th class="col-ext">חוץ-ענני</th>
+          <th style="width:165px">תחום</th>
+          <th class="h-gen">עובד כללי<small>הסל הסטנדרטי</small></th>
+          <th class="h-sup">משתמש-על<small>+ מעל הסל הכללי</small></th>
+          <th class="h-it">עובד טד"ם<small>+ מעל הסל הכללי</small></th>
+          <th class="h-dev">מפתח<small>+ מעל הסל הכללי</small></th>
         </tr>
       </thead>
       <tbody>
 
+        <tr class="band"><td colspan="5"><span class="n">1</span>צ׳אט וידע</td></tr>
+
         <tr>
-          <td class="cat" rowspan="4"><span class="num">1</span>צ׳אט וידע</td>
           <td class="sub">צ׳אט כללי</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">Gemini Enterprise<span class="tag new" style="margin-inline-start:2px">עודכן</span></a>
-            </div>
-          </td>
-          <td class="empty">—</td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://claude.ai/" target="_blank" rel="noopener">Claude</a>
-              <a class="pill ext" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>
-            </div>
-          </td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">Gemini Enterprise<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill" href="https://claude.ai/" target="_blank" rel="noopener">Claude<span class="cl ext">חוץ</span></a>
+            <a class="pill" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT<span class="cl ext">חוץ</span></a>
+          </div></td>
+          <td class="c-it"><span class="none">—</span></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://claude.ai/" target="_blank" rel="noopener">Claude<span class="cl ext">חוץ</span></a>
+          </div></td>
         </tr>
 
         <tr>
           <td class="sub">ידע ארגוני (RAG)</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://cloud.google.com/agentspace/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener">NotebookLM Enterprise</a>
-              <a class="pill gcp" href="https://cloud.google.com/enterprise-search" target="_blank" rel="noopener">Vertex AI Search</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://aws.amazon.com/q/business/" target="_blank" rel="noopener">Amazon Q Business</a>
-              <a class="pill aws" href="https://aws.amazon.com/bedrock/knowledge-bases/" target="_blank" rel="noopener">Bedrock Knowledge Bases</a>
-            </div>
-          </td>
-          <td class="empty">—</td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/agentspace/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener">NotebookLM Enterprise<span class="cl gcp">GCP</span></a>
+            <span class="note">צריכה בלבד — לא בניית מאגרים</span>
+          </div></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/agentspace/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener">NotebookLM — בניית מאגרים<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/enterprise-search" target="_blank" rel="noopener">Vertex AI Search<span class="cl gcp">GCP</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/bedrock/knowledge-bases/" target="_blank" rel="noopener">Bedrock Knowledge Bases<span class="cl aws">AWS</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/q/business/" target="_blank" rel="noopener">Amazon Q Business<span class="cl aws">AWS</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/enterprise-search" target="_blank" rel="noopener">Vertex AI Search<span class="cl gcp">GCP</span></a>
+          </div></td>
         </tr>
 
         <tr>
           <td class="sub">מחקר מבוסס מקורות</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://gemini.google/overview/deep-research/" target="_blank" rel="noopener">Deep Research (Gemini)</a>
-            </div>
-          </td>
-          <td class="empty">—</td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://www.perplexity.ai/" target="_blank" rel="noopener">Perplexity</a>
-            </div>
-          </td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://gemini.google/overview/deep-research/" target="_blank" rel="noopener">Deep Research<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill" href="https://www.perplexity.ai/" target="_blank" rel="noopener">Perplexity<span class="cl ext">חוץ</span></a>
+          </div></td>
+          <td class="c-it"><span class="none">—</span></td>
+          <td class="c-dev"><span class="none">—</span></td>
         </tr>
 
         <tr>
           <td class="sub">יצירת מדיה</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://cloud.google.com/vertex-ai/generative-ai/docs/image/overview" target="_blank" rel="noopener">Imagen</a>
-              <a class="pill gcp" href="https://deepmind.google/technologies/veo/" target="_blank" rel="noopener">Veo</a>
-              <a class="pill gcp" href="https://cloud.google.com/speech-to-text/docs/chirp-model" target="_blank" rel="noopener">Chirp</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://aws.amazon.com/ai/generative-ai/nova/creative/" target="_blank" rel="noopener">Nova Canvas / Reel</a>
-            </div>
-          </td>
-          <td class="empty">—</td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/vertex-ai/generative-ai/docs/image/overview" target="_blank" rel="noopener">Imagen<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://deepmind.google/technologies/veo/" target="_blank" rel="noopener">Veo<span class="cl gcp">GCP</span></a>
+            <span class="note">בעיקר דוברוּת והדרכה</span>
+          </div></td>
+          <td class="c-it"><span class="none">—</span></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/speech-to-text/docs/chirp-model" target="_blank" rel="noopener">Imagen / Veo / Chirp — API<span class="cl gcp">GCP</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/ai/generative-ai/nova/creative/" target="_blank" rel="noopener">Nova Canvas / Reel<span class="cl aws">AWS</span></a>
+          </div></td>
         </tr>
 
+        <tr class="band"><td colspan="5"><span class="n">2</span>AI בכלי העבודה</td></tr>
+
         <tr>
-          <td class="cat" rowspan="3"><span class="num">2</span>AI בכלי העבודה</td>
           <td class="sub">מסמכים וגיליונות</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini for Workspace</a>
-            </div>
-          </td>
-          <td class="empty">—</td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://claude.com/claude-for-microsoft-365" target="_blank" rel="noopener">Claude for Excel/PPT</a>
-            </div>
-          </td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini for Workspace<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill" href="https://claude.com/claude-for-microsoft-365" target="_blank" rel="noopener">Claude for Excel / PPT<span class="cl ext">חוץ</span></a>
+            <a class="pill" href="https://www.microsoft.com/en-us/microsoft-365/copilot" target="_blank" rel="noopener">Microsoft 365 Copilot<span class="cl ext">חוץ</span></a>
+            <span class="note">חריגים לתקן Workspace — הקצאה פרטנית</span>
+          </div></td>
+          <td class="c-it"><span class="none">—</span></td>
+          <td class="c-dev"><span class="none">—</span></td>
         </tr>
 
         <tr>
           <td class="sub">דואר ולוח שנה</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://workspace.google.com/products/gmail/" target="_blank" rel="noopener">Gemini in Gmail</a>
-            </div>
-          </td>
-          <td class="empty">—</td>
-          <td class="empty">—</td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://workspace.google.com/products/gmail/" target="_blank" rel="noopener">Gemini in Gmail<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill" href="https://www.microsoft.com/en-us/microsoft-365/copilot" target="_blank" rel="noopener">Copilot in Outlook<span class="cl ext">חוץ</span></a>
+          </div></td>
+          <td class="c-it"><span class="none">—</span></td>
+          <td class="c-dev"><span class="none">—</span></td>
         </tr>
 
         <tr>
           <td class="sub">פגישות ותמלול</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://workspace.google.com/products/meet/" target="_blank" rel="noopener">Gemini in Meet</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://aws.amazon.com/transcribe/" target="_blank" rel="noopener">Transcribe</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://otter.ai/" target="_blank" rel="noopener">Otter</a>
-            </div>
-          </td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill cond" href="https://workspace.google.com/products/meet/" target="_blank" rel="noopener">Gemini in Meet<span class="cl gcp">GCP</span></a>
+            <a class="pill blocked" href="https://otter.ai/" target="_blank" rel="noopener">Otter<span class="cl ext">חוץ</span></a>
+            <span class="note">תמלול מוציא הקלטה מהארגון — ראו הערה למטה</span>
+          </div></td>
+          <td class="c-sup"><span class="none">—</span></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill cond" href="https://aws.amazon.com/transcribe/" target="_blank" rel="noopener">Transcribe<span class="cl aws">AWS</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill cond" href="https://aws.amazon.com/transcribe/" target="_blank" rel="noopener">Transcribe<span class="cl aws">AWS</span></a>
+          </div></td>
         </tr>
 
+        <tr class="band"><td colspan="5"><span class="n">3</span>סוכנים ואוטומציה</td></tr>
+
         <tr>
-          <td class="cat" rowspan="3"><span class="num">3</span>סוכנים ואוטומציה</td>
           <td class="sub">אוטומציית תהליכים</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://studio.workspace.google.com/" target="_blank" rel="noopener">Workspace Studio<span class="tag new" style="margin-inline-start:2px">אומת</span></a>
-              <a class="pill gcp" href="https://about.appsheet.com/" target="_blank" rel="noopener">AppSheet</a>
-              <a class="pill gcp" href="https://developers.google.com/apps-script" target="_blank" rel="noopener">Apps Script</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://aws.amazon.com/step-functions/" target="_blank" rel="noopener">Step Functions</a>
-              <a class="pill aws" href="https://aws.amazon.com/bedrock/flows/" target="_blank" rel="noopener">Bedrock Flows</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://n8n.io/" target="_blank" rel="noopener">n8n</a>
-              <a class="pill ext" href="https://www.make.com/" target="_blank" rel="noopener">Make</a>
-              <a class="pill ext" href="https://monday.com/ai" target="_blank" rel="noopener">Monday AI</a>
-            </div>
-          </td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill" href="https://studio.workspace.google.com/" target="_blank" rel="noopener">Workspace Studio<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://about.appsheet.com/" target="_blank" rel="noopener">AppSheet<span class="cl gcp">GCP</span></a>
+            <a class="pill cond" href="https://www.make.com/" target="_blank" rel="noopener">Make<span class="cl ext">חוץ</span></a>
+            <a class="pill cond" href="https://monday.com/ai" target="_blank" rel="noopener">Monday AI<span class="cl ext">חוץ</span></a>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://developers.google.com/apps-script" target="_blank" rel="noopener">Apps Script<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://n8n.io/" target="_blank" rel="noopener">n8n<span class="cl ext">חוץ</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/step-functions/" target="_blank" rel="noopener">Step Functions<span class="cl aws">AWS</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/bedrock/flows/" target="_blank" rel="noopener">Bedrock Flows<span class="cl aws">AWS</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://developers.google.com/apps-script" target="_blank" rel="noopener">Apps Script<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://n8n.io/" target="_blank" rel="noopener">n8n<span class="cl ext">חוץ</span></a>
+          </div></td>
         </tr>
 
         <tr>
           <td class="sub">סוכנים מרובי-צעדים</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://cloud.google.com/products/agent-builder" target="_blank" rel="noopener">Vertex AI Agent Builder</a>
-              <a class="pill gcp" href="https://google.github.io/adk-docs/" target="_blank" rel="noopener">ADK</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://aws.amazon.com/bedrock/agentcore/" target="_blank" rel="noopener">Bedrock AgentCore<span class="tag new" style="margin-inline-start:2px">אומת</span></a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://www.anthropic.com/product/claude-cowork" target="_blank" rel="noopener">Claude Cowork</a>
-            </div>
-          </td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill cond" href="https://www.anthropic.com/product/claude-cowork" target="_blank" rel="noopener">Claude Cowork<span class="cl ext">חוץ</span></a>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/products/agent-builder" target="_blank" rel="noopener">Vertex AI Agent Builder<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://google.github.io/adk-docs/" target="_blank" rel="noopener">ADK<span class="cl gcp">GCP</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/bedrock/agentcore/" target="_blank" rel="noopener">Bedrock AgentCore<span class="cl aws">AWS</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/products/agent-builder" target="_blank" rel="noopener">Vertex AI Agent Builder / ADK<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://www.anthropic.com/product/claude-cowork" target="_blank" rel="noopener">Claude Cowork<span class="cl ext">חוץ</span></a>
+          </div></td>
         </tr>
 
         <tr>
           <td class="sub">סוכני דפדפן</td>
-          <td class="empty">—</td>
-          <td class="empty">—</td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://www.anthropic.com/news/claude-for-chrome" target="_blank" rel="noopener">Claude in Chrome</a>
-            </div>
-          </td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill cond" href="https://www.anthropic.com/news/claude-for-chrome" target="_blank" rel="noopener">Claude in Chrome<span class="cl ext">חוץ</span></a>
+            <span class="note">סיכון prompt injection — ראו הערה</span>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill cond" href="https://www.anthropic.com/news/claude-for-chrome" target="_blank" rel="noopener">Claude in Chrome<span class="cl ext">חוץ</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill cond" href="https://www.anthropic.com/news/claude-for-chrome" target="_blank" rel="noopener">Claude in Chrome<span class="cl ext">חוץ</span></a>
+          </div></td>
         </tr>
 
+        <tr class="band"><td colspan="5"><span class="n">4</span>פיתוח</td></tr>
+
         <tr>
-          <td class="cat" rowspan="3"><span class="num">4</span>פיתוח</td>
           <td class="sub">IDE עם AI</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://cloud.google.com/products/gemini/code-assist" target="_blank" rel="noopener">Gemini Code Assist</a>
-              <a class="pill gcp" href="https://antigravity.google/" target="_blank" rel="noopener">Antigravity<span class="tag new" style="margin-inline-start:2px">חדש</span></a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://aws.amazon.com/q/developer/" target="_blank" rel="noopener">Amazon Q Developer<span class="tag warn" style="margin-inline-start:2px">בהחלפה</span></a>
-              <a class="pill aws" href="https://kiro.dev/" target="_blank" rel="noopener">Kiro</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://cursor.com/" target="_blank" rel="noopener">Cursor</a>
-            </div>
-          </td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-sup"><span class="none">—</span></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/products/gemini/code-assist" target="_blank" rel="noopener">Gemini Code Assist<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/products/gemini/code-assist" target="_blank" rel="noopener">Gemini Code Assist<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://antigravity.google/" target="_blank" rel="noopener">Antigravity<span class="cl gcp">GCP</span></a>
+            <a class="pill cond" href="https://kiro.dev/" target="_blank" rel="noopener">Kiro<span class="cl aws">AWS</span></a>
+            <a class="pill cond" href="https://cursor.com/" target="_blank" rel="noopener">Cursor<span class="cl ext">חוץ</span></a>
+            <a class="pill blocked" href="https://aws.amazon.com/q/developer/" target="_blank" rel="noopener">Amazon Q Developer<span class="cl aws">AWS</span></a>
+            <span class="note">Q Developer בהפסקה — אין להקצות חדשים</span>
+          </div></td>
         </tr>
 
         <tr>
           <td class="sub">סוכן קוד בטרמינל</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">Gemini CLI</a>
-              <a class="pill gcp" href="https://jules.google/" target="_blank" rel="noopener">Jules</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-getting-started.html" target="_blank" rel="noopener">Q Developer CLI<span class="tag warn" style="margin-inline-start:2px">בהחלפה</span></a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://claude.com/product/claude-code" target="_blank" rel="noopener">Claude Code</a>
-              <a class="pill ext" href="https://openai.com/codex/" target="_blank" rel="noopener">Codex</a>
-              <a class="pill ext" href="https://devin.ai/" target="_blank" rel="noopener">Devin<span class="tag new" style="margin-inline-start:2px">חדש</span></a>
-            </div>
-          </td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-sup"><span class="none">—</span></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">Gemini CLI<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">Gemini CLI<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://jules.google/" target="_blank" rel="noopener">Jules<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://claude.com/product/claude-code" target="_blank" rel="noopener">Claude Code<span class="cl ext">חוץ</span></a>
+            <a class="pill cond" href="https://openai.com/codex/" target="_blank" rel="noopener">Codex<span class="cl ext">חוץ</span></a>
+            <a class="pill cond" href="https://devin.ai/" target="_blank" rel="noopener">Devin<span class="cl ext">חוץ</span></a>
+          </div></td>
         </tr>
 
         <tr>
           <td class="sub">בניית אפליקציות</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://firebase.studio/" target="_blank" rel="noopener">Firebase Studio</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://aws.amazon.com/amplify/ai/" target="_blank" rel="noopener">Amplify AI</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://lovable.dev/" target="_blank" rel="noopener">Lovable</a>
-              <a class="pill ext" href="https://v0.dev/" target="_blank" rel="noopener">v0</a>
-            </div>
-          </td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill cond" href="https://firebase.studio/" target="_blank" rel="noopener">Firebase Studio<span class="cl gcp">GCP</span></a>
+            <span class="note">בנייה ללא-קוד בידי גורם עסקי</span>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://firebase.studio/" target="_blank" rel="noopener">Firebase Studio<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://firebase.studio/" target="_blank" rel="noopener">Firebase Studio<span class="cl gcp">GCP</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/amplify/ai/" target="_blank" rel="noopener">Amplify AI<span class="cl aws">AWS</span></a>
+            <a class="pill cond" href="https://lovable.dev/" target="_blank" rel="noopener">Lovable<span class="cl ext">חוץ</span></a>
+            <a class="pill cond" href="https://v0.dev/" target="_blank" rel="noopener">v0<span class="cl ext">חוץ</span></a>
+          </div></td>
         </tr>
 
+        <tr class="band"><td colspan="5"><span class="n">5</span>נתונים ותשתית</td></tr>
+
         <tr>
-          <td class="cat" rowspan="3"><span class="num">5</span>נתונים ותשתית</td>
           <td class="sub">BI ושאילתות</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">BigQuery + Gemini</a>
-              <a class="pill gcp" href="https://cloud.google.com/looker" target="_blank" rel="noopener">Looker</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://aws.amazon.com/quicksight/" target="_blank" rel="noopener">QuickSight + Q</a>
-              <a class="pill aws" href="https://aws.amazon.com/athena/" target="_blank" rel="noopener">Athena</a>
-            </div>
-          </td>
-          <td class="empty">—</td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/looker" target="_blank" rel="noopener">Looker — צפייה בדוחות<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-sup"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/looker" target="_blank" rel="noopener">Looker — בניית דוחות<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">BigQuery + Gemini<span class="cl gcp">GCP</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/quicksight/" target="_blank" rel="noopener">QuickSight + Q<span class="cl aws">AWS</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/athena/" target="_blank" rel="noopener">Athena<span class="cl aws">AWS</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">BigQuery + Gemini<span class="cl gcp">GCP</span></a>
+          </div></td>
         </tr>
 
         <tr>
           <td class="sub">פלטפורמת מודלים / API</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models" target="_blank" rel="noopener">Vertex AI (Model Garden)</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://aws.amazon.com/bedrock/" target="_blank" rel="noopener">Bedrock</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill ext" href="https://www.anthropic.com/api" target="_blank" rel="noopener">Anthropic API</a>
-            </div>
-          </td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-sup"><span class="none">—</span></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models" target="_blank" rel="noopener">Vertex AI — Model Garden<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models" target="_blank" rel="noopener">Vertex AI — Model Garden<span class="cl gcp">GCP</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/bedrock/" target="_blank" rel="noopener">Bedrock<span class="cl aws">AWS</span></a>
+            <a class="pill cond" href="https://www.anthropic.com/api" target="_blank" rel="noopener">Anthropic API<span class="cl ext">חוץ</span></a>
+          </div></td>
         </tr>
 
         <tr>
           <td class="sub">סביבת פיתוח מודלים</td>
-          <td>
-            <div class="pills">
-              <a class="pill gcp" href="https://cloud.google.com/colab/docs/introduction" target="_blank" rel="noopener">Colab Enterprise</a>
-              <a class="pill gcp" href="https://cloud.google.com/vertex-ai/docs/workbench/introduction" target="_blank" rel="noopener">Vertex Workbench</a>
-            </div>
-          </td>
-          <td>
-            <div class="pills">
-              <a class="pill aws" href="https://aws.amazon.com/sagemaker/studio/" target="_blank" rel="noopener">SageMaker Studio</a>
-            </div>
-          </td>
-          <td class="empty">—</td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-sup"><span class="none">—</span></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/colab/docs/introduction" target="_blank" rel="noopener">Colab Enterprise<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://cloud.google.com/vertex-ai/docs/workbench/introduction" target="_blank" rel="noopener">Vertex Workbench<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/colab/docs/introduction" target="_blank" rel="noopener">Colab Enterprise<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://cloud.google.com/vertex-ai/docs/workbench/introduction" target="_blank" rel="noopener">Vertex Workbench<span class="cl gcp">GCP</span></a>
+            <a class="pill cond" href="https://aws.amazon.com/sagemaker/studio/" target="_blank" rel="noopener">SageMaker Studio<span class="cl aws">AWS</span></a>
+          </div></td>
         </tr>
 
       </tbody>
     </table>
   </div>
 
-  <section class="notes">
-    <h2>מה עודכן ואומת מול האינטרנט (30.7.2026)</h2>
-    <p class="lead">חמש נקודות שהמסמך המקורי סימן כ"טעונות אימות", ועוד שני עדכונים שעלו תוך כדי הבדיקה.</p>
+  <section>
+    <h2>הערה מהותית: לטד״ם ולמפתחים לא מקצים כלי — מקצים קונסולה</h2>
+    <p class="lead">זו הנקודה שמשנה את אופן האכיפה של שתי העמודות הימניות.</p>
+    <div class="callout">
+      <p>
+        <b>ב-<code>console.cloud.google.com</code> יש עשרות כלי AI, ובתוך Vertex AI Search ו-Model Garden
+        יש עוד רבים.</b> אי אפשר למנות את כולם, וגם לא צריך — כי בפועל לא מקצים כלי בודד.
+      </p>
+      <p>
+        ברגע שעובד טד״ם או מפתח מקבל גישה לקונסולה, כל המשטח נפתח בבת אחת. לכן הכלים המופיעים
+        בשתי העמודות הימניות הם <b>דוגמאות מייצגות, לא רשימה סגורה</b>, והבקרה האמיתית איננה
+        רישוי לפי כלי אלא <b>תפקידי IAM והרשאות ברמת הפרויקט</b>.
+      </p>
+      <p>
+        המסקנה המעשית: עבור עובד כללי ומשתמש-על — המטריצה היא רשימת רישוי מדויקת.
+        עבור טד״ם ומפתח — היא מסמך כוונות, ומה שקובע הוא מסמך הרשאות IAM נפרד שצריך להיכתב.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>שלוש החלטות שדורשות דיון נפרד</h2>
+    <p class="lead">מקרים שבהם הסימון "בתנאי" מסתיר שאלה אמיתית, לא רק בירוקרטיה.</p>
+    <div class="cards">
+
+      <div class="card">
+        <div class="head"><b>תמלול פגישות</b><span class="tag warn">רגיש</span></div>
+        <p>
+          Gemini in Meet מסומן "בתנאי" ו-Otter חסום לחלוטין — לא בגלל איכות אלא בגלל שההקלטה
+          יוצאת מהארגון. גם בתוך Meet, דיוני מדיניות טרם-החלטה, שימועים ובירורי משמעת דורשים
+          כלל נפרד. זו שאלת פרטיות ורגולציה, לא שאלת הרשאה.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="head"><b>סוכני דפדפן</b><span class="tag warn">אבטחה</span></div>
+        <p>
+          Claude in Chrome מסומן "בתנאי" בכל שלוש העמודות. הסיבה היא prompt injection —
+          הוראות זדוניות מוסתרות בתוך דף שהסוכן קורא. בגוף ציבורי שעובד מול אתרים חיצוניים
+          זה וקטור אמיתי, ומחייב מדיניות על אילו אתרים מותר להפעיל אותו.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="head"><b>Amazon Q Developer</b><span class="tag warn">בהפסקה</span></div>
+        <p>
+          מסומן חסום ולא "בתנאי": AWS חסמה הרשמות חדשות ב-15.5.2026 וסוף התמיכה 30.4.2027.
+          אין טעם להקצות רישיונות חדשים. Kiro הוא התחליף הרשמי, ומסומן "בתנאי" כי הוא דורש
+          מנוי נפרד.
+          <br><a href="https://aws.amazon.com/blogs/devops/amazon-q-developer-end-of-support-announcement/" target="_blank" rel="noopener">הודעת AWS</a>
+          <span class="date">· אפריל 2026</span>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>מה אומת מול האינטרנט</h2>
+    <p class="lead">שמות מוצרים שזזו לאחרונה, נכון ל-30.7.2026.</p>
     <div class="cards">
 
       <div class="card">
         <div class="head"><b>Gemini Enterprise</b><span class="tag new">עודכן</span></div>
         <p>
-          אומת: מיתוג-מחדש של Agentspace (9.10.2025). מאז התרחב הלאה — בכנס Cloud Next
-          באפריל 2026 גוגל איחדה תחתיו גם את Vertex AI תחת השם "Gemini Enterprise Agent Platform".
-          עומסי העבודה הקיימים ממשיכים לרוץ ללא שינוי, זה מיתוג לא הפעלה מחדש.
+          מיתוג-מחדש של Agentspace (10.2025), ומאז התרחב עוד: ב-Cloud Next באפריל 2026 גוגל
+          איחדה תחתיו גם את Vertex AI כ-"Gemini Enterprise Agent Platform". עומסי עבודה קיימים
+          ממשיכים לרוץ ללא שינוי.
           <br><a href="https://cloud.google.com/blog/products/ai-machine-learning/the-new-gemini-enterprise-one-platform-for-agent-development" target="_blank" rel="noopener">Google Cloud Blog</a>
-          <span class="date">· אפריל 2026</span>
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="head"><b>Kiro</b><span class="tag warn">קריטי</span></div>
-        <p>
-          אומת ומתעדכן: זו לא רק תוספת ל-Amazon Q Developer — AWS מפסיקה את Q Developer
-          בהדרגה (חסימת הרשמות חדשות מ-15.5.2026, סוף תמיכה 30.4.2027) ומכוונת משתמשים ל-Kiro
-          כתחליף. כדאי לשקף זאת במדיניות הרישוי.
-          <br><a href="https://aws.amazon.com/blogs/devops/amazon-q-developer-end-of-support-announcement/" target="_blank" rel="noopener">AWS DevOps Blog</a>
-          <span class="date">· אפריל 2026</span>
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="head"><b>Bedrock AgentCore</b><span class="tag new">אומת</span></div>
-        <p>
-          אומת: שירות מנוהל פעיל של AWS לפריסת והרצת סוכנים בפרודקשן (זיכרון, gateway לכלים,
-          אבטחה, סקיילינג). לא שם זמני או preview שנעלם.
-          <br><a href="https://aws.amazon.com/bedrock/agentcore/" target="_blank" rel="noopener">aws.amazon.com/bedrock/agentcore</a>
         </p>
       </div>
 
       <div class="card">
         <div class="head"><b>Workspace Studio</b><span class="tag new">אומת</span></div>
         <p>
-          אומת: יצא ל-GA ב-3.12.2025 (התפתחות מ"Workspace Flows" בגרסת אלפא), בונה סוכנים
-          ללא-קוד על Gemini 3, זמין בתוכניות Business/Enterprise של Workspace.
+          יצא ל-GA ב-3.12.2025 (התפתחות מ-Workspace Flows), בונה סוכנים ללא-קוד על Gemini 3,
+          כלול בתוכניות Business ו-Enterprise של Workspace — כלומר ללא עלות רישוי נוספת.
           <br><a href="https://workspace.google.com/blog/product-announcements/introducing-google-workspace-studio-agents-for-everyday-work" target="_blank" rel="noopener">Google Workspace Blog</a>
-          <span class="date">· דצמבר 2025</span>
         </p>
       </div>
 
       <div class="card">
-        <div class="head"><b>Antigravity</b><span class="tag new">חדש בטבלה</span></div>
+        <div class="head"><b>Bedrock AgentCore</b><span class="tag new">אומת</span></div>
         <p>
-          נוסף לפי בקשה: פלטפורמת פיתוח agent-first של גוגל (עורך + מנג'ר + CLI), משיקה
-          ל-Gemini Code Assist בשורת "IDE עם AI". יצאה בנובמבר 2025, גרסה 2.0 במאי 2026,
-          זמינה בחינם ב-preview ציבורי.
-          <br><a href="https://antigravity.google/blog/introducing-google-antigravity" target="_blank" rel="noopener">antigravity.google/blog</a>
-          <span class="date">· נובמבר 2025 → מאי 2026</span>
+          שירות מנוהל פעיל של AWS להרצת סוכנים בפרודקשן — זיכרון, gateway לכלים, אבטחה
+          וסקיילינג. לא preview שנעלם.
+          <br><a href="https://aws.amazon.com/bedrock/agentcore/" target="_blank" rel="noopener">aws.amazon.com/bedrock/agentcore</a>
         </p>
       </div>
 
       <div class="card">
-        <div class="head"><b>Devin</b><span class="tag new">חדש בטבלה</span></div>
+        <div class="head"><b>Antigravity</b><span class="tag new">חדש</span></div>
         <p>
-          נוסף לפי בקשה: "סוכן ההנדסה האוטונומי" של Cognition Labs — מתכנן משימה, עובד בסביבה
-          עצמאית עם shell, עורך ודפדפן, מריץ בדיקות ופותח Pull Request מקצה לקצה. מסווג יחד עם
-          Claude Code ו-Codex בשורת "סוכן קוד בטרמינל".
+          פלטפורמת פיתוח agent-first של גוגל — עורך, מנג'ר לריבוי סוכנים, ו-CLI. יצאה
+          בנובמבר 2025, גרסה 2.0 במאי 2026, חינם ב-preview ציבורי.
+          <br><a href="https://antigravity.google/blog/introducing-google-antigravity" target="_blank" rel="noopener">antigravity.google</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="head"><b>Devin</b><span class="tag new">חדש</span></div>
+        <p>
+          סוכן ההנדסה האוטונומי של Cognition Labs — מתכנן, עובד בסביבה עצמאית עם shell, עורך
+          ודפדפן, ופותח Pull Request מקצה לקצה. מסומן "בתנאי" בגלל עלות ורמת אוטונומיה.
           <br><a href="https://devin.ai/" target="_blank" rel="noopener">devin.ai</a>
         </p>
       </div>
 
       <div class="card">
-        <div class="head"><b>Claude Cowork / Claude in Chrome</b><span class="tag new">אומת</span></div>
+        <div class="head"><b>Microsoft 365 Copilot</b><span class="tag new">נוסף</span></div>
         <p>
-          אומת: שני מוצרים נפרדים ורשמיים של Anthropic — Cowork (סוכן עבודה על קבצים/כלים,
-          כולל הרחבה לנייד ולווב ב-2026) ו-Claude in Chrome (תוסף דפדפן בפיקוח, זמין בכל
-          תוכניות Pro/Max/Team/Enterprise).
-          <br><a href="https://www.anthropic.com/product/claude-cowork" target="_blank" rel="noopener">anthropic.com/product/claude-cowork</a>
+          לא היה במטריצה המקורית ונוסף כאן, כי הוא הדוגמה המובהקת לכלי משתמש-על: חורג מתקן
+          Workspace של המשרד, ולכן מוקצה פרטנית למי שיש לו הצדקה — ולא לכלל העובדים.
+          <br><a href="https://www.microsoft.com/en-us/microsoft-365/copilot" target="_blank" rel="noopener">microsoft.com/microsoft-365/copilot</a>
         </p>
       </div>
 
@@ -670,9 +731,9 @@
   </section>
 
   <footer class="page">
-    מסמך מבוסס על <code>matrix-tools-users-handoff.md</code> בריפו. שמות המוצרים ושורת הזמן
-    אומתו מול האינטרנט ב-30.7.2026 — מוצרי AI ענן משתנים מהר, מומלץ לאמת שוב לפני שימוש
-    רשמי במדיניות רישוי.
+    מבוסס על <code>matrix-tools-users-handoff.md</code>. שיוך הכלים לעמודות הוא <b>הצעה לדיון</b>
+    ונגזר משלושה עקרונות שהוסכמו: GCP ראשון, AWS שני, חוץ-ענני רק כשאין תחליף.
+    שמות המוצרים אומתו מול האינטרנט ב-30.7.2026 — שוק כלי ה-AI זז מהר, כדאי לאמת שוב לפני אימוץ רשמי.
   </footer>
 
 </div>
