@@ -283,12 +283,27 @@
     color: var(--ink-muted); font-size: 13.5px; max-width: 78ch;
     margin: 0 0 14px;
   }
-  /* הטבלה הפשוטה צרה מהמפורטת — לא צריכה את אותו רוחב מינימלי */
-  table.simple{ min-width: 720px; }
-  table.simple td.sub{ width: 200px; min-width: 200px; }
+  /* הטבלה הפשוטה — עמודת כלים אחת בלבד */
+  table.simple{ min-width: 480px; }
+  table.simple td.sub{ width: 42%; min-width: 200px; font-size: 14px; }
   table.simple td.c-gen,
   table.simple td.c-it,
-  table.simple td.c-dev{ width: 26%; }
+  table.simple td.c-dev{ width: 58%; }
+  table.simple tbody td{ padding: 13px 14px; }
+  table.simple .pill{ font-size: 13.5px; padding: 5px 11px; }
+
+  /* תג קהל — מחליף את העמודות שירדו */
+  .aud{
+    display: inline-block;
+    margin-inline-start: 8px;
+    font-size: 11px; font-weight: 700;
+    padding: 2px 9px; border-radius: 999px;
+    border: 1px solid currentColor;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .aud.it{  color: var(--it);  background: var(--it-bg); }
+  .aud.dev{ color: var(--dev); background: var(--dev-bg); }
   .simple-note b{ color: var(--ink); }
 
   /* ---------- ארכיון: הגרסה המפורטת מכווצת ---------- */
@@ -356,39 +371,30 @@
     <span class="eyebrow">משרד התחבורה · מדיניות רישוי כלי AI</span>
     <h1>מה נותנים למי</h1>
     <p class="subtitle">
-      מטריצת כלי AI מול שלושה סוגי משתמשים. כל עמודה מציגה את <b>הסל המלא</b> שהמשתמש מקבל —
-      לא תוספת מעל עמודה אחרת, אלא כל מה שמותר לו. כלי שכל העובדים מקבלים יופיע בשלוש
-      העמודות. הגרסה המפורטת שנחקרה — כולל משתמש-על וכל הכלים שנבדקו — שמורה למטה בקטע
-      מכווץ. שמות המוצרים אומתו מול האינטרנט ב-30.7.2026.
+      כלי אחד לכל תחום. ברירת המחדל היא שכל עובדי המשרד מקבלים את הכלי; רק שני התחומים
+      האחרונים מוגבלים, ומסומנים בתג הקהל שלהם. הגרסה המפורטת שנחקרה — כל הכלים, החלופות
+      והנימוקים — שמורה למטה בקטע מכווץ. שמות המוצרים אומתו מול האינטרנט ב-30.7.2026.
     </p>
   </header>
 
   <p class="simple-note">
-    שלוש עמודות בלבד: <b>עובד כללי</b>, <b>עובד טד״ם</b> ו<b>מפתח</b>. משתמש-על בוטל כעמודה —
-    מי שזקוק ליותר, מקבל את מה שעובד טד״ם מקבל. כל עמודה = הסל המלא, לא תוספת.
+    עמודה אחת: <b>מה הכלי</b>. ארבע השורות הראשונות — לכל עובדי המשרד. שתי השורות האחרונות
+    מסומנות בתג הקהל שלהן: <span class="aud it">טד״ם</span> <span class="aud dev">מפתח</span>
   </p>
 
   <div class="table-scroll">
     <table class="simple">
       <thead>
         <tr>
-          <th style="width:165px">תחום</th>
-          <th class="h-gen">עובד כללי</th>
-          <th class="h-it">עובד טד"ם</th>
-          <th class="h-dev">מפתח</th>
+          <th>תחום</th>
+          <th>כלי</th>
         </tr>
       </thead>
       <tbody>
 
         <tr>
-          <td class="sub">צ׳אט, מחקר ויצירת מדיה<span class="note">כולל מחקר מבוסס מקורות ויצירת מדיה</span></td>
+          <td class="sub">צ׳אט, מחקר ויצירת מדיה</td>
           <td class="c-gen"><div class="pills">
-            <a class="pill" href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">Gemini<span class="cl gcp">GCP</span></a>
-          </div></td>
-          <td class="c-it"><div class="pills">
-            <a class="pill" href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">Gemini<span class="cl gcp">GCP</span></a>
-          </div></td>
-          <td class="c-dev"><div class="pills">
             <a class="pill" href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">Gemini<span class="cl gcp">GCP</span></a>
           </div></td>
         </tr>
@@ -398,36 +404,11 @@
           <td class="c-gen"><div class="pills">
             <a class="pill" href="https://cloud.google.com/agentspace/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener">NotebookLM<span class="cl gcp">GCP</span></a>
           </div></td>
-          <td class="c-it"><div class="pills">
-            <a class="pill" href="https://cloud.google.com/agentspace/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener">NotebookLM<span class="cl gcp">GCP</span></a>
-          </div></td>
-          <td class="c-dev"><div class="pills">
-            <a class="pill" href="https://cloud.google.com/agentspace/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener">NotebookLM<span class="cl gcp">GCP</span></a>
-          </div></td>
         </tr>
 
         <tr>
-          <td class="sub">מסמכים וגיליונות</td>
+          <td class="sub">מסמכים, גיליונות, דואר ולוח שנה</td>
           <td class="c-gen"><div class="pills">
-            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
-          </div></td>
-          <td class="c-it"><div class="pills">
-            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
-          </div></td>
-          <td class="c-dev"><div class="pills">
-            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
-          </div></td>
-        </tr>
-
-        <tr>
-          <td class="sub">דואר ולוח שנה</td>
-          <td class="c-gen"><div class="pills">
-            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
-          </div></td>
-          <td class="c-it"><div class="pills">
-            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
-          </div></td>
-          <td class="c-dev"><div class="pills">
             <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
           </div></td>
         </tr>
@@ -437,34 +418,20 @@
           <td class="c-gen"><div class="pills">
             <a class="pill" href="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" target="_blank" rel="noopener">Teams<span class="cl ext">חוץ</span></a>
           </div></td>
-          <td class="c-it"><div class="pills">
-            <a class="pill" href="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" target="_blank" rel="noopener">Teams<span class="cl ext">חוץ</span></a>
-          </div></td>
-          <td class="c-dev"><div class="pills">
-            <a class="pill" href="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" target="_blank" rel="noopener">Teams<span class="cl ext">חוץ</span></a>
-          </div></td>
         </tr>
 
         <tr>
-          <td class="sub">אוטומציות וסוכנים</td>
-          <td class="c-gen"><span class="none">—</span></td>
+          <td class="sub">אוטומציות וסוכנים<span class="aud it">טד״ם</span></td>
           <td class="c-it"><div class="pills">
-            <a class="pill" href="https://cloud.google.com/vertex-ai" target="_blank" rel="noopener">Vertex AI<span class="cl gcp">GCP</span></a>
-            <a class="pill" href="https://studio.workspace.google.com/" target="_blank" rel="noopener">Workspace Studio<span class="cl gcp">GCP</span></a>
-          </div></td>
-          <td class="c-dev"><div class="pills">
             <a class="pill" href="https://cloud.google.com/vertex-ai" target="_blank" rel="noopener">Vertex AI<span class="cl gcp">GCP</span></a>
             <a class="pill" href="https://studio.workspace.google.com/" target="_blank" rel="noopener">Workspace Studio<span class="cl gcp">GCP</span></a>
           </div></td>
         </tr>
 
         <tr>
-          <td class="sub">פיתוח</td>
-          <td class="c-gen"><span class="none">—</span></td>
-          <td class="c-it"><span class="none">—</span></td>
+          <td class="sub">פיתוח<span class="aud dev">מפתח</span></td>
           <td class="c-dev"><div class="pills">
             <a class="pill" href="https://kiro.dev/" target="_blank" rel="noopener">Kiro<span class="cl aws">AWS</span></a>
-            <span class="note">ההבדל היחיד בין עובד טד״ם למפתח</span>
           </div></td>
         </tr>
 
