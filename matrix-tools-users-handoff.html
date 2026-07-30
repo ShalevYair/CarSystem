@@ -14,6 +14,7 @@
     --sup: #9a4f12;   --sup-bg: #fbeedf;   --sup-tint: #fdf8f2;
     --it:  #1a56a8;   --it-bg:  #e6eef9;   --it-tint:  #f5f8fd;
     --dev: #6a3597;   --dev-bg: #f0e8fa;   --dev-tint: #faf7fd;
+    --req: #8a6d00;   --req-bg: #fbf3d2;   --req-tint: #fdfaee;
 
     /* ספק ענן — תג זעיר בלבד */
     --gcp: #2a6bc4;
@@ -41,6 +42,7 @@
     --sup: #eba463;  --sup-bg: #3d2814;  --sup-tint: #1e1a17;
     --it:  #82b2f5;  --it-bg:  #172c4a;  --it-tint:  #151b24;
     --dev: #bb96ec;  --dev-bg: #2b1f42;  --dev-tint: #1a1723;
+    --req: #e0c34a;  --req-bg: #3a3111;  --req-tint: #201c11;
 
     --gcp: #82b2f5;
     --aws: #eba463;
@@ -68,6 +70,7 @@
       --sup: #eba463;  --sup-bg: #3d2814;  --sup-tint: #1e1a17;
       --it:  #82b2f5;  --it-bg:  #172c4a;  --it-tint:  #151b24;
       --dev: #bb96ec;  --dev-bg: #2b1f42;  --dev-tint: #1a1723;
+      --req: #e0c34a;  --req-bg: #3a3111;  --req-tint: #201c11;
 
       --gcp: #82b2f5;
       --aws: #eba463;
@@ -211,6 +214,7 @@
   .c-sup .pill{ color: var(--sup); background: var(--sup-bg); }
   .c-it  .pill{ color: var(--it);  background: var(--it-bg); }
   .c-dev .pill{ color: var(--dev); background: var(--dev-bg); }
+  .c-req .pill{ color: var(--req); background: var(--req-bg); }
 
   .pill.cond{ border-style: dashed; }
   .pill.cond::before{ content: "△"; font-size: 9px; opacity: .8; }
@@ -288,7 +292,8 @@
   table.simple td.sub{ width: 42%; min-width: 200px; font-size: 14px; }
   table.simple td.c-gen,
   table.simple td.c-it,
-  table.simple td.c-dev{ width: 58%; }
+  table.simple td.c-dev,
+  table.simple td.c-req{ width: 58%; }
   table.simple tbody td{ padding: 13px 14px; }
   table.simple .pill{ font-size: 13.5px; padding: 5px 11px; }
 
@@ -304,6 +309,17 @@
   }
   .aud.it{  color: var(--it);  background: var(--it-bg); }
   .aud.dev{ color: var(--dev); background: var(--dev-bg); }
+  .aud.req{ color: var(--req); background: var(--req-bg); }
+
+  .qmark{
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 15px; height: 15px; border-radius: 50%;
+    font-size: 10px; font-weight: 800; line-height: 1;
+    color: var(--req); background: var(--req-bg);
+    border: 1px solid currentColor;
+    margin-inline-start: 3px; flex: none;
+    cursor: help;
+  }
   .simple-note b{ color: var(--ink); }
 
   /* ---------- ארכיון: הגרסה המפורטת מכווצת ---------- */
@@ -380,6 +396,7 @@
   <p class="simple-note">
     עמודה אחת: <b>מה הכלי</b>. ארבע השורות הראשונות — לכל עובדי המשרד. שתי השורות האחרונות
     מסומנות בתג הקהל שלהן: <span class="aud it">טד״ם</span> <span class="aud dev">מפתח</span>
+    <span class="aud req">לפי דרישה</span>
   </p>
 
   <div class="table-scroll">
@@ -417,6 +434,7 @@
           <td class="sub">פגישות ותמלול</td>
           <td class="c-gen"><div class="pills">
             <a class="pill" href="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" target="_blank" rel="noopener">Teams<span class="cl ext">חוץ</span></a>
+            <a class="pill" href="https://workspace.google.com/products/meet/" target="_blank" rel="noopener">Meet<span class="cl gcp">GCP</span></a>
           </div></td>
         </tr>
 
@@ -431,7 +449,15 @@
         <tr>
           <td class="sub">פיתוח<span class="aud dev">מפתח</span></td>
           <td class="c-dev"><div class="pills">
-            <a class="pill" href="https://kiro.dev/" target="_blank" rel="noopener">Kiro<span class="cl aws">AWS</span></a>
+            <a class="pill" href="https://kiro.dev/" target="_blank" rel="noopener">Kiro<span class="cl aws">AWS</span><span class="qmark" title="טרם הוחלט סופית">?</span></a>
+            <a class="pill" href="https://antigravity.google/" target="_blank" rel="noopener">Antigravity<span class="cl gcp">GCP</span></a>
+          </div></td>
+        </tr>
+
+        <tr>
+          <td class="sub">Deep Research, Agent Designer<span class="aud req">לפי דרישה</span></td>
+          <td class="c-req"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">Gemini Enterprise<span class="cl gcp">GCP</span></a>
           </div></td>
         </tr>
 
