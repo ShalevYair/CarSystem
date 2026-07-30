@@ -278,6 +278,64 @@
   .tag.new{ background: var(--new-bg); color: var(--new); }
   .tag.warn{ background: var(--warn-bg); color: var(--warn); }
 
+  /* ---------- הערת מקרא לטבלה הפשוטה ---------- */
+  .simple-note{
+    color: var(--ink-muted); font-size: 13.5px; max-width: 78ch;
+    margin: 0 0 14px;
+  }
+  /* הטבלה הפשוטה צרה מהמפורטת — לא צריכה את אותו רוחב מינימלי */
+  table.simple{ min-width: 720px; }
+  table.simple td.sub{ width: 200px; min-width: 200px; }
+  table.simple td.c-gen,
+  table.simple td.c-it,
+  table.simple td.c-dev{ width: 26%; }
+  .simple-note b{ color: var(--ink); }
+
+  /* ---------- ארכיון: הגרסה המפורטת מכווצת ---------- */
+  details.archive{
+    margin-top: 40px;
+    border: 1px solid var(--border-strong);
+    border-radius: 12px;
+    background: var(--surface);
+    overflow: hidden;
+  }
+  details.archive summary{
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 18px;
+    user-select: none;
+  }
+  details.archive summary::-webkit-details-marker{ display: none; }
+  details.archive summary::marker{ content: ""; }
+  details.archive summary:focus-visible{
+    outline: 2px solid var(--gen);
+    outline-offset: -2px;
+    border-radius: 10px;
+  }
+  details.archive summary .chev{
+    display: inline-block;
+    flex: none;
+    font-size: 13px;
+    line-height: 1;
+    color: var(--ink-muted);
+    margin-top: 3px;
+    transition: transform .15s ease;
+  }
+  details.archive[open] summary .chev{ transform: rotate(90deg); }
+  details.archive summary .summary-text{ display: flex; flex-direction: column; gap: 3px; }
+  details.archive summary .summary-title{ font-size: 15px; font-weight: 700; color: var(--ink); }
+  details.archive summary .summary-sub{ font-size: 12.5px; color: var(--ink-muted); font-weight: 500; }
+  details.archive .archive-body{
+    padding: 4px 18px 22px;
+    border-top: 1px solid var(--border);
+  }
+  @media (prefers-reduced-motion: reduce){
+    details.archive summary .chev{ transition: none; }
+  }
+
   footer.page{
     margin-top: 34px; padding-top: 16px;
     border-top: 1px solid var(--border);
@@ -298,10 +356,131 @@
     <span class="eyebrow">משרד התחבורה · מדיניות רישוי כלי AI</span>
     <h1>מה נותנים למי</h1>
     <p class="subtitle">
-      מטריצת כלי AI מול ארבעה סוגי משתמשים. כל תא מציג את הכלים שהמשתמש מקבל בפועל —
-      כלי שאינו מופיע בעמודה, לא ניתן. שמות המוצרים אומתו מול האינטרנט ב-30.7.2026.
+      מטריצת כלי AI מול שלושה סוגי משתמשים. כל עמודה מציגה את <b>הסל המלא</b> שהמשתמש מקבל —
+      לא תוספת מעל עמודה אחרת, אלא כל מה שמותר לו. כלי שכל העובדים מקבלים יופיע בשלוש
+      העמודות. הגרסה המפורטת שנחקרה — כולל משתמש-על וכל הכלים שנבדקו — שמורה למטה בקטע
+      מכווץ. שמות המוצרים אומתו מול האינטרנט ב-30.7.2026.
     </p>
   </header>
+
+  <p class="simple-note">
+    שלוש עמודות בלבד: <b>עובד כללי</b>, <b>עובד טד״ם</b> ו<b>מפתח</b>. משתמש-על בוטל כעמודה —
+    מי שזקוק ליותר, מקבל את מה שעובד טד״ם מקבל. כל עמודה = הסל המלא, לא תוספת.
+  </p>
+
+  <div class="table-scroll">
+    <table class="simple">
+      <thead>
+        <tr>
+          <th style="width:165px">תחום</th>
+          <th class="h-gen">עובד כללי</th>
+          <th class="h-it">עובד טד"ם</th>
+          <th class="h-dev">מפתח</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="sub">צ׳אט, מחקר ויצירת מדיה<span class="note">כולל מחקר מבוסס מקורות ויצירת מדיה</span></td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">Gemini<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">Gemini<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">Gemini<span class="cl gcp">GCP</span></a>
+          </div></td>
+        </tr>
+
+        <tr>
+          <td class="sub">ידע ארגוני (RAG)</td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/agentspace/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener">NotebookLM<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/agentspace/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener">NotebookLM<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/agentspace/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener">NotebookLM<span class="cl gcp">GCP</span></a>
+          </div></td>
+        </tr>
+
+        <tr>
+          <td class="sub">מסמכים וגיליונות</td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
+          </div></td>
+        </tr>
+
+        <tr>
+          <td class="sub">דואר ולוח שנה</td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini ב-Workspace<span class="cl gcp">GCP</span></a>
+          </div></td>
+        </tr>
+
+        <tr>
+          <td class="sub">פגישות ותמלול</td>
+          <td class="c-gen"><div class="pills">
+            <a class="pill" href="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" target="_blank" rel="noopener">Teams<span class="cl ext">חוץ</span></a>
+          </div></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" target="_blank" rel="noopener">Teams<span class="cl ext">חוץ</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software" target="_blank" rel="noopener">Teams<span class="cl ext">חוץ</span></a>
+          </div></td>
+        </tr>
+
+        <tr>
+          <td class="sub">אוטומציות וסוכנים</td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-it"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/vertex-ai" target="_blank" rel="noopener">Vertex AI<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://studio.workspace.google.com/" target="_blank" rel="noopener">Workspace Studio<span class="cl gcp">GCP</span></a>
+          </div></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://cloud.google.com/vertex-ai" target="_blank" rel="noopener">Vertex AI<span class="cl gcp">GCP</span></a>
+            <a class="pill" href="https://studio.workspace.google.com/" target="_blank" rel="noopener">Workspace Studio<span class="cl gcp">GCP</span></a>
+          </div></td>
+        </tr>
+
+        <tr>
+          <td class="sub">פיתוח</td>
+          <td class="c-gen"><span class="none">—</span></td>
+          <td class="c-it"><span class="none">—</span></td>
+          <td class="c-dev"><div class="pills">
+            <a class="pill" href="https://kiro.dev/" target="_blank" rel="noopener">Kiro<span class="cl aws">AWS</span></a>
+            <span class="note">ההבדל היחיד בין עובד טד״ם למפתח</span>
+          </div></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <details class="archive">
+    <summary>
+      <span class="chev" aria-hidden="true">▸</span>
+      <span class="summary-text">
+        <span class="summary-title">הגרסה המפורטת — כל הכלים שנבדקו (לחצו להרחבה)</span>
+        <span class="summary-sub">הטבלה המקורית שנחקרה, כולל עמודת משתמש-על, מצבי "בתנאי" ו"חסום" ותגי ספק ענן — שמורה כאן לעיון ולתיעוד.</span>
+      </span>
+    </summary>
+    <div class="archive-body">
 
   <div class="legend">
     <div class="lg gen">
@@ -729,6 +908,9 @@
 
     </div>
   </section>
+
+    </div>
+  </details>
 
   <footer class="page">
     מבוסס על <code>matrix-tools-users-handoff.md</code>. שיוך הכלים לעמודות הוא <b>הצעה לדיון</b>
