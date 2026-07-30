@@ -1,0 +1,678 @@
+<title>מטריצת כלי AI — משרד התחבורה</title>
+<style>
+  :root{
+    direction: rtl;
+    --bg: #f3f5f7;
+    --surface: #ffffff;
+    --surface-2: #eef1f4;
+    --ink: #1a2230;
+    --ink-muted: #5c6675;
+    --border: #dde2e8;
+    --accent: #0e6e63;
+    --accent-ink: #084a42;
+    --gcp: #1a5fc4;
+    --gcp-bg: #eaf1fd;
+    --aws: #b4610a;
+    --aws-bg: #fdf1e2;
+    --ext: #6d3fd6;
+    --ext-bg: #f2ecfd;
+    --warn: #a13d1f;
+    --warn-bg: #fbeae3;
+    --new: #0e6e63;
+    --new-bg: #e4f3f0;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"]{
+    --bg: #12161c;
+    --surface: #191f27;
+    --surface-2: #1f2630;
+    --ink: #e7ebf0;
+    --ink-muted: #9aa6b4;
+    --border: #2b323d;
+    --accent: #4fc9ba;
+    --accent-ink: #7fdccf;
+    --gcp: #7db0ff;
+    --gcp-bg: #182a45;
+    --aws: #ffb15c;
+    --aws-bg: #3a2712;
+    --ext: #b79bff;
+    --ext-bg: #2a2148;
+    --warn: #ff8f6b;
+    --warn-bg: #3a2015;
+    --new: #62d6c6;
+    --new-bg: #123832;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg: #12161c;
+      --surface: #191f27;
+      --surface-2: #1f2630;
+      --ink: #e7ebf0;
+      --ink-muted: #9aa6b4;
+      --border: #2b323d;
+      --accent: #4fc9ba;
+      --accent-ink: #7fdccf;
+      --gcp: #7db0ff;
+      --gcp-bg: #182a45;
+      --aws: #ffb15c;
+      --aws-bg: #3a2712;
+      --ext: #b79bff;
+      --ext-bg: #2a2148;
+      --warn: #ff8f6b;
+      --warn-bg: #3a2015;
+      --new: #62d6c6;
+      --new-bg: #123832;
+      color-scheme: dark;
+    }
+  }
+
+  *{ box-sizing: border-box; }
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", "Arial Hebrew", Arial, "Noto Sans Hebrew", sans-serif;
+    line-height: 1.55;
+  }
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  header.page{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .eyebrow{
+    font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    font-weight: 600;
+  }
+  h1{
+    margin: 0;
+    font-size: clamp(24px, 3.4vw, 34px);
+    font-weight: 700;
+    text-wrap: balance;
+  }
+  .subtitle{
+    color: var(--ink-muted);
+    font-size: 15px;
+    max-width: 68ch;
+  }
+
+  .legend{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--ink-muted);
+  }
+  .legend .item{ display:flex; align-items:center; gap:7px; }
+  .dot{ width:10px; height:10px; border-radius: 50%; flex: none; }
+  .dot.gcp{ background: var(--gcp); }
+  .dot.aws{ background: var(--aws); }
+  .dot.ext{ background: var(--ext); }
+
+  .table-scroll{
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+  }
+  table{
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 920px;
+    font-size: 14.5px;
+  }
+  thead th{
+    position: sticky;
+    top: 0;
+    background: var(--surface-2);
+    text-align: right;
+    padding: 14px 16px;
+    font-size: 12.5px;
+    letter-spacing: .04em;
+    color: var(--ink-muted);
+    font-weight: 700;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  thead th.col-gcp{ color: var(--gcp); }
+  thead th.col-aws{ color: var(--aws); }
+  thead th.col-ext{ color: var(--ext); }
+
+  tbody td{
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tbody tr:last-child td{ border-bottom: none; }
+
+  td.cat{
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--surface-2);
+    white-space: nowrap;
+    font-size: 13.5px;
+  }
+  td.cat .num{
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    color: var(--accent-ink);
+    margin-left: 6px;
+  }
+  td.sub{
+    color: var(--ink);
+    font-weight: 600;
+    white-space: nowrap;
+    background: var(--surface-2);
+    font-size: 13.5px;
+  }
+  td.empty{ color: var(--ink-muted); text-align: center; }
+
+  .pills{ display: flex; flex-wrap: wrap; gap: 6px; }
+  .pill{
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    transition: filter .15s ease;
+  }
+  .pill:hover{ filter: brightness(0.94); }
+  :root[data-theme="dark"] .pill:hover{ filter: brightness(1.15); }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .pill:hover{ filter: brightness(1.15); }
+  }
+  .pill svg{ width: 11px; height: 11px; opacity: .6; flex: none; }
+  .pill.gcp{ background: var(--gcp-bg); color: var(--gcp); }
+  .pill.aws{ background: var(--aws-bg); color: var(--aws); }
+  .pill.ext{ background: var(--ext-bg); color: var(--ext); }
+
+  .tag{
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 999px;
+    margin-inline-start: 4px;
+    letter-spacing: .02em;
+    vertical-align: middle;
+  }
+  .tag.new{ background: var(--new-bg); color: var(--new); }
+  .tag.warn{ background: var(--warn-bg); color: var(--warn); }
+
+  section.notes{ margin-top: 40px; }
+  section.notes h2{
+    font-size: 19px;
+    margin: 0 0 4px;
+  }
+  section.notes .lead{
+    color: var(--ink-muted);
+    font-size: 14px;
+    margin-bottom: 18px;
+    max-width: 70ch;
+  }
+  .cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .card .head{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .card .head b{ font-size: 14.5px; }
+  .card p{ margin: 0; font-size: 13.5px; color: var(--ink-muted); }
+  .card a{ color: var(--accent-ink); text-decoration: none; font-weight: 600; }
+  .card a:hover{ text-decoration: underline; }
+  .card .date{
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: 11px;
+    color: var(--ink-muted);
+  }
+
+  footer.page{
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    font-size: 12.5px;
+    color: var(--ink-muted);
+  }
+
+  @media (max-width: 640px){
+    .wrap{ padding: 24px 14px 60px; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="page">
+    <span class="eyebrow">משרד התחבורה · מטריצת רישוי כלי AI</span>
+    <h1>כלי AI מול סוגי משתמשים</h1>
+    <p class="subtitle">
+      חמש קטגוריות כלים, לפי ספק: GCP קודם, AWS שני, פתרונות חוץ-ענניים רק כשאין תחליף.
+      כל שם כלי מקושר לעמוד הרשמי שלו. הרשימה נבדקה ועודכנה מול האינטרנט ב-30.7.2026 —
+      פירוט בסעיף "מה עודכן" בתחתית העמוד.
+    </p>
+    <div class="legend">
+      <span class="item"><span class="dot gcp"></span>GCP</span>
+      <span class="item"><span class="dot aws"></span>AWS</span>
+      <span class="item"><span class="dot ext"></span>חוץ-ענני</span>
+      <span class="item"><span class="tag new">חדש</span>נוסף בבדיקה הזו</span>
+      <span class="item"><span class="tag warn">בהחלפה</span>מוצר בתהליך הפסקה</span>
+    </div>
+  </header>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:170px">קטגוריה</th>
+          <th style="width:150px">תת-קטגוריה</th>
+          <th class="col-gcp">GCP</th>
+          <th class="col-aws">AWS</th>
+          <th class="col-ext">חוץ-ענני</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="cat" rowspan="4"><span class="num">1</span>צ׳אט וידע</td>
+          <td class="sub">צ׳אט כללי</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://cloud.google.com/gemini-enterprise" target="_blank" rel="noopener">Gemini Enterprise<span class="tag new" style="margin-inline-start:2px">עודכן</span></a>
+            </div>
+          </td>
+          <td class="empty">—</td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://claude.ai/" target="_blank" rel="noopener">Claude</a>
+              <a class="pill ext" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="sub">ידע ארגוני (RAG)</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://cloud.google.com/agentspace/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener">NotebookLM Enterprise</a>
+              <a class="pill gcp" href="https://cloud.google.com/enterprise-search" target="_blank" rel="noopener">Vertex AI Search</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://aws.amazon.com/q/business/" target="_blank" rel="noopener">Amazon Q Business</a>
+              <a class="pill aws" href="https://aws.amazon.com/bedrock/knowledge-bases/" target="_blank" rel="noopener">Bedrock Knowledge Bases</a>
+            </div>
+          </td>
+          <td class="empty">—</td>
+        </tr>
+
+        <tr>
+          <td class="sub">מחקר מבוסס מקורות</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://gemini.google/overview/deep-research/" target="_blank" rel="noopener">Deep Research (Gemini)</a>
+            </div>
+          </td>
+          <td class="empty">—</td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://www.perplexity.ai/" target="_blank" rel="noopener">Perplexity</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="sub">יצירת מדיה</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://cloud.google.com/vertex-ai/generative-ai/docs/image/overview" target="_blank" rel="noopener">Imagen</a>
+              <a class="pill gcp" href="https://deepmind.google/technologies/veo/" target="_blank" rel="noopener">Veo</a>
+              <a class="pill gcp" href="https://cloud.google.com/speech-to-text/docs/chirp-model" target="_blank" rel="noopener">Chirp</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://aws.amazon.com/ai/generative-ai/nova/creative/" target="_blank" rel="noopener">Nova Canvas / Reel</a>
+            </div>
+          </td>
+          <td class="empty">—</td>
+        </tr>
+
+        <tr>
+          <td class="cat" rowspan="3"><span class="num">2</span>AI בכלי העבודה</td>
+          <td class="sub">מסמכים וגיליונות</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini for Workspace</a>
+            </div>
+          </td>
+          <td class="empty">—</td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://claude.com/claude-for-microsoft-365" target="_blank" rel="noopener">Claude for Excel/PPT</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="sub">דואר ולוח שנה</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://workspace.google.com/products/gmail/" target="_blank" rel="noopener">Gemini in Gmail</a>
+            </div>
+          </td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+
+        <tr>
+          <td class="sub">פגישות ותמלול</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://workspace.google.com/products/meet/" target="_blank" rel="noopener">Gemini in Meet</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://aws.amazon.com/transcribe/" target="_blank" rel="noopener">Transcribe</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://otter.ai/" target="_blank" rel="noopener">Otter</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="cat" rowspan="3"><span class="num">3</span>סוכנים ואוטומציה</td>
+          <td class="sub">אוטומציית תהליכים</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://studio.workspace.google.com/" target="_blank" rel="noopener">Workspace Studio<span class="tag new" style="margin-inline-start:2px">אומת</span></a>
+              <a class="pill gcp" href="https://about.appsheet.com/" target="_blank" rel="noopener">AppSheet</a>
+              <a class="pill gcp" href="https://developers.google.com/apps-script" target="_blank" rel="noopener">Apps Script</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://aws.amazon.com/step-functions/" target="_blank" rel="noopener">Step Functions</a>
+              <a class="pill aws" href="https://aws.amazon.com/bedrock/flows/" target="_blank" rel="noopener">Bedrock Flows</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://n8n.io/" target="_blank" rel="noopener">n8n</a>
+              <a class="pill ext" href="https://www.make.com/" target="_blank" rel="noopener">Make</a>
+              <a class="pill ext" href="https://monday.com/ai" target="_blank" rel="noopener">Monday AI</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="sub">סוכנים מרובי-צעדים</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://cloud.google.com/products/agent-builder" target="_blank" rel="noopener">Vertex AI Agent Builder</a>
+              <a class="pill gcp" href="https://google.github.io/adk-docs/" target="_blank" rel="noopener">ADK</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://aws.amazon.com/bedrock/agentcore/" target="_blank" rel="noopener">Bedrock AgentCore<span class="tag new" style="margin-inline-start:2px">אומת</span></a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://www.anthropic.com/product/claude-cowork" target="_blank" rel="noopener">Claude Cowork</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="sub">סוכני דפדפן</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://www.anthropic.com/news/claude-for-chrome" target="_blank" rel="noopener">Claude in Chrome</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="cat" rowspan="3"><span class="num">4</span>פיתוח</td>
+          <td class="sub">IDE עם AI</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://cloud.google.com/products/gemini/code-assist" target="_blank" rel="noopener">Gemini Code Assist</a>
+              <a class="pill gcp" href="https://antigravity.google/" target="_blank" rel="noopener">Antigravity<span class="tag new" style="margin-inline-start:2px">חדש</span></a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://aws.amazon.com/q/developer/" target="_blank" rel="noopener">Amazon Q Developer<span class="tag warn" style="margin-inline-start:2px">בהחלפה</span></a>
+              <a class="pill aws" href="https://kiro.dev/" target="_blank" rel="noopener">Kiro</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://cursor.com/" target="_blank" rel="noopener">Cursor</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="sub">סוכן קוד בטרמינל</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://github.com/google-gemini/gemini-cli" target="_blank" rel="noopener">Gemini CLI</a>
+              <a class="pill gcp" href="https://jules.google/" target="_blank" rel="noopener">Jules</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/command-line-getting-started.html" target="_blank" rel="noopener">Q Developer CLI<span class="tag warn" style="margin-inline-start:2px">בהחלפה</span></a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://claude.com/product/claude-code" target="_blank" rel="noopener">Claude Code</a>
+              <a class="pill ext" href="https://openai.com/codex/" target="_blank" rel="noopener">Codex</a>
+              <a class="pill ext" href="https://devin.ai/" target="_blank" rel="noopener">Devin<span class="tag new" style="margin-inline-start:2px">חדש</span></a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="sub">בניית אפליקציות</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://firebase.studio/" target="_blank" rel="noopener">Firebase Studio</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://aws.amazon.com/amplify/ai/" target="_blank" rel="noopener">Amplify AI</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://lovable.dev/" target="_blank" rel="noopener">Lovable</a>
+              <a class="pill ext" href="https://v0.dev/" target="_blank" rel="noopener">v0</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="cat" rowspan="3"><span class="num">5</span>נתונים ותשתית</td>
+          <td class="sub">BI ושאילתות</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">BigQuery + Gemini</a>
+              <a class="pill gcp" href="https://cloud.google.com/looker" target="_blank" rel="noopener">Looker</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://aws.amazon.com/quicksight/" target="_blank" rel="noopener">QuickSight + Q</a>
+              <a class="pill aws" href="https://aws.amazon.com/athena/" target="_blank" rel="noopener">Athena</a>
+            </div>
+          </td>
+          <td class="empty">—</td>
+        </tr>
+
+        <tr>
+          <td class="sub">פלטפורמת מודלים / API</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://cloud.google.com/vertex-ai/generative-ai/docs/model-garden/explore-models" target="_blank" rel="noopener">Vertex AI (Model Garden)</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://aws.amazon.com/bedrock/" target="_blank" rel="noopener">Bedrock</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill ext" href="https://www.anthropic.com/api" target="_blank" rel="noopener">Anthropic API</a>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="sub">סביבת פיתוח מודלים</td>
+          <td>
+            <div class="pills">
+              <a class="pill gcp" href="https://cloud.google.com/colab/docs/introduction" target="_blank" rel="noopener">Colab Enterprise</a>
+              <a class="pill gcp" href="https://cloud.google.com/vertex-ai/docs/workbench/introduction" target="_blank" rel="noopener">Vertex Workbench</a>
+            </div>
+          </td>
+          <td>
+            <div class="pills">
+              <a class="pill aws" href="https://aws.amazon.com/sagemaker/studio/" target="_blank" rel="noopener">SageMaker Studio</a>
+            </div>
+          </td>
+          <td class="empty">—</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <section class="notes">
+    <h2>מה עודכן ואומת מול האינטרנט (30.7.2026)</h2>
+    <p class="lead">חמש נקודות שהמסמך המקורי סימן כ"טעונות אימות", ועוד שני עדכונים שעלו תוך כדי הבדיקה.</p>
+    <div class="cards">
+
+      <div class="card">
+        <div class="head"><b>Gemini Enterprise</b><span class="tag new">עודכן</span></div>
+        <p>
+          אומת: מיתוג-מחדש של Agentspace (9.10.2025). מאז התרחב הלאה — בכנס Cloud Next
+          באפריל 2026 גוגל איחדה תחתיו גם את Vertex AI תחת השם "Gemini Enterprise Agent Platform".
+          עומסי העבודה הקיימים ממשיכים לרוץ ללא שינוי, זה מיתוג לא הפעלה מחדש.
+          <br><a href="https://cloud.google.com/blog/products/ai-machine-learning/the-new-gemini-enterprise-one-platform-for-agent-development" target="_blank" rel="noopener">Google Cloud Blog</a>
+          <span class="date">· אפריל 2026</span>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="head"><b>Kiro</b><span class="tag warn">קריטי</span></div>
+        <p>
+          אומת ומתעדכן: זו לא רק תוספת ל-Amazon Q Developer — AWS מפסיקה את Q Developer
+          בהדרגה (חסימת הרשמות חדשות מ-15.5.2026, סוף תמיכה 30.4.2027) ומכוונת משתמשים ל-Kiro
+          כתחליף. כדאי לשקף זאת במדיניות הרישוי.
+          <br><a href="https://aws.amazon.com/blogs/devops/amazon-q-developer-end-of-support-announcement/" target="_blank" rel="noopener">AWS DevOps Blog</a>
+          <span class="date">· אפריל 2026</span>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="head"><b>Bedrock AgentCore</b><span class="tag new">אומת</span></div>
+        <p>
+          אומת: שירות מנוהל פעיל של AWS לפריסת והרצת סוכנים בפרודקשן (זיכרון, gateway לכלים,
+          אבטחה, סקיילינג). לא שם זמני או preview שנעלם.
+          <br><a href="https://aws.amazon.com/bedrock/agentcore/" target="_blank" rel="noopener">aws.amazon.com/bedrock/agentcore</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="head"><b>Workspace Studio</b><span class="tag new">אומת</span></div>
+        <p>
+          אומת: יצא ל-GA ב-3.12.2025 (התפתחות מ"Workspace Flows" בגרסת אלפא), בונה סוכנים
+          ללא-קוד על Gemini 3, זמין בתוכניות Business/Enterprise של Workspace.
+          <br><a href="https://workspace.google.com/blog/product-announcements/introducing-google-workspace-studio-agents-for-everyday-work" target="_blank" rel="noopener">Google Workspace Blog</a>
+          <span class="date">· דצמבר 2025</span>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="head"><b>Antigravity</b><span class="tag new">חדש בטבלה</span></div>
+        <p>
+          נוסף לפי בקשה: פלטפורמת פיתוח agent-first של גוגל (עורך + מנג'ר + CLI), משיקה
+          ל-Gemini Code Assist בשורת "IDE עם AI". יצאה בנובמבר 2025, גרסה 2.0 במאי 2026,
+          זמינה בחינם ב-preview ציבורי.
+          <br><a href="https://antigravity.google/blog/introducing-google-antigravity" target="_blank" rel="noopener">antigravity.google/blog</a>
+          <span class="date">· נובמבר 2025 → מאי 2026</span>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="head"><b>Devin</b><span class="tag new">חדש בטבלה</span></div>
+        <p>
+          נוסף לפי בקשה: "סוכן ההנדסה האוטונומי" של Cognition Labs — מתכנן משימה, עובד בסביבה
+          עצמאית עם shell, עורך ודפדפן, מריץ בדיקות ופותח Pull Request מקצה לקצה. מסווג יחד עם
+          Claude Code ו-Codex בשורת "סוכן קוד בטרמינל".
+          <br><a href="https://devin.ai/" target="_blank" rel="noopener">devin.ai</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="head"><b>Claude Cowork / Claude in Chrome</b><span class="tag new">אומת</span></div>
+        <p>
+          אומת: שני מוצרים נפרדים ורשמיים של Anthropic — Cowork (סוכן עבודה על קבצים/כלים,
+          כולל הרחבה לנייד ולווב ב-2026) ו-Claude in Chrome (תוסף דפדפן בפיקוח, זמין בכל
+          תוכניות Pro/Max/Team/Enterprise).
+          <br><a href="https://www.anthropic.com/product/claude-cowork" target="_blank" rel="noopener">anthropic.com/product/claude-cowork</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="page">
+    מסמך מבוסס על <code>matrix-tools-users-handoff.md</code> בריפו. שמות המוצרים ושורת הזמן
+    אומתו מול האינטרנט ב-30.7.2026 — מוצרי AI ענן משתנים מהר, מומלץ לאמת שוב לפני שימוש
+    רשמי במדיניות רישוי.
+  </footer>
+
+</div>
