@@ -235,6 +235,14 @@ WebFetch נבדק שוב בתחילת שיחה זו (מול esteri.sm ומול e
 | S-153 | GLOBAL | F | rslawfirm.co.il, toledano.co.il, notary-israel.com | T4 | rslawfirm.co.il/apostil-guide · toledano.co.il/מה-הוא-אפוסטיל · notary-israel.com | 2026-08-19 | F6: אפוסטיל 41 ₪/חותמת; תרגום נוטריוני לתעודת נישואין (עד 200 מילה) 529 ₪ כולל מע"מ (2026) | domains/F | דורש בדיקה חוזרת |
 | S-154 | GLOBAL | F | passportcard.co.il, nevo.co.il (רשמי — תקנות שעת חירום), he.wikipedia.org | T1⚠️(via search)+T4 | passportcard.co.il/article/foreign-passport · nevo.co.il/law_html/law01/319_034.htm | 2026-08-19 | F7: חובת הצגת דרכון ישראלי בכל כניסה/יציאה; הגבלות "יוצא צבא" (היתר יציאה משר הביטחון) | domains/F | דורש בדיקה חוזרת |
 
+## תחום B לליטא — משלים שכבה 1 ל-12/12 (2026-08-19, המשך שישי)
+
+| ID | מדינה | תחום | שם המקור | דרגה | URL | תאריך | מה נמצא | נכנס לקובץ | סטטוס |
+|---|---|---|---|---|---|---|---|---|---|
+| S-155 | LT | B | OECD Education GPS, oecd.org (PISA 2022 country note), euroeducation.net | T1⚠️(via search)+T4 | gpseducation.oecd.org/CountryProfile?primaryCountry=LTU · oecd.org/en/publications/pisa-2022-results-volume-i-and-ii-country-notes · euroeducation.net/prof/lithuaco.htm | 2026-08-19 | B2: מבנה pradinis(4)→pagrindinis(6, ללא ענף פנימי, 2 שלבים)→vidurinis(2); B3: אין מיון עד 16/17; B4 PISA 2022: קריאה 472/OECD 476, מתמטיקה 475/OECD 472 (מעל ממוצע), מדעים 484/OECD 485 | domains/B | נבדק (T4 עקבי, לא T1 ישיר) |
+| S-156 | LT | B | LRT (שידור ציבורי ליטאי), china-cee.eu, caliber.az, journals.sagepub.com | T2⚠️(via search)+T4 | lrt.lt/en/news-in-english (הגברת שעות ליטאית 2025-2028) · china-cee.eu (מדיניות שפה) · journals.sagepub.com/doi/10.1177/00207152241269793 (מחקר אקדמי על בתי"ס רוסים/פולנים) | 2026-08-19 | B6: אין מיון ציבורי CLIL אנגלית; מגמת הגברת שעות ליטאית במיעוטים 4-5→6(9/2025)→7(2026)→8(2028)/שבוע; שקילת ביטול רוסית כשפה זרה שנייה עד 2026 (ירידה 81.7%→43.5% בבחירת תלמידי כיתה ו', 2014-2025); הממשלה הבהירה שאין כוונה לסגור בתי"ס מיעוטים | domains/B | דורש בדיקה חוזרת |
+| S-157 | LT | B | renkuosilietuva.lt (רשמי-משרד חינוך, via search), nedelia.lt, pravovsim.org, coe.int | T1⚠️(via search)+T4 | renkuosilietuva.lt/en/primary-and-secondary-schools · nedelia.lt (רשימת בתי"ס רוסיים בוילנה) · pravovsim.org (זכויות גישה לחינוך) | 2026-08-19 | B6: 25 בתי"ס עם רוסית כשפת הוראה + 18 מעורבים (רוסית/פולנית/ליטאית) ברמה ארצית, כולל רשימת בתי"ס ספציפיים בוילנה; B7: תוכנית לימודים אישית לעולה + מענק תקציבי 30% נוסף לתלמיד חדש מחו"ל; רשת תמיכה ארצית עם חומרי הדרכה למורים | domains/B | דורש בדיקה חוזרת |
+
 ## סיכום כיסוי (עודכן 2026-08-19, אחרי מחקר A1-A5 מלא לשכבה 3)
 - סה"כ מקורות שנבדקו: 96
 - מתוכם T1 (רשמיים, כולל "T1 דרך תקציר חיפוש"): כ-63
