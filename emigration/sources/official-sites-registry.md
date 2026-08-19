@@ -60,6 +60,17 @@
 | 🇵🇦 פנמה | (לא אותר עמוד T1 ישיר — immigracion.gob.pa לא נבדק) | ? | ? | 2026-08-18 ⚠️ (T2 בלבד) |
 | 🇨🇷 קוסטה ריקה | https://migracion.go.cr/ | ? | ? | 2026-08-18 (via search, קיום אומת) |
 
+## שכבה 3 — בלקן ומיקרו-מדינות (מחקר A1-A15 מלא, 19-08-26 המשך שני)
+
+| מדינה | אתר הגירה/ויזות | אתר מס הכנסה | אתר משרד חינוך | אומת לאחרונה |
+|---|---|---|---|---|
+| 🇲🇪 מונטנגרו | https://www.gov.me/en/article/temporary-residence · https://www.gov.me/en/article/permanent-residence | ? | ? | 2026-08-19 ⚠️ (via search) |
+| 🇦🇱 אלבניה | https://e-albania.al/ (פורטל שירותים ממשלתי מאוחד, כולל DPPSH — הגירה) | ? | ? | 2026-08-19 ⚠️ (via search) |
+| 🇲🇰 צפון מקדוניה | https://investnorthmacedonia.gov.mk/ (רישום חברה) · https://av.gov.mk/ (העסקת זרים) | ? | ? | 2026-08-19 ⚠️ (via search) |
+| 🇧🇦 בוסניה-הרצגובינה | https://fipa.gov.ba/ (סוכנות השקעות, כולל טקסט חוק הזרים) · https://msb.gov.ba/ (משרד הביטחון — זרים) · https://sps.gov.ba/ (שירות לענייני זרים) | ? | ? | 2026-08-19 ⚠️ (via search) |
+| 🇦🇩 אנדורה | https://www.e-tramits.ad/ (שירותים אלקטרוניים) · https://www.govern.ad/ · https://www.portaljuridicandorra.ad/ (טקסטי חוק) | ? | ? | 2026-08-19 (T1 ישיר — טקסט חוק Llei 2/2026 ופרסום BOPA) |
+| 🇸🇲 סן מרינו | https://www.esteri.sm/ (משרד החוץ — היתרי שהייה ותושבות) · https://www.gov.sm/ (אזרחות) | ? | ? | 2026-08-19 (T1 ישיר — מסמכי ממשל, נקרא כתקציר חיפוש) |
+
 ## ישראל (תחום F)
 
 | נושא | אתר רשמי | אומת לאחרונה |
