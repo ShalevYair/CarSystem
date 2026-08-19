@@ -164,6 +164,64 @@ WebFetch נבדק שוב בתחילת שיחה זו (מול esteri.sm ומול e
 
 **מסקנת §:** נמצא עוגן חוקי ממשי (לא רק T4) לדפוס "מלכודת החידוש" בשתיים מ-4 המדינות: **סרביה** (S-104/S-105 — סעיף כללי "שימוש למטרה שאושרה", לא סף מספרי) ו-**מונטנגרו-נתיב-חברה** (S-107 — סף מספרי מפורש ומאושר, €5,000/שנה). זה מחזק משמעותית את הביטחון שהדפוס **אמיתי ולא מיתוס של יועצי רילוקיישן** — אך עדיין לא נמצא טקסט חוק ישיר לצפון מקדוניה (Q-034) ובוסניה-הרצגובינה (Q-035) עצמן; ההיקש המבני (משפחת חוק דומה בבלקן, אותו דפוס בשתי מדינות שכן נבדקו במלואן) מעלה את ההסתברות שהדפוס חל גם שם, אך **אינו מהווה אישור T1 ישיר** לאף אחת מהשתיים. פירוט מלא: `decisions/decision-log.md` (רשומת 19/8, המשך שלישי).
 
+## תחומי C/D/E לשכבה 1 — 12 מדינות (2026-08-19, המשך רביעי — "חלופה ב")
+
+3 סוכני מחקר רצו במקביל (WebSearch בלבד — WebFetch נבדק שוב מול y-tax.co.il, gov.il, en.wikipedia.org, numbeo.com, iqair.com, gov.uk וכולם `EGRESS_BLOCKED`): (1) תחום C, (2) תחום D, (3) תחום E. לכל מדינה נבדקו כל המשתנים המבוקשים (ראו טבלאות בקבצי התחום). רשימה מרכזת — פירוט מלא (עשרות URL לכל מדינה) בתמלילי סוכני המחקר ובגוף `domains/C-קהילה-ותרבות.md`, `domains/D-כלכלה-ומיסוי.md`, `domains/E-איכות-חיים-וסיכון.md`.
+
+### תחום D — S-108 עד S-120
+
+| ID | מדינה | תחום | שם המקור | דרגה | מה נמצא | נכנס לקובץ | סטטוס |
+|---|---|---|---|---|---|---|---|
+| S-108 | GLOBAL | D | y-tax.co.il, taxsummaries.pwc.com, numbeo.com (כלליים, חוצי-מדינות) | T2/T4 | מקורות חוזרים לאמנות מס, שיעורי מס ועלות מחיה לכל 12 המדינות | domains/D | דורש בדיקה חוזרת |
+| S-109 | PT | D | y-tax.co.il, globalcitizensolutions.com, growinportugal.com | T2⚠️(via search)+T4 | אמנת מס קיימת (2006/2008); IFICI לא רלוונטי (דורש מקצוע מוסמך); D1 €2,750/ח'; AIMA בעומס כרוני | domains/D | דורש בדיקה חוזרת |
+| S-110 | ES | D | y-tax.co.il, pellicerheredia.com, healthinsuranceforspanishvisas.com | T2⚠️(via search)+T4 | אמנת מס קיימת; חוק בקהאם לא רלוונטי (דורש עבודה בספרד); D1 €2,613-2,925; Autónomo יקר (€286/ח' גם ללא הכנסה) | domains/D | דורש בדיקה חוזרת |
+| S-111 | IT | D | congress.gov (טקסט אמנה), itataxadvisor.com, talenbrium.com | T1⚠️(via search)+T4 | 2 אמנות (הכנסה+עיזבונות); flat tax עלה ל-€300K/שנה — לא ישים; D14 חזק בביוטק/פארמה | domains/D | דורש בדיקה חוזרת |
+| S-112 | IE | D | revenue.ie (PDF אמנה), lewissilkin.com, siliconrepublic.com | T1⚠️(via search)+T4 | אמנה 1995; D1 €3,852 — הכי גבוה; ⚠️Stamp 0 ללא בריאות ציבורית, ללא איחוד משפחות אוטומטי; D14 הכי חזק (הייטק+ביוטק) | domains/D | דורש בדיקה חוזרת |
+| S-113 | SI | D | y-tax.co.il, pwc taxsummaries | T2⚠️(via search) | אמנה 2007/MLI 2018; שכ"ד 25% פלאט; מחסור 13,000 מומחי ICT | domains/D | דורש בדיקה חוזרת |
+| S-114 | HR | D | y-tax.co.il, taxravens.com, eurostat | T2⚠️(via search) | אמנה 2006/2008 (MLI 2021, מאוחר); שכ"ד 12% פלאט; **אינפלציה 3.9-5.4% — הגבוהה מ-12** | domains/D | דורש בדיקה חוזרת |
+| S-115 | CZ | D | y-tax.co.il, taxravens.com, nucamp.co, cnb.cz | T2⚠️(via search) | אמנה 1993; D1 €2,780 (זול); D14 חזק (ICT+CEITEC ביוטק); ⚠️ **לא באירו, ללא תוכנית הצטרפות** | domains/D | דורש בדיקה חוזרת |
+| S-116 | MT | D | ccmalta.com, globalcitizensolutions.com | T2⚠️(via search) | אמנה 2011/2013; **non-dom הכי טוב — 0% הכנסה זרה כולל רווח הון**; D1 €3,106-3,148 (יקר מהצפוי) | domains/D | דורש בדיקה חוזרת |
+| S-117 | CY | D | cyprustaxlife.com, proactpartnership.com, ktc.com.cy | T4 | 🔴 **עדות סותרת קריטית** — ייתכן **שאין אמנת מס בתוקף** עם ישראל (מו"מ מ-2021 טרם הושלם); non-dom אטרקטיבי אך מסוכן ללא אמנה | domains/D | דורש בדיקה חוזרת (קריטי) |
+| S-118 | LV | D | y-tax.co.il, taxravens.com, investinlatvia.org | T2⚠️(via search) | אמנה 2007/MLI 2019; שכ"ד ממוסה רק 10% (נמוך); Roche מרחיבה ביוטק בריגה | domains/D | דורש בדיקה חוזרת |
+| S-119 | GR | D | nexuslaw.gr, globalcitizensolutions.com, powerofdetail.com | T2⚠️(via search)+T4 | אמנה 1995; non-dom דורש השקעת €500K — לא ריאלי; FIP דורש €3,500/ח' (המשפחה עוברת בקושי) | domains/D | דורש בדיקה חוזרת |
+| S-120 | LT | D | y-tax.co.il, countrytaxcalc.com | T2⚠️(via search) | אמנה 2006/MLI 2019; דיבידנד 15% פלאט קבוע; פינטק חזק (Revolut EU HQ); אינפלציה גבוהה (עד 5.4%) | domains/D | דורש בדיקה חוזרת |
+
+### תחום C — S-121 עד S-133
+
+| ID | מדינה | תחום | שם המקור | דרגה | מה נמצא | נכנס לקובץ | סטטוס |
+|---|---|---|---|---|---|---|---|
+| S-121 | GLOBAL | C | hofstede-insights.com, EF EPI 2025 (דרך mosalingua/prnewswire) | T2⚠️(via search) | מקורות חוצי-מדינות למרחק תרבותי (C4) ורמת אנגלית (C5) | domains/C | דורש בדיקה חוזרת |
+| S-122 | PT | C | israelhayom.co.il, portugal-passport.co.il, aljazeera.com | T4/T5 | קהילה יהודית ~3,000; C5 #6 עולמי (612); הכירה בפלסטין 9/2025 | domains/C | דורש בדיקה חוזרת |
+| S-123 | ES | C | madrid.org.il, timesofisrael.com, haaretz.com, cnbc.com | T4 | אמברגו נשק 9/2025, עלייה 86-321% בפשעי שנאה; InterNations #1 אירופה לפתיחות | domains/C | דורש בדיקה חוזרת |
+| S-124 | IT | C | he.wikipedia.org (תקציר), balkaninsight.com | T2⚠️(via search)+T4 | קהילה 27-30 אלף; C5 #59 (חלש); יחס ידידותי (לא הכירה בפלסטין) | domains/C | דורש בדיקה חוזרת |
+| S-125 | IE | C | israelnationalnews.com, timesofisrael.com, dublinairport.com | T4 | 🔴 סגירת שגרירות ישראלית; 143 אירועים אנטישמיים בקהילה של ~2,200 | domains/C | דורש בדיקה חוזרת |
+| S-126 | SI | C | timesofisrael.com, eualive.net | T4 | תפנית: הכרה בפלסטין 2024→הקפאה+שגרירות ישראלית ראשונה 2026 (ממשלת יאנשה) | domains/C | דורש בדיקה חוזרת |
+| S-127 | HR | C | eurojewcong.org, balkaninsight.com | T2⚠️(via search)+T4 | C5 #2 עולמי (617, מפתיע); יחס ידידותי, מחלוקת פנימית סביב ביקורי שרים | domains/C | דורש בדיקה חוזרת |
+| S-128 | CZ | C | eurojewcong.org, mv.gov.cz | T1⚠️(via search)+T2 | 4,694 אירועי אנטישמיות 2024 (+8.5%), 4 תקיפות פיזיות; אסטרטגיה לאומית 2025-2030 | domains/C | דורש בדיקה חוזרת |
+| S-129 | MT | C | chabadpedia.co.il, jns.org, safeforjews.org | T4 | קהילה יהודית זעירה ~200-250, מתדלדלת; לא אותרו אירועים משמעותיים | domains/C | דורש בדיקה חוזרת |
+| S-130 | CY | C | israel-cyprus.co.il, shin-cyprus.co.il, jns.org, fdd.org | T4 | קהילה הגדולה יחסית — 3,000+ משפחות; שותפות אסטרטגית + מחלוקת נדל"ן/ימין קיצוני עולה | domains/C | דורש בדיקה חוזרת |
+| S-131 | LV | C | jpr.org.uk, fra.europa.eu (PDF, לא נקרא במלואו) | T2⚠️(via search) | קהילה יהודית ~9,500-10,000 (הגדולה בבלטיים); דוח אנטישמיות עדכני לא אותר | domains/C | דורש בדיקה חוזרת |
+| S-132 | GR | C | ynet.co.il, globes.co.il, mako.co.il | T4/T5 | גל הגירה מתועד — ~10,000 ישראלים מאז 10/2023; 206 מקרי מצוקה (הגבוה מכל מדינה) | domains/C | דורש בדיקה חוזרת |
+| S-133 | LT | C | jpr.org.uk, timesofisrael.com, hamec.org | T4 | 🔴 מנהיג מפלגה בקואליציית השלטון הורשע בהסתה לשנאת יהודים, נותר בקואליציה | domains/C | דורש בדיקה חוזרת |
+
+### תחום E — S-134 עד S-146
+
+| ID | מדינה | תחום | שם המקור | דרגה | מה נמצא | נכנס לקובץ | סטטוס |
+|---|---|---|---|---|---|---|---|
+| S-134 | GLOBAL | E | worldpopulationreview.com/statranker.org (World Happiness 2025), Numbeo (via search) | T2⚠️(via search) | מקורות חוצי-מדינות לדוח האושר ולביטחון | domains/E | דורש בדיקה חוזרת |
+| S-135 | PT | E | portugalresident.com, clarkhill.com | T4 | E7 #60 (ירידה); הכפלת תקופת התאזרחות ל-10 שנים (הסכם PSD-צ'גה) | domains/E | דורש בדיקה חוזרת |
+| S-136 | ES | E | visasupdate.com, vamospanish.com | T4 | E7 #38; PP תלוי גובר ב-Vox לשלטון אזורי | domains/E | דורש בדיקה חוזרת |
+| S-137 | IT | E | doctorsa.com, centuroglobal.com | T4 | SSN מבוזר אזורית; E5 יציב יחסית (מלוני); E7 #40-41 | domains/E | דורש בדיקה חוזרת |
+| S-138 | IE | E | gov.ie (נתוני תור רשמיים), surgerynow.ie, addleshawgoddard.com | T1⚠️(via search)+T4 | 🔴 850,000+ בתור לבריאות; E7 #15 (גבוה); ללא ימין קיצוני בפרלמנט עדיין | domains/E | דורש בדיקה חוזרת |
+| S-139 | SI | E | euobserver.com, visasupdate.com | T4 | E2 #13 עולמי (76.2); תפנית ימינה חדה (יאנשה, 3/2026); תור 667 יום למפרק ירך | domains/E | דורש בדיקה חוזרת |
+| S-140 | HR | E | asylumineurope.org, onlinelibrary.wiley.com | T2⚠️(via search)+T4 | E2 #18 עולמי (74.5); HDZ+Homeland Movement; חתמה על הצהרת הידוק-הגירה עם 26 מדינות | domains/E | דורש בדיקה חוזרת |
+| S-141 | CZ | E | osw.waw.pl, aa.com.tr | T2⚠️(via search)+T4 | בביש+SPD 12/2025, דוחה במפורש את פקט ההגירה האירופי | domains/E | דורש בדיקה חוזרת |
+| S-142 | MT | E | euronews.com (ECJ), etias.com | T2⚠️(via search)+T4 | ⚠️ ECJ פסל את דרכון הזהב 4/2025 (תקדים); Labour כהונה רביעית 5/2026; E7 #48-49 | domains/E | דורש בדיקה חוזרת |
+| S-143 | CY | E | whogoverns.eu, planet.news, eurohealthobservatory.who.int | T2⚠️(via search)+T4 | E7 #67 (ירידה חדה); נוף פוליטי מפוצל, שערוריית שחיתות; GESY #29 עולמי | domains/E | דורש בדיקה חוזרת |
+| S-144 | LV | E | eng.lsm.lv, carnegieendowment.org, oecd.org | T1⚠️(via search)+T2 | 🔴🔴 E6 הגבוה ביותר — ביצור גבולות, חדירת רחפן, חבלת כבל 1/2026; MIPEX 36/100 | domains/E | דורש בדיקה חוזרת |
+| S-145 | GR | E | globalcitizensolutions.com, immigrantinvest.com, imidaily.com | T4 | E7 #81 (-17, ירידה חדה); חוק הגירה 5275/2026 — שיפור בירוקרטי לא הידוק | domains/E | דורש בדיקה חוזרת |
+| S-146 | LT | E | china-cee.eu, bloomberg.com, oecd.org | T2⚠️(via search)+T4 | 🔴🔴 נמצאת בקצה מסדרון סובאלקי; כבל תת-ימי נחתך 1/2026; E7 #16 (גבוה, פרדוקסלי) | domains/E | דורש בדיקה חוזרת |
+
 ## סיכום כיסוי (עודכן 2026-08-19, אחרי מחקר A1-A5 מלא לשכבה 3)
 - סה"כ מקורות שנבדקו: 96
 - מתוכם T1 (רשמיים, כולל "T1 דרך תקציר חיפוש"): כ-63
