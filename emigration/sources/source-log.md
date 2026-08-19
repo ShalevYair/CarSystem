@@ -222,6 +222,19 @@ WebFetch נבדק שוב בתחילת שיחה זו (מול esteri.sm ומול e
 | S-145 | GR | E | globalcitizensolutions.com, immigrantinvest.com, imidaily.com | T4 | E7 #81 (-17, ירידה חדה); חוק הגירה 5275/2026 — שיפור בירוקרטי לא הידוק | domains/E | דורש בדיקה חוזרת |
 | S-146 | LT | E | china-cee.eu, bloomberg.com, oecd.org | T2⚠️(via search)+T4 | 🔴🔴 נמצאת בקצה מסדרון סובאלקי; כבל תת-ימי נחתך 1/2026; E7 #16 (גבוה, פרדוקסלי) | domains/E | דורש בדיקה חוזרת |
 
+## אימות Q-039 (קפריסין, אמנת מס) + תחום F לשכבה 1 (2026-08-19, המשך חמישי)
+
+| ID | מדינה | תחום | שם המקור | דרגה | URL | תאריך | מה נמצא | נכנס לקובץ | סטטוס |
+|---|---|---|---|---|---|---|---|---|---|
+| S-147 | CY | D | קרן שקד, thisiscyprus.co.il, אברהמי רוזן ושות' | T4 | kerenshaked.co.il/cyprus-israel-tax-treaty · thisiscyprus.co.il/israel-cyprus-tax-treaty-agreement · abro-law.co.il/double-taxation-treaty-israel-cyprus | 2026-08-19 | **מאשר Q-039**: אין אמנת מס בתוקף בין קפריסין לישראל נכון ל-2025-2026; רשויות המס לא הגיעו להסכמה על פרמטרים; "דיבורים" מתמשכים ללא לו"ז חתימה | domains/D | נבדק (T4 עקבי, לא T1) |
+| S-148 | GLOBAL | F | embassies.gov.il, mitgaisim.idf.il, karduner.co.il, danalaw.co.il | T1⚠️(via search)+T4 | embassies.gov.il/la-he/Pages/idf.aspx · mitgaisim.idf.il (בני מהגרים) · karduner.co.il, danalaw.co.il | 2026-08-19 | F1: מעמד "בן/בת מהגרים" — עזיבה עם שני הורים לפני גיל 16 + מגורים רציפים בחו"ל = פטור משירות; חוק שירות ביטחון תשמ"ז-1986 חל גם על אזרחי כפל | domains/F | דורש בדיקה חוזרת |
+| S-149 | GLOBAL | F | bshcpa.co.il, oritax.co.il, israel-tax.co.il, bekesher.net, benbasat-law.com | T4 | bshcpa.co.il/ניתוק-תושבות · oritax.co.il · israel-tax.co.il · bekesher.net · benbasat-law.com | 2026-08-19 | F2: ניתוק תושבות הוא תהליך ראייתי לא חד-פעמי; שתי רשויות נפרדות (מס הכנסה/ביטוח לאומי) בוחנות בנפרד; טפסים 627 (בל"א), 1301+1348 (מ"ה) | domains/F | דורש בדיקה חוזרת |
+| S-150 | GLOBAL | F | kolzchut.org.il, analyst.co.il, indigofinance.co.il, pensuni.com | T2⚠️(via search)+T4 | kolzchut.org.il/קרן_השתלמות · analyst.co.il · indigofinance.co.il · pensuni.com | 2026-08-19 | F3: מס 47% (מקסימלי) על משיכת קרן השתלמות לפני 6 שנות ותק; פדיון פנסיה ע"י תושב חוץ פטור מביטוח לאומי | domains/F | דורש בדיקה חוזרת |
+| S-151 | GLOBAL | F | pwc.com (מצגת ניכוי במקור), bshcpa.co.il | T2⚠️(via search)+T4 | pwc.com/il/he/tax-presentations/assets/nikoy_bamakor.ppt · bshcpa.co.il | 2026-08-19 | F4: סעיף 170 לפקודת מס הכנסה — חובת ניכוי מס במקור מתשלום לתושב חוץ (כולל שכ"ד); תקנה 5 — פטור מדיווח בתנאים מסוימים בלבד | domains/F | דורש בדיקה חוזרת |
+| S-152 | GLOBAL | F | kolzchut.org.il, btl.gov.il (רשמי) | T1⚠️(via search) | kolzchut.org.il/הצטרפות_תושב_חוזר_לביטוח_בריאות · btl.gov.il/Insurance/Living_abroad/Pages/chishuvTkufatHamtana.aspx | 2026-08-19 | F5: תקופת המתנה חודש/שנת-היעדרות עד מקס' 6 חודשים; פדיון בתשלום 16,860 ₪ (2026) | domains/F | דורש בדיקה חוזרת |
+| S-153 | GLOBAL | F | rslawfirm.co.il, toledano.co.il, notary-israel.com | T4 | rslawfirm.co.il/apostil-guide · toledano.co.il/מה-הוא-אפוסטיל · notary-israel.com | 2026-08-19 | F6: אפוסטיל 41 ₪/חותמת; תרגום נוטריוני לתעודת נישואין (עד 200 מילה) 529 ₪ כולל מע"מ (2026) | domains/F | דורש בדיקה חוזרת |
+| S-154 | GLOBAL | F | passportcard.co.il, nevo.co.il (רשמי — תקנות שעת חירום), he.wikipedia.org | T1⚠️(via search)+T4 | passportcard.co.il/article/foreign-passport · nevo.co.il/law_html/law01/319_034.htm | 2026-08-19 | F7: חובת הצגת דרכון ישראלי בכל כניסה/יציאה; הגבלות "יוצא צבא" (היתר יציאה משר הביטחון) | domains/F | דורש בדיקה חוזרת |
+
 ## סיכום כיסוי (עודכן 2026-08-19, אחרי מחקר A1-A5 מלא לשכבה 3)
 - סה"כ מקורות שנבדקו: 96
 - מתוכם T1 (רשמיים, כולל "T1 דרך תקציר חיפוש"): כ-63
