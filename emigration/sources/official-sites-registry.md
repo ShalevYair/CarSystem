@@ -12,18 +12,18 @@
 
 | מדינה | אתר הגירה/ויזות | אתר מס הכנסה | אתר משרד חינוך | אומת לאחרונה |
 |---|---|---|---|---|
-| 🇵🇹 פורטוגל | https://vistos.mne.gov.pt/ · https://aima.gov.pt/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇪🇸 ספרד | https://www.exteriores.gob.es/ · https://extranjeros.inclusion.gob.es/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇮🇹 איטליה | https://www.esteri.it/ · https://questure.poliziadistato.it/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇮🇪 אירלנד | https://www.irishimmigration.ie/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇲🇹 מלטה | https://residencymalta.gov.mt/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇨🇾 קפריסין | https://www.moi.gov.cy/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇨🇿 צ'כיה | https://www.cizinci.cz/ · https://mv.gov.cz/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇵🇱 פולין | https://www.gov.pl/web/udsc | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇸🇮 סלובניה | https://www.gov.si/en/topics/entry-and-residence/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇭🇷 קרואטיה | https://mup.gov.hr/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇧🇬 בולגריה | https://www.mvr.bg/ (⚠️ migration.bg **אינו** רשמי — חברה פרטית) | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇷🇴 רומניה | https://igi.mai.gov.ro/ | ? | ? | 2026-08-18 ⚠️ (via search) |
+| 🇵🇹 פורטוגל | https://vistos.mne.gov.pt/ · https://aima.gov.pt/ | ? | https://dge.mec.pt/ | 2026-08-19 ⚠️ (via search) |
+| 🇪🇸 ספרד | https://www.exteriores.gob.es/ · https://extranjeros.inclusion.gob.es/ | ? | https://www.educacionyfp.gob.es/ (+ אזוריים, למשל comunidad.madrid/educacion) | 2026-08-19 ⚠️ (via search) |
+| 🇮🇹 איטליה | https://www.esteri.it/ · https://questure.poliziadistato.it/ | ? | https://www.mim.gov.it/ (לשעבר MIUR) | 2026-08-19 ⚠️ (via search) |
+| 🇮🇪 אירלנד | https://www.irishimmigration.ie/ | ? | https://www.gov.ie/en/organisation/department-of-education/ | 2026-08-19 ⚠️ (via search) |
+| 🇲🇹 מלטה | https://residencymalta.gov.mt/ | ? | https://ildmalta.gov.mt/ (International Learners Directorate — קליטה) | 2026-08-19 ⚠️ (via search) |
+| 🇨🇾 קפריסין | https://www.moi.gov.cy/ | ? | (לא אותר אתר משרד חינוך T1 ישיר בחיפוש זה) | 2026-08-19 ⚠️ (via search) |
+| 🇨🇿 צ'כיה | https://www.cizinci.cz/ · https://mv.gov.cz/ | ? | https://www.msmt.cz/ · https://cizinci.npicr.cz/ (תמיכה בתלמידים זרים) | 2026-08-19 ⚠️ (via search) |
+| 🇵🇱 פולין | https://www.gov.pl/web/udsc | ? | ? | 2026-08-19 ⚠️ (via search — A1 נבדק, ❌ נפסלה) |
+| 🇸🇮 סלובניה | https://www.gov.si/en/topics/entry-and-residence/ | ? | https://www.gov.si/en/state-authorities/ministries/ministry-of-education/ | 2026-08-19 ⚠️ (via search) |
+| 🇭🇷 קרואטיה | https://mup.gov.hr/ | ? | https://mzo.gov.hr/ | 2026-08-19 ⚠️ (via search) |
+| 🇧🇬 בולגריה | https://www.mvr.bg/ (⚠️ migration.bg **אינו** רשמי — חברה פרטית) | ? | ? | 2026-08-19 ⚠️ (via search — A1 נבדק, ❌ נפסלה) |
+| 🇷🇴 רומניה | https://igi.mai.gov.ro/ | ? | ? | 2026-08-19 ⚠️ (via search — A1 נבדק, ❌ נפסלה) |
 
 ## גל 2
 
@@ -33,11 +33,11 @@
 | 🇩🇰 דנמרק | https://www.nyidanmark.dk/ | ? | ? | 2026-08-18 ⚠️ (via search) |
 | 🇸🇪 שוודיה | https://www.migrationsverket.se/ | ? | ? | 2026-08-18 ⚠️ (via search) |
 | 🇳🇴 נורבגיה | https://www.udi.no/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇱🇻 לטביה | https://www.pmlp.gov.lv/ | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇱🇹 ליטא | https://migracija.lrv.lt/ | ? | ? | 2026-08-18 ⚠️ (via search, מחקר חלקי) |
+| 🇱🇻 לטביה | https://www.pmlp.gov.lv/ | ? | https://www.izm.gov.lv/ | 2026-08-19 ⚠️ (via search) |
+| 🇱🇹 ליטא | https://migracija.lrv.lt/ | ? | ? | 2026-08-19 ⚠️ (via search — A נחקר ל-🟡 הצטרפה ל-Short List; B טרם נחקר) |
 | 🇪🇪 אסטוניה | https://www.politsei.ee/en | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇬🇷 יוון | https://migration.gov.gr | ? | ? | 2026-08-18 ⚠️ (via search) |
-| 🇸🇰 סלובקיה | https://www.mvsr.sk (חסום גם בחיפוש — לא אומת כלל) | ? | ? | 2026-08-18 ⚠️ (מחקר חלקי מאוד) |
+| 🇬🇷 יוון | https://migration.gov.gr | ? | https://www.minedu.gov.gr/ | 2026-08-19 ⚠️ (via search) |
+| 🇸🇰 סלובקיה | https://www.mvsr.sk (חסום גם בחיפוש) · akmv.sk (משרד עו"ד, אישר במפורש: אין נתיב) | ? | ? | 2026-08-19 ⚠️ (via search — A1 נבדק, ❌ נפסלה) |
 | 🇬🇧 בריטניה | https://www.gov.uk/browse/visas-immigration | ? | ? | 2026-08-18 ⚠️ (via search, מקיף) |
 
 ## גל 3 (סקירה מקוצרת בלבד — ימולא רק אם נבדקת בפועל)
