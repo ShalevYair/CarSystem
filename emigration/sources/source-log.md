@@ -243,6 +243,79 @@ WebFetch נבדק שוב בתחילת שיחה זו (מול esteri.sm ומול e
 | S-156 | LT | B | LRT (שידור ציבורי ליטאי), china-cee.eu, caliber.az, journals.sagepub.com | T2⚠️(via search)+T4 | lrt.lt/en/news-in-english (הגברת שעות ליטאית 2025-2028) · china-cee.eu (מדיניות שפה) · journals.sagepub.com/doi/10.1177/00207152241269793 (מחקר אקדמי על בתי"ס רוסים/פולנים) | 2026-08-19 | B6: אין מיון ציבורי CLIL אנגלית; מגמת הגברת שעות ליטאית במיעוטים 4-5→6(9/2025)→7(2026)→8(2028)/שבוע; שקילת ביטול רוסית כשפה זרה שנייה עד 2026 (ירידה 81.7%→43.5% בבחירת תלמידי כיתה ו', 2014-2025); הממשלה הבהירה שאין כוונה לסגור בתי"ס מיעוטים | domains/B | דורש בדיקה חוזרת |
 | S-157 | LT | B | renkuosilietuva.lt (רשמי-משרד חינוך, via search), nedelia.lt, pravovsim.org, coe.int | T1⚠️(via search)+T4 | renkuosilietuva.lt/en/primary-and-secondary-schools · nedelia.lt (רשימת בתי"ס רוסיים בוילנה) · pravovsim.org (זכויות גישה לחינוך) | 2026-08-19 | B6: 25 בתי"ס עם רוסית כשפת הוראה + 18 מעורבים (רוסית/פולנית/ליטאית) ברמה ארצית, כולל רשימת בתי"ס ספציפיים בוילנה; B7: תוכנית לימודים אישית לעולה + מענק תקציבי 30% נוסף לתלמיד חדש מחו"ל; רשת תמיכה ארצית עם חומרי הדרכה למורים | domains/B | דורש בדיקה חוזרת |
 
+## שלב 4 — צלילה עמוקה: פורטוגל (S-158–S-177) (2026-08-19, המשך שביעי)
+
+| ID | מדינה | תחום | שם המקור | דרגה | מה נמצא | נכנס לקובץ |
+|---|---|---|---|---|---|---|
+| S-158 | PT | A | anchorless.io, cidadaniaevisto.com.br, getgoldenvisa.com | T2/T4 | D7: זמן טיפול 6-10 חודשים, 60 יום החלטה חוקית, אגרת AIMA ≈€159 | countries/PT |
+| S-159 | PT | A | passportivity.com, immigrantinvest.com, globalcitizensolutions.com, portugalist.com | T2/T4 | חידוש D7: 1.5-2 שנה נוכחות, מגבלת היעדרות 6/8 חודשים | countries/PT |
+| S-160 | PT | A | globalcitizensolutions.com, globalresidenceindex.com, portugal.com, nomadcapitalist.com | T2/T4 | CIPLE A2 (€72), אזרחות כפולה מותרת, חוק לאום חדש (10 שנים) | countries/PT |
+| S-161 | PT | A | aima.gov.pt (רשמי, via search), liveinpt.com, lexidy.com | T1⚠️+T4 | סעיף 80 — תושבות קבע אחרי 5 שנים רצופות | countries/PT |
+| S-162 | PT | B | dge.mec.pt (רשמי) | T1⚠️ | PEBI — 42 מוסדות 2025/2026 (עדכון ממספר קודם 41) | countries/PT |
+| S-163 | PT | B | ischooladvisor.com, globalcitizensolutions.com, tutopiya.com | T4 | שכ"ל בתי"ס בינ"ל ליסבון €5,452-29,970/שנה | countries/PT |
+| S-164 | PT | C | chabad.org, worldjewishcongress.org, totallyjewishtravel.com | T2/T4 | קהילה יהודית ליסבון ~300/2 בת"כ; פורטו — מקווה/ספרייה/בי"ס/כשר; 2 Chabad | countries/PT |
+| S-165 | PT | D | globalcitizensolutions.com, getgoldenvisa.com, immigrantinvest.com | T4 | IFICI/NHR2.0 — לא רלוונטי למשפחה שלא עובדת (דורש תעסוקה מוסמכת) | countries/PT |
+| S-166 | PT | D | cpa.co.il, gov.il (טקסט אמנה, רשמי), oritax.co.il | T1⚠️+T4 | אמנת מס 2006/2008 בתוקף; מקרקעין ממוסה תחילה בישראל, זיכוי בפורטוגל | countries/PT |
+| S-167 | PT | D | portugalhomes.com, globalcitizensolutions.com, idealista.pt | T4 | אין הגבלת רכישה לזרים; ליסבון €5,000+/מ"ר, פורטו ~€3,908/מ"ר | countries/PT |
+| S-168 | PT | D | numbeo.com, wise.com, portugalfamilyguide.com | T4 | עלות מחיה משפחת 4 ללא שכ"ד ≈€2,749/חודש; שכ"ד 3-חד' €1,655-2,559 | countries/PT |
+| S-169 | PT | D | visas.pt, portugalfamilyguide.com, citizenremote.com, translayte.com | T4 | ביטוח בריאות פרטי D7 €150-300/חודש; חוק 61/2025 המתנת שנתיים לאיחוד משפחות (אלא אם מוגש יחד) | countries/PT |
+| S-170 | PT | F | anchorless.io, telavive.embaixadaportugal.mne.gov.pt (רשמי) | T1⚠️+T4 | קונסוליה בת"א — הגשה בתיאום מראש, תור אונליין | countries/PT |
+| S-171 | PT | E | idealista.pt, numbeo.com, movingto.com | T4 | Numbeo Safety Index #38 (67/100); ליסבון בין 10 הערים הבטוחות בעולם 2026 | countries/PT |
+| S-172 | PT | E | eea.europa.eu (רשמי), idealista.pt, portugalhomes.com | T1⚠️+T4 | PM2.5 7.9 מק"ג/מ"ק — 9. הכי נקייה באירופה | countries/PT |
+| S-173 | PT | D | idealista.pt, getnifportugal.com, molportugal.com | T4 | פתיחת חשבון בנק: NIF תנאי מוקדם, לעיתים דורש נוכחות פיזית/ייפוי כוח | countries/PT |
+| S-174 | PT | A | theportugalnews.com, growinportugal.com, theportugalpost.com | T2/T4 | AIMA: 40-60K תיקים ממתינים (ירידה מ-400K+ ב-2024) | countries/PT |
+| S-175 | PT | A | iaservices.pt, imidaily.com, jobbatical.com, visasupdate.com | T2/T4 | חוק לאום — עסקת PSD-צ'גה, אושר 1/4/2026, נחתם 3/5/2026, הכפלת התאזרחות ל-10 שנים | countries/PT |
+| S-176 | PT | E | weather-and-climate.com; travelandtourworld.com, ynetnews.com; theportugalbrief.pt | T4 | אקלים ליסבון/פורטו; TAP חוזרת לת"א 3/2026 (~25/שבוע); PT #10 עולמית לגידול משפחות | countries/PT |
+| S-177 | PT | D/B | sec-geral.mec.pt, dge.mec.pt (רשמי); worktugal.com; oecd.org (רשמי) | T1⚠️+T2/T4 | AEC/CAF; עצמאי/recibos verdes; IRS 13.25%-48% (2026); אינפלציה ~3.0% 2026 | countries/PT |
+
+## שלב 4 — צלילה עמוקה: קרואטיה (S-178–S-196) (2026-08-19, המשך שביעי)
+
+| ID | מדינה | תחום | שם המקור | דרגה | מה נמצא | נכנס לקובץ |
+|---|---|---|---|---|---|---|
+| S-178 | HR | A | expatincroatia.com — druge svrhe guide 2026 | T4 | 🔴 **A10 — היתר druge svrhe לא ניתן לחידוש רציף**; פער 6 חודשים; חריג רק לגמלאים 60+ בעלי נכס | countries/HR |
+| S-179 | HR | A | expatincroatia.com — property-based permit | T4 | תת-בסיס נדל"ן — אין חידוש כלל מתחת לגיל 60; חריג הוגבל 3/2025 | countries/HR |
+| S-180 | HR | A | expatincroatia.com, citizenremote.com, asylumineurope.org | T4 | A11/A12: תושבות קבע 5 שנים רצופות (druge svrhe **לא נספר**); אזרחות 8 שנים + מבחן | countries/HR |
+| S-181 | HR | A | legalclarity.org, dualcitizenshipreport.org | T4 | A13: כלל ויתור אזרחות בהתאזרחות + 3 חריגים | countries/HR |
+| S-182 | HR | B | srednja.hr, deseta-gimnazija.hr, gimnazija-cetvrta-zg.skole.hr, gimnazija-sesnaesta-zg.skole.hr | T3-T4 | B6: פירוט 4 הגימנסיות — X./XVI./IV. עם בחינת קבלה דו-לשונית מפורשת; XV. שונה במודל (IB/מדעי) | countries/HR |
+| S-183 | HR | B | narodne-novine.nn.hr NN 15/13 (2013), zakon.hr | T1 (via search) | B7 (עונה Q-018): שעה-שעתיים/יום, עד 70 שעות, מקס' שנת לימודים אחת | countries/HR |
+| S-184 | HR | D | 385realestate.hr, investropa.com, adrionika.com | T4 | D5: הדדיות מלאה ישראל-קרואטיה לרכישת נכס; אישור מוה"מ 1-6 חודשים | countries/HR |
+| S-185 | HR | D | nekretnine.hr, properstar.com, luksuzno.com | T3-T4 | D3: ~€3,700/מ"ר ממוצע זאגרב (2026), טווח €2,781-4,736, עלייה 10-13%/שנה | countries/HR |
+| S-186 | HR | D | taxatlas.io, taxravens.com, mandracchio-capital.com | T4 | D6: 2026 — 20%/30% ארצי + תוספת עירונית; זאגרב ~18-23%/25-33% משולב | countries/HR |
+| S-187 | HR | D | y-tax.co.il, OECD MLI deposit document | T2/T1 | D9: אמנה חתומה 2006, בתוקף 2008; MLI — קרואטיה אישררה רק 2021 | countries/HR |
+| S-188 | HR | D | wise.com, numbeo.com, livingcost.org | T3-T4 | D1/D2: עלות מחיה משפחת 4 זאגרב ~€2,930/חודש (ללא שכ"ד); שכ"ד 3-חד' ~€809-1,101 | countries/HR |
+| S-189 | HR | D | expatincroatia.com, feather-insurance.com, hzzo.hr | T3-T4 | D11/D12: HZZO לזרים ~€90-100/חודש/אדם; ביטוח פרטי €30-100/חודש | countries/HR |
+| S-190 | HR | C | flightsfrom.com, elal.com, avioradar.net | T3-T4 | C9: קו TLV-ZAG של אל-על **עונתי בלבד** (קיץ, ~2×/שבוע) | countries/HR |
+| S-191 | HR | C | timesofisrael.com, zoz.hr, worldjewishcongress.org | T2/T4 | C1/C3/C8: קהילה יהודית זאגרב ~1,000-1,700; בי"ס יום Lauder-Hugo Kon (יחיד); חרם על טקסי שואה ממלכתיים מ-2016 | countries/HR |
+| S-192 | HR | A | mup.gov.hr (via nomadcapitalist.com, mandracchio-capital.com) | T2 | A5: מבחן אמצעים מבוסס-נכסים; פנסיה/הכנסת השקעה קבילות עקרונית | countries/HR |
+| S-193 | HR | A | expatincroatia.com, asylumineurope.org | T2/T4 | A15: חינוך חובה/חינם לכל ילד עם היתר שהייה, רישום תוך 30 יום | countries/HR |
+| S-194 | HR | A | expatincroatia.com, ipc.gov.cz, gov.hr | T2/T4 | A18: היתר קרואטי לא מזכה מגורים בשנגן אחר | countries/HR |
+| S-195 | HR | A | visitworld.today, mvep.gov.hr, lawyerscroatia.com | T3-T4 | A17: ישראלים פטורי-ויזה; ניתן להגיש בקשת היתר מתוך קרואטיה; טיפול 30-90 יום | countries/HR |
+| S-196 | HR | B | international-schools-database.com, doris.school, aisz.hr, britishschool.hr | T3-T4 | B10: AISZ €18,475-20,700/שנה/ילד; BISZ טווח דומה | countries/HR |
+
+## שלב 4 — צלילה עמוקה: קפריסין (S-198–S-216) (2026-08-19, המשך שביעי)
+
+| ID | מדינה | תחום | שם המקור | דרגה | מה נמצא | נכנס לקובץ |
+|---|---|---|---|---|---|---|
+| S-198 | CY | A | setupcyprus.com, koufettaslaw.com, gk-lawfirm.com, expatfocus.com | T2/T4 | Category F: פיגור מאושר 5-7 שנים; בקשות מ-2020 עדיין בטיפול | countries/CY |
+| S-199 | CY | A | erotocritou.com, koufettaslaw.com, setupcyprus.com | T2/T4 | Reg. 6(2): €300k השקעה + €50k/שנה הכנסה, ~חודשיים טיפול (מהיר) | countries/CY |
+| S-200 | CY | D | visahq.com, ktc.com.cy, globalcitizensolutions.com, cyprustaxlife.com | T2/T4 | רפורמת non-dom 2026, ביטול SDC על שכ"ד, זיכוי חד-צדדי (סעיפים 34-35) | countries/CY |
+| S-201 | CY | D | zenolegal.com, cyprustaxlife.com | T3/T4 | GHS 2.65% על שכ"ד, תקרה €180,000 | countries/CY |
+| S-202 | CY | D | bshcpa.co.il, russo.co.il, prisha.co.il, eshimony-law.co.il | T4 | מס תושב חוץ בישראל: 10% שטוח / פטור ₪5,654 / ניכוי במקור מ-6/2026 | countries/CY |
+| S-203 | CY | D | y-tax.co.il, cyprustaxlife.com, mondaq.com | T3/T4 | אישור חוזר: אין אמנת מס עם ישראל, נכון לאמצע 2026 (מחזק Q-039) | countries/CY |
+| S-204 | CY | D | numbeo.com, globalcitizensolutions.com, dom.com.cy | T4 | עלות מחיה משפחת 4 — ניקוסיה/לימסול/פאפוס | countries/CY |
+| S-205 | CY | A | globalcitizensolutions.com, immigrantinvest.com, gk-lawfirm.com | T2/T4 | אזרחות 8 שנים (7/10+1), אזרחות כפולה מותרת | countries/CY |
+| S-206 | CY | A/D | gk-lawfirm.com, uglobal.com, diogenouslaw.com | T2/T4 | Category F: איסור תעסוקה מלא, דירקטורות בחברה מותרת | countries/CY |
+| S-207 | CY | C/B | tefl.co.il, invest-cyprus.com, ocean-cyprus.com | T3/T4 | קהילה: פאפוס ~15,000 (17% מהאוכ'), לימסול ~12,000; בי"ס יהודי 25 תלמידים | countries/CY |
+| S-208 | CY | C/E | thelevantfiles.com, banxnetwork.com, whogoverns.eu, usnews.com | T3/T4 | ELAM 13.8% — מפלגה שלישית, בחירות 24/5/2026 | countries/CY |
+| S-209 | CY | C | richestates.com, clashreport.com, hlrn.org, ynetnews.com, jpost.com | T3/T4 | מחלוקת נדל"ן: ~4,000 נכסים 2021-2025, גל רטוריקה אנטישמית | countries/CY |
+| S-210 | CY | A | wise.com, embassyinformation.com | T4 | הגשת Category F חייבת פיזית בקפריסין | countries/CY |
+| S-211 | CY | A | gk-lawfirm.com, limassolblumarine.com, diogenouslaw.com | T2/T4 | תנאי שימור תושבות קבע: ביקור פעם בשנתיים | countries/CY |
+| S-212 | CY | A/B | almanovalaw.cy, uglobal.com, caritascyprus.org | T2/T4 | זכות חוקתית לחינוך ציבורי לכל ילד תושב | countries/CY |
+| S-213 | CY | D | fxcareer.com, jobsinforex.com, forexjobscyprus.com | T4 | שוק פינטק/פורקס בלימסול, אלפי משרות (רלוונטי ל-D14) | countries/CY |
+| S-214 | CY | D/E | cyprusregister.com, sstinsuranceconsultant.com, digicare-insurance.com | T3/T4 | Category F ("פינק סליפ") אינו זכאי GESY; ביטוח פרטי Plan A ~€150-430/שנה | countries/CY |
+| S-215 | CY | E | outofyourcomfortzone.com, cyprussunset.com | T3/T4 | איכות GESY, זמני המתנה שבועות-חודשיים | countries/CY |
+| S-216 | CY | C | flightconnections.com, flightsfrom.com, momondo.com | T3/T4 | טיסות לרנקה-ת"א: ~6-7/יום, 65 דקות, $48-70 | countries/CY |
+
 ## סיכום כיסוי (עודכן 2026-08-19, אחרי מחקר A1-A5 מלא לשכבה 3)
 - סה"כ מקורות שנבדקו: 96
 - מתוכם T1 (רשמיים, כולל "T1 דרך תקציר חיפוש"): כ-63
