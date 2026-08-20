@@ -316,8 +316,86 @@ WebFetch נבדק שוב בתחילת שיחה זו (מול esteri.sm ומול e
 | S-215 | CY | E | outofyourcomfortzone.com, cyprussunset.com | T3/T4 | איכות GESY, זמני המתנה שבועות-חודשיים | countries/CY |
 | S-216 | CY | C | flightconnections.com, flightsfrom.com, momondo.com | T3/T4 | טיסות לרנקה-ת"א: ~6-7/יום, 65 דקות, $48-70 | countries/CY |
 
-## סיכום כיסוי (עודכן 2026-08-19, אחרי מחקר A1-A5 מלא לשכבה 3)
-- סה"כ מקורות שנבדקו: 96
-- מתוכם T1 (רשמיים, כולל "T1 דרך תקציר חיפוש"): כ-63
-- מקורות שדורשים בדיקה חוזרת: רובם — עדיין WebFetch חסום (ראו הסתייגות למעלה; נבדק שוב 19/8 המשך שני מול en.wikipedia.org, אותה שגיאה)
-- **הערה חשובה:** רשימה זו מרכזת את המקורות המרכזיים בלבד. עשרות URL-ים נוספים שנבדקו לכל מדינה מתועדים בפירוט מלא בתמלילי סוכני המחקר, ומסוכמים בתמציתם בסעיפי המקורות של `domains/A-נתיבי-הגירה.md` ו-`domains/B-חינוך-וילדים.md`.
+## שלב 4 — צלילה עמוקה: סלובניה (S-217–S-250) (2026-08-20)
+
+| ID | מדינה | תחום | שם המקור | דרגה | מה נמצא | נכנס לקובץ |
+|---|---|---|---|---|---|---|
+| S-217 | SI | A | consiliojus.com, relocationcompass.com, lawyersslovenia.com, myglobal.si | T3/T4 | A1-A9: מבנה Art.51, D-ויזה, אגרות, זמני טיפול, Digital Nomad Permit חדש | countries/SI |
+| S-218 | SI | A | data.si, infotujci.si, gov.si (via search) | T2/T1⚠️ | A11: תושבות קבע 5 שנים, סבילות היעדרות 6/10 חודשים, מבחן שפה A2 מ-11/2024 | countries/SI |
+| S-219 | SI | A | immigrantinvest.com, myglobal.si, relocationcompass.com, mycitizensagency.com | T3/T4 | A12/A13: אזרחות 10 שנים, איסור עקרוני אזרחות כפולה עם חריגים צרים | countries/SI |
+| S-220 | SI | A | racunovodja.com, zakonodaja.com (Art.51/33 ZTuj-2) | T1⚠️+T4 | A3/A4: בסיס "זדוסטנה סרדסטבה", תוספת מלאה לכל בן-משפחה תלוי | countries/SI |
+| S-221 | SI | A | cekin.si, racunovodja.com | T3/T4 | A3: עדכון osnovni znesek minimalnega dohodka ל-€507.43 מ-1/3/2026 | countries/SI |
+| S-222 | SI | A | fragomen.com | T2 | A10/A16: הקלות+הקשחת שפה נובמבר 2024; Digital Nomad; רפורמת 2026 מתוכננת | countries/SI |
+| S-223 | SI | A/E | visasupdate.com | T3/T4 | A16/E5: ניתוח מדיניות הגירה תחת ממשלת יאנשה 4 | countries/SI |
+| S-224 | SI | A | envoyglobal.com, sibiz.eu (Jadek&Pensa) | T2/T3 | A10/A16: טיוטת תיקון ZTuj-2, יישום EU Single Permit Directive | countries/SI |
+| S-225 | SI | A/E | aljazeera.com, usnews.com, en.wikipedia.org | T2 | A16/E5: בחירות 3/2026, קואליציית SDS+4 שותפים = 43/90 מושבים | countries/SI |
+| S-226 | SI | C | jns.org, timesofisrael.com, thenationalnews.com, i24news.tv | T2 | C8: הכרזת שגרירות ישראלית ראשונה, הורדת דגל פלסטין, תפנית יאנשה | countries/SI |
+| S-227 | SI | B | doris.school | T3/T4 | B6: European School Ljubljana — €5,069-7,605/שנה, בתשלום מלא | countries/SI |
+| S-228 | SI | B | doris.school, ischooladvisor.com, en.wikipedia.org | T3/T4 | B6: Danila Kumar — מדינתי-מסובסד חלקית, €6,056-8,546/שנה | countries/SI |
+| S-229 | SI | B | ibo.org, mioc.hr | T2/T1⚠️ | B6: Gimnazija Bežigrad — ציבורי-חינמי, IB מגיל ~15 | countries/SI |
+| S-230 | SI | B | eurydice.eacea.ec.europa.eu, scholaro.com | T1⚠️+T3 | B2/B3: מבנה osnovna šola 9 שנים, מיון בגיל 15 | countries/SI |
+| S-231 | SI | B | oecd.org PISA 2022 (via search) | T1⚠️ | B4: PISA 469/485/500 (קריאה/מתמטיקה/מדעים) | countries/SI |
+| S-232 | SI | C | worldjewishcongress.org, eurojewcong.org | T3/T4 | C1-C3/B11: קהילה יהודית <100 נפש, בית כנסת יחיד (2021), אין בי"ס יהודי | countries/SI |
+| S-233 | SI | C | ef.com EF EPI 2025 (via search) | T2 | C5: סלובניה לא דורגה כלל (מדגם קטן מדי) | countries/SI |
+| S-234 | SI | C | israir.co.il, flightconnections.com | T3/T4 | C9: קו ישיר יחיד Israir, ~3:40 שעות טיסה, תדירות לא אומתה | countries/SI |
+| S-235 | SI | D | y-tax.co.il (עקיף), OECD MLI deposit document | T2/T1⚠️ | D8/D9: אמנה 2007, בתוקף 2007, MLI אושרר 2018 | countries/SI |
+| S-236 | SI | D | taxsummaries.pwc.com, taxatlas.io | T2/T3 | D6: מדרגות 2026 — 16%/26%/33%/39%/50% | countries/SI |
+| S-237 | SI | D | expat.si, nepremicnine.net | T3/T4 | D7: מס רווח הון נדל"ן — מדרגה יורדת 25%→0% לפי שנות החזקה | countries/SI |
+| S-238 | SI | D | numbeo.com, livingcost.org | T3/T4 | D1/D2: עלות מחיה משפחת 4 ליובליאנה | countries/SI |
+| S-239 | SI | D | nepremicnine.net, globalpropertyguide.com | T3/T4 | D3: מחיר ~€4,750/מ"ר ליובליאנה (2026) | countries/SI |
+| S-240 | SI | D | gov.si (via search), lawyersslovenia.com | T1⚠️+T4 | D5: פטור הדדיות ל-OECD (Art.68 לחוקה), נדרש אישור פרטני | countries/SI |
+| S-241 | SI | D | investslovenia.org (via search) | T1⚠️ | D10: אין משטר מס מיוחד לעולים/non-dom | countries/SI |
+| S-242 | SI | D | numbeo.com | T3/T4 | D1: פירוט עלות מזון/מחיה ליובליאנה | countries/SI |
+| S-243 | SI | A | e-uprava.gov.si (via search) | T1⚠️ | A8: אגרות ויזת D/היתר/כרטיס | countries/SI |
+| S-244 | SI | D | numbeo.com (שכ"ד) | T3/T4 | D2: טווח שכ"ד 3-4 חד' | countries/SI |
+| S-245 | SI | E | nijz.si (via search) | T1⚠️ | E1: זמני המתנה ZZZS עולים 2026 | countries/SI |
+| S-246 | SI | E | numbeo.com Safety Index | T3/T4 | E2: Ljubljana Safety ≈78.5/100 | countries/SI |
+| S-247 | SI | E | worldhappiness.report 2025 | T2 | E7: דירוג #18 עולמי, ציון 6.74 | countries/SI |
+| S-248 | SI | A | sibiz.eu (Jadek&Pensa, המשך) | T3 | A10: פירוט טיוטת רפורמת ZTuj-2 | countries/SI |
+| S-249 | SI | A | infotujci.si | T2 | A9: אין סף ימי-נוכחות פורמלי, בדיקות תקופתיות | countries/SI |
+| S-250 | SI | A | gov.si חינוך חובה (via search) | T1⚠️ | A15: חינוך חובה וחינמי לכל ילד זר 6-15 | countries/SI |
+
+## שלב 4 — צלילה עמוקה: אירלנד (S-251–S-284) (2026-08-20)
+
+| ID | מדינה | תחום | שם המקור | דרגה | מה נמצא | נכנס לקובץ |
+|---|---|---|---|---|---|---|
+| S-251 | IE | A | total.law | T3/T4 | A3/A7/A9/A17: סף €50K/€100K, זמני עיבוד, תושבות רציפה, הגשה בדואר בלבד | countries/IE |
+| S-252 | IE | A | lewissilkin.com | T3 | A16: מסמך מדיניות Stamp 0 עודכן סוף 2024, רפורמות 2026 | countries/IE |
+| S-253 | IE | A | onlinelegalservices.ie | T4 | A3/A5: סף כספי, קבילות שכ"ד מחו"ל, דרישות תיעוד | countries/IE |
+| S-254 | IE | A | ivsireland.ie | T4 | A3/A5: סף כספי, lump sum, אישור רו"ח | countries/IE |
+| S-255 | IE | A | citizensinformation.ie | T2 | A4/A14: מבנה כללי היתרי תלות משפחתיים | countries/IE |
+| S-256 | IE | A | irishimmigration.ie (via search) | T1⚠️ | A14/A15/A16: תנאי הצטרפות משפחה, ילדים תחת Stamp 0, רפורמת 11/2025 | countries/IE |
+| S-257 | IE | A | abbeybluelegal.ie | T4 | A14: זכות בן/בת זוג להגיש בקשה ל-Dependant Employment Permit | countries/IE |
+| S-258 | IE | A | martintaggart.com | T4 | A14: מעבר Stamp 3 → זכות עבודה | countries/IE |
+| S-259 | IE | A | futuredirect.ie, enterprise.gov.ie (DETE) | T1⚠️+T4 | A14: היתר עבודה חינמי לבן/בת זוג, פטור ממבחן שוק-עבודה | countries/IE |
+| S-260 | IE | A | ie.iasservices.org.uk, ferrysolicitors.com | T4 | A3/A11/A13/A17/A18: סף כספי, אי-ספירה לתושבות קבע, אזרחות כפולה, שנגן | countries/IE |
+| S-261 | IE | A | mcgrathmullan.ie | T4 | A11/A12: אישור מפורש ש-Stamp 0 לא נספר לקראת אזרחות | countries/IE |
+| S-262 | IE | A | taxesforexpats.com | T4 | A3: פירוט סף כספי ולאמפ-סאם | countries/IE |
+| S-263 | IE | D | investropa.com | T3/T4 | D2: שכ"ד דירת 4 חד' ~€3,500+/חודש באזורים מבוקשים | countries/IE |
+| S-264 | IE | D | numbeo.com | T3 | D1: עלות מחיה כללית ~€3,852/חודש (ללא שכ"ד) | countries/IE |
+| S-265 | IE | D | irishtaxhub.ie, taxatlas.io, kpmg.com | T2/T3 | D6: מדרגות מס 20%/40%, USC מדורג | countries/IE |
+| S-266 | IE | D | globalcitizensolutions.com, janushermes.com, investropa.com | T3/T4 | D3/D5: מחיר דירה חציוני ~€500-625K, ללא הגבלות זרים | countries/IE |
+| S-267 | IE | B | stratfordcollege.ie, stratfordns.ie, gov.ie, en.wikipedia.org | T1⚠️+T3 | B11: Stratford College+National School — בי"ס יהודי לשני הגילאים | countries/IE |
+| S-268 | IE | D | revenue.ie (אמנת מס, PDF רשמי) | T1⚠️ | D9: אמנה 1995, כיסוי הכנסה ממקרקעין | countries/IE |
+| S-269 | IE | D | fuchsiabell.ie, greenwayfinancialadvisors.ie | T3/T4 | D7: מס רווחי הון 33%, פטור שנתי €1,270 | countries/IE |
+| S-270 | IE | D | relocateireland.ie, settle.ie | T3/T4 | D12: ביטוח בריאות פרטי €1,200-1,800/שנה/מבוגר | countries/IE |
+| S-271 | IE | E | rte.ie (נתוני gov.ie) | T1⚠️+T2 | E1: משבר תורים ציבורי 850K+ | countries/IE |
+| S-272 | IE | E | esri.ie | T2 | E1: זמני המתנה פרטיים לא בהכרח קצרים משמעותית | countries/IE |
+| S-273 | IE | C | jta.org, timesofisrael.com, irishtimes.com, jpost.com, algemeiner.com | T2 | C8: דוח JRCI — 143 אירועים אנטישמיים 7/2025-1/2026 | countries/IE |
+| S-274 | IE | C | irishtimes.com, aljazeera.com, bbc.co.uk, bloomberg.com, thejournal.ie | T2 | C8: סגירת שגרירות ישראל בדבלין 12/2024, רקע | countries/IE |
+| S-275 | IE | C/A | thejournal.ie, rte.ie, irishtimes.com, alhaq.org | T2 | C8/A16: חוק השטחים הכבושים נחתם לחוק 7/2026 | countries/IE |
+| S-276 | IE | C | embassies.gov.il (via search) | T1⚠️ | C8: אישור רשמי — אין שירותים קונסולריים בשגרירות ישראל בדבלין | countries/IE |
+| S-277 | IE | C | ireland.ie, embassyinformation.com | T1⚠️+T4 | C8: שגרירות אירלנד בישראל פעילה כרגיל | countries/IE |
+| S-278 | IE | C | dublinairport.com, elal.com, flightconnections.com | T1⚠️+T3 | C9: קו אל-על ישיר דבלין-ת"א, 3×/שבוע, כל השנה | countries/IE |
+| S-279 | IE | C | jewishvirtuallibrary.org, worldjewishcongress.org, irishtimes.com, jewishmuseum.ie | T3/T4 | C1/C2/C3: קהילה ~2,200-2,557, 2 בתי כנסת, מוסדות | countries/IE |
+| S-280 | IE | B | dublinpeople.com, irishtimes.com | T2/T3 | B (סיכונים): תת-רישום לתיכונים מבוקשים בדבלין | countries/IE |
+| S-281 | IE | B | gov.ie (הנחיות EAL), into.ie, schooldays.ie | T1⚠️+T4 | B7: תוכנית EAL, שנתיים תמיכה | countries/IE |
+| S-282 | IE | B | ischooladvisor.com, kilians.com | T3/T4 | B10: עלויות בתי"ס בינלאומיים בדבלין | countries/IE |
+| S-283 | IE | D/B | newtoireland.ie, headstart.ie, relocateireland.ie | T3/T4 | D/B12: יום לימודים קצר, עלות צהרון | countries/IE |
+| S-284 | IE | D | revenue.ie (foreign rental income), expattaxes.ie, irishtaxhub.ie | T1⚠️+T4 | D8/D10: remittance basis, מגבלת תועלת בפועל | countries/IE |
+
+## סיכום כיסוי (עודכן 2026-08-20, אחרי שלב 4 לסלובניה ואירלנד)
+- סה"כ מקורות שנבדקו: 164 (96 עד 19/8 + 34 סלובניה + 34 אירלנד)
+- מתוכם T1 (רשמיים, כולל "T1 דרך תקציר חיפוש"): כ-95
+- מקורות שדורשים בדיקה חוזרת: רובם — עדיין WebFetch חסום (ראו הסתייגות למעלה; נבדק שוב 20/8 מול gov.si/en.wikipedia.org ו-irishimmigration.ie/gov.ie, אותה שגיאה בכל פעם)
+- **הערה חשובה:** רשימה זו מרכזת את המקורות המרכזיים בלבד. עשרות URL-ים נוספים שנבדקו לכל מדינה מתועדים בפירוט מלא בתמלילי סוכני המחקר, ומסוכמים בתמציתם בסעיפי המקורות של `domains/A-נתיבי-הגירה.md` ו-`domains/B-חינוך-וילדים.md` ובקבצי המדינה עצמם (`countries/SI-סלובניה.md`, `countries/IE-אירלנד.md`).
