@@ -394,8 +394,66 @@ WebFetch נבדק שוב בתחילת שיחה זו (מול esteri.sm ומול e
 | S-283 | IE | D/B | newtoireland.ie, headstart.ie, relocateireland.ie | T3/T4 | D/B12: יום לימודים קצר, עלות צהרון | countries/IE |
 | S-284 | IE | D | revenue.ie (foreign rental income), expattaxes.ie, irishtaxhub.ie | T1⚠️+T4 | D8/D10: remittance basis, מגבלת תועלת בפועל | countries/IE |
 
-## סיכום כיסוי (עודכן 2026-08-20, אחרי שלב 4 לסלובניה ואירלנד)
-- סה"כ מקורות שנבדקו: 164 (96 עד 19/8 + 34 סלובניה + 34 אירלנד)
-- מתוכם T1 (רשמיים, כולל "T1 דרך תקציר חיפוש"): כ-95
-- מקורות שדורשים בדיקה חוזרת: רובם — עדיין WebFetch חסום (ראו הסתייגות למעלה; נבדק שוב 20/8 מול gov.si/en.wikipedia.org ו-irishimmigration.ie/gov.ie, אותה שגיאה בכל פעם)
-- **הערה חשובה:** רשימה זו מרכזת את המקורות המרכזיים בלבד. עשרות URL-ים נוספים שנבדקו לכל מדינה מתועדים בפירוט מלא בתמלילי סוכני המחקר, ומסוכמים בתמציתם בסעיפי המקורות של `domains/A-נתיבי-הגירה.md` ו-`domains/B-חינוך-וילדים.md` ובקבצי המדינה עצמם (`countries/SI-סלובניה.md`, `countries/IE-אירלנד.md`).
+## שלב 4 — צלילה עמוקה: איטליה (S-285–S-304) (2026-08-20)
+
+| ID | מדינה | תחום | שם המקור | דרגה | מה נמצא | נכנס לקובץ |
+|---|---|---|---|---|---|---|
+| S-285 | IT | A | globalcitizensolutions.com, usimmigrationadvisor.com, taxcompass.it, ttandpartners.com | T4 | Residenza Elettiva 2026: סף €32,000 יחיד/€38,000 זוג; תוספות תלויים (פער גדול ממקור S-007); איסור עבודה מוחלט כולל מרחוק | countries/IT |
+| S-286 | IT | A | usimmigrationadvisor.com, citizenremote.com, italianvisa.it, feodgroup.com, consiliojus.com | T4 | חידוש שנתי שגרתי, היעדרות מקסימלית 6 חודשים רצופים, אין מלכודת-חידוש (בניגוד לקרואטיה) | countries/IT |
+| S-287 | IT | A | welcomeoffice.fvg.it, legalclarity.org, futureitalian.com, prefettura.it | T1⚠️(via search)+T3/T4 | תושבות קבע (permesso UE lungo periodo): 5 שנות תושבות רצופה, מבחן שפה A2 (לא B1); שנות Residenza Elettiva נספרות | countries/IT |
+| S-288 | IT | A | globalcitizensolutions.com, ibanet.org, imidaily.com, npr.org, euronews.com, en.wikipedia.org | T2/T4 | חוק 74/2025 (jus sanguinis, לא רלוונטי); משאל עם 6/2025 לקיצור התאזרחות מ-10 ל-5 שנים נכשל בגלל קוורום — 10 שנים נשאר ללא שינוי | countries/IT |
+| S-289 | IT | A | giambronelaw.com, italiancitizenshipassistance.com, scuolaleonardo.com | T4 | B1 נדרש להתאזרחות (לא A2); אזרחות כפולה מותרת ללא ויתור; לא אותר מבחן ידע אזרחי נפרד | countries/IT |
+| S-290 | IT | D | visahq.com, arlettipartners.com, goldenvisas.it, movetodolcevita.com, adva-lux.com | T2/T4 | Flat tax לעשירים הועלה בתקציב 2026 מ-€200K ל-€300,000/שנה (+€50K/תלוי), דורש 9/10 שנים ללא תושבות מס קודמת — לא רלוונטי למשפחה | countries/IT |
+| S-291 | IT | D | y-tax.co.il, hcat.co, rivistadirittotributario.it | T2/T4 | אמנת מס ישראל-איטליה: מנגנון עקרוני, מיסוי רווח הון נדל"ן איטלקי, ניכוי במקור 25% על תשלומים לתושבי-חוץ מישראל | countries/IT |
+| S-292 | IT | D | immigrantinvest.com, giambronelaw.com, meretdemeures.com, investropa.com | T3/T4 | מחירי נדל"ן: רומא ~€3,306/מ"ר (מרכז €7,577), מילאנו ~€5,700/מ"ר; הדדיות רכישה מאושרת לישראלים | countries/IT |
+| S-293 | IT | C | flightsfrom.com, flightconnections.com, wego.com, trip.com, elal.com, ita-airways.com | T3/T4 | טיסות ישירות: רומא-ת"א ~40/שבוע (אל-על 17, ITA 14, Wizz 9); מילאנו-ת"א ~29-31/שבוע (אל-על 15-17, Bluebird 7, Wizz 7) | countries/IT |
+| S-294 | IT | D | waitaly.net, italyvisainvestments.com, italyget.com, magictowns.it | T4 | SSN הרשמה וולונטרית לבעלי Residenza Elettiva, מינימום €2,000/שנה/אדם (עד ~€31,925 הכנסה), רישום קלנדרי לא-פרו-רטה | countries/IT |
+| S-295 | IT | C | eurojewcong.org, timesofisrael.com, jpost.com, algemeiner.com, theyeshivaworld.com, fra.europa.eu | T2/T4 + T1⚠️(via search) | CDEC: 963 אירועי אנטישמיות 2025 (שיא, עלייה מ-877/2024, 453/2023, 241/2022), תקיפות פיזיות +225%, ריכוז בלומברדיה+לציו; ממשלת מלוני מגנה בפומבי | countries/IT |
+| S-296 | IT | C | worldjewishcongress.org, romaebraica.it, chabad.org, medium.com, aish.com | T2/T3/T4 | קהילה יהודית רומא ~15,000 (הכי ותיקה באירופה, 161 לפנה"ס); איטליה כולה ~27,300 | countries/IT |
+| S-297 | IT | B | scuolaebraica.it, scuolaebraicamilano.it, fondazionescuolaebraica.it | T3 (אתרי מוסדות) | בי"ס יהודי קיים ברומא ובמילאנו (מילאנו: גן עד תיכון עליון); עלות/קיבולת לא אותרו | countries/IT |
+| S-298 | IT | B | mim.gov.it, k12academics.com, studenti.it, edunews24.it, alphaorienta.it, skuola.net | T1⚠️(via search)+T3/T4 | מבנה scuola secondaria di secondo grado; מעבר מסלול (esami integrativi) — חוק 164/2025 יצר חלל רגולטורי, פרקטיקה לא אחידה בין בתי"ס | countries/IT |
+| S-299 | IT | B | expatica.com, doris.school, mileschool.it, en.wikipedia.org (Rome International School) | T3/T4 | בתי"ס בינלאומיים/דו-לשוניים פרטיים ברומא (Marymount, St Stephen's IB) ומילאנו (MILE, Montessori Bilingual, ICS) | countries/IT |
+| S-300 | IT | D | wise.com, numbeo.com, internationalcitizens.com, immigrantinvest.com, idealista.it, uniplaces.com | T3/T4 | עלות מחיה משפחת 4 רומא/מילאנו: €5,000-8,500+/חודש כולל שכ"ד — עולה משמעותית על הכנסת המשפחה (€4,620/חודש) | countries/IT |
+| S-301 | IT | A | kairoslbc.com, globalcitizensolutions.com, theglobalwealth.com | T4 | משך טיפול Residenza Elettiva: 2-4 חודשים טיפוסי, עד 6+ בקונסוליות עמוסות; תהליך דיסקרטי, הודעת דחייה-מקדמית עם 10 ימים למענה | countries/IT |
+| S-302 | IT | E | statbase.org, numbeo.com, theglobaleconomy.com, countryeconomy.com | T3 | Numbeo Crime Index Italy 47.3/100 (בינוני); World Happiness Report 2025 — איטליה #40/147 | countries/IT |
+| S-303 | IT | D | investorium.org, fiscoinvestimenti.it, taxravens.com, graber-partner.com | T3/T4 | IRPEF 2026: 3 מדרגות קבועות בתקציב 2026 — 23%/33%/43% (עד €28K/€28-50K/מעל €50K) + תוספת אזורית-עירונית 1-4% | countries/IT |
+| S-304 | IT | A/E | france24.com, esthinktank.com, aljazeera.com, visahq.com, centuroglobal.com, iom.int | T2/T4 | decreto flussi 2026-2028: 497,550 היתרי עבודה זרים (הרחבה, לא צמצום); הידוק מקביל רק כלפי הגירה בלתי-חוקית (מודל אלבניה) — לא נוגע לנתיב הפסיבי | countries/IT |
+
+## שלב 4 — צלילה עמוקה: ספרד (S-305–S-330) (2026-08-20)
+
+> מספור ממוקם ישירות אחרי טווח איטליה (S-285–S-304) — שני סוכני המחקר המקבילים התחילו שניהם מ-S-285; רשימת ספרד תוקנה/רוננמרה ל-S-305–S-330 בשלב האינטגרציה כדי למנוע התנגשות מספרים.
+
+| ID | מדינה | תחום | שם המקור | דרגה | מה נמצא | נכנס לקובץ |
+|---|---|---|---|---|---|---|
+| S-305 | ES | A | myspainvisa.com, lexidy.com, pellicerheredia.com, movingtospain.com, costaluzlawyers.com | T4 | NLV 2026: €28,800/שנה (400%×IPREM) מבקש ראשי + €7,200/שנה/תלוי (100%×IPREM), IPREM 2026 €600/חודש (ללא שינוי מ-2025) | countries/ES |
+| S-306 | ES | A | platinumlegalspain.com, movingtospain.com, myspainvisa.com | T4 | NLV: הכנסה משכ"ד מוכרת במפורש, תיעוד נדרש (חוזים+דפי בנק 6 חודשים+דוחות מס+בעלות) | countries/ES |
+| S-307 | ES | A | spainguru.es, taxesforexpats.com | T3/T4 | RD 1155/2024 (5/2025) קבע מחדש דרישת 183 יום; פסיקת עליון 5/2026 מתנגשת — מצב שנוי במחלוקת | countries/ES |
+| S-308 | ES | A | jobbatical.com, teamed.global, legalfournier.com | T4 | תושבות קבע 5 שנים, אזרחות 10 שנים סטנדרטית, אין הסכם הדדיות מקוצר עם ישראל | countries/ES |
+| S-309 | ES | A | legalclarity.org, globalcitizensolutions.com, myspainvisa.com, lexidy.com | T4 | דרישת ויתור אזרחות בהתאזרחות, פטור רק לאיברו-אמריקה/פורטוגל/אנדורה/פיליפינים/גינאה המשוונית/צרפת — ישראל לא ברשימה | countries/ES |
+| S-310 | ES | A/D | immigrantinvest.com, spainexpat.com, spainguru.es | T4 | NLV אוסרת במפורש כל עבודה כולל מרחוק לכל בני המשפחה; מסלול שינוי מעמד לוויזת עבודה אחרי שנה אחת | countries/ES |
+| S-311 | ES | A | myspainvisa.com, ageinspain.org, spainnonlucrativevisa.com | T4 | מבנה היתר: 1+2+2 שנים עד תושבות קבע; חידוש דורש 800%/200% IPREM (זהה מתמטית לסף השנתי ×2) | countries/ES |
+| S-312 | ES | A | visaatlas.org, corpenza.com, spainnonlucrativevisa.com | T4 | זמן טיפול 1-3 חודשים (מדריד 1-2), אין נתון אחוז אישור רשמי | countries/ES |
+| S-313 | ES | A | spainguru.es, spainnonlucrativevisa.com, globalcitizensolutions.com | T4 | עלות כוללת NLV משפחת 4: €3,000-10,000, פירוט אגרות/אפוסטיל/ליווי משפטי | countries/ES |
+| S-314 | ES | A | spainguru.es, immigrationspain.es, abogadoextranjeriamadrid.net | T4 | בן/בת זוג תלוי/ה — שינוי מעמד לעבודה אחרי שנה; arraigo אלטרנטיבי אחרי שנתיים | countries/ES |
+| S-315 | ES | B | ischooladvisor.com | T4 | רשת Colegios Bilingües מדריד — מעל 500 בתי"ס ציבוריים, MEFP+British Council מ-2004 | countries/ES |
+| S-316 | ES | B | prospectus.ort.org, ibo.org, ort.org, internationalschoolsearch.com | T3/T4 | Colegio Estrella Toledano (מדריד, ORT, IB, גילאי 1-18, ~320 תלמידים); Colegio Hatikva (ברצלונה, ORT, ~330 תלמידים, עד גיל 16) | countries/ES |
+| S-317 | ES | C | eurojewcong.org, forward.com, timesofisrael.com, algemeiner.com, fra.europa.eu | T2/T3 | עלייה 321% (2024)/86% (2025) בתקריות אנטישמיות; אירוע ברצלונה 7/2026; חילול בית קברות מונז'ואיק; דוח FRA 2026 | countries/ES |
+| S-318 | ES | C | flightconnections.com, nomadlawyer.org, elal.com | T4 | מדריד-ת"א 5/שבוע (איברייה/אייר יורופה/אל-על), Israir תוסיף 3/שבוע מ-10/2026 | countries/ES |
+| S-319 | ES | D | immo365costabrava.com, chorusfinancial.es, hilton-realestate.com, spainexpattax.com | T4 | מס עושר (Impuesto sobre el Patrimonio) — סף ארצי €700K/אדם, משתנה לפי אזור, על נכסים עולמיים לתושבים | countries/ES |
+| S-320 | ES | D | orbitax.com, y-tax.co.il | T3/T4 | אמנת מס ישראל-ספרד 1999, מנגנון זיכוי-מס הדדי, כיסוי הכנסת מקרקעין | countries/ES |
+| S-321 | ES | D | globalcitizensolutions.com, reloplanner.com, valenciamove.com, citycost.org | T4 | תקציב משפחת 4: מדריד €3,000-3,500, ולנסיה ~€2,800-4,200, מלגה €2,500-3,300 | countries/ES |
+| S-322 | ES | D | thelocal.es, waypointsur.com, costaluzlawyers.com | T2/T4 | Convenio Especial זמין אחרי שנה, €60/חודש/אדם מתחת לגיל 65 | countries/ES |
+| S-323 | ES | E | euronews.com, visasupdate.com, theolivepress.es, hyphenonline.com | T2/T4 | קואליציות PP-Vox אזוריות מתרחבות (אקסטרמדורה 4/2026+), מדיניות "עדיפות לאומית" | countries/ES |
+| S-324 | ES | D | engelvoelkers.com, investropa.com | T4 | מחירי נדל"ן: ולנסיה ~€2,820/מ"ר, מלגה ~€2,950/מ"ר | countries/ES |
+| S-325 | ES | E | countryeconomy.com, worldpopulationreview.com, numbeo.com, spanishpropertyinsight.com | T4 | World Happiness #38-41; Numbeo Crime Index מדריד 28.8, ארצי 35.8 | countries/ES |
+| S-326 | ES | E | weather-atlas.com, weather2travel.com | T4 | מדריד ינואר 2.7-9.8°C; מלגה/קוסטה דל סול ינואר 6-14°C | countries/ES |
+| S-327 | ES | D | usnews.com, bravosestate.com, tekce.com | T3/T4 | הצעת מס 100% על רוכשי נדל"ן זרים-לא-תושבים (1/2025) נתקעה בפרלמנט, הוסרה מחבילת דיור 1/2026, לא בתוקף | countries/ES |
+| S-328 | ES | A | jewishnews.co.uk, eurojewcong.org, thecitizenshipdesk.com | T2/T4 | חוק 12/2015 (אזרחות מהירה לצאצאי ספרדים-יהודים) — סגור להגשות חדשות מ-10/2019 | countries/ES |
+| S-329 | ES | A | sublimespain.com, citizensadvice.org.es, euroweeklynews.com | T3/T4 | מינורים זכאים לבריאות ציבורית בספרד ללא תלות במעמד ההגירה של ההורים | countries/ES |
+| S-330 | ES | D | healthinsuranceforspanishvisas.com, spainguru.es, insbrok.com | T4 | ביטוח בריאות פרטי ללא-השתתפות-עצמית: €50-600/חודש תלוי גיל | countries/ES |
+
+## סיכום כיסוי (עודכן 2026-08-20, אחרי שלב 4 לספרד ואיטליה)
+- סה"כ מקורות שנבדקו: 214 (164 עד שלב 4 סלובניה/אירלנד + 20 איטליה + 26 ספרד)
+- מתוכם T1 (רשמיים, כולל "T1 דרך תקציר חיפוש"): כ-100
+- מקורות שדורשים בדיקה חוזרת: רובם — עדיין WebFetch חסום (ראו הסתייגות למעלה; נבדק שוב 20/8 מול esteri.it ו-extranjeros.inclusion.gob.es, אותה שגיאה בכל פעם)
+- **הערה חשובה:** רשימה זו מרכזת את המקורות המרכזיים בלבד. עשרות URL-ים נוספים שנבדקו לכל מדינה מתועדים בפירוט מלא בתמלילי סוכני המחקר, ומסוכמים בתמציתם בקבצי המדינה עצמם (`countries/IT-איטליה.md`, `countries/ES-ספרד.md`).
